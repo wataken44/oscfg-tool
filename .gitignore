@@ -1,0 +1,12 @@
+
+bin
+include
+lib
+openstack
+output
+pip-selfcheck.json
+
+*~
+.*~
+
+scripts/env.json
