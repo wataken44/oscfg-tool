@@ -25,9 +25,10 @@ def main():
 
     fetch_and_setup(js["openstack"])
     install_package(js["package"])
+    create_shellscript(js["openstack"])
     
 def create_work_dirs():
-    for d in ["openstack", "output"]:
+    for d in ["openstack", "output", "output/json", "output/text", "tmp"]:
         if os.path.exists(d):
             continue
         os.mkdir(d)
@@ -50,11 +51,23 @@ def fetch_and_setup(repos):
             os.system("cd openstack; git clone https://github.com/openstack/%s.git; cd .." % name)
         if tag:
             os.system("cd openstack/%s; git checkout refs/tags/%s; cd ../.." % (name, tag))
+        os.system("cd openstack/%s; pip install -r requirements.txt; cd ../.." % name)
         os.system("cd openstack/%s; python setup.py install; cd ../.." % name)
-
+        
 def install_package(pkgs):
     for pkg in pkgs:
         os.system("pip install %s " % pkg)
-        
+
+def create_shellscript(repos):
+    for repo in repos:
+        name = ""
+        tag = None
+        if type(repo) == str:
+            name = repo
+        elif type(repo) == type([]):
+            name = repo[0]
+        pkg = name.replace(".","_").replace("-","_")
+        os.system("find openstack/%s/%s -name '*.py' | grep -v '/tests/' | sed -e 's/^/python scripts\\/extract_opts.py /g;s/$/ openstack output\\/json/g' > tmp/run-%s.sh" % (name, pkg, name))
+
 if __name__ == "__main__":
     main()

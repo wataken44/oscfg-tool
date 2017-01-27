@@ -100,7 +100,7 @@ def extract_opts(input_filename, input_base_dir, output_dir):
     opts2 = {}
     try:
         log_write('opts = dummy_module.list_opts() : ')
-        opts2 = dummy_module.list_opts()
+        opts2 = list_opts_from_opts(dummy_module.list_opts())
         log_write("succeeded\n")
     except Exception as e:
         log_write("failed\n" + str(e) + "\n")
@@ -150,6 +150,25 @@ def list_opts_from_conf(conf):
         for k in g._opts.keys():
             ret[g].append(g._opts[k]["opt"])
 
+    return ret
+
+def list_opts_from_opts(opts):
+    """
+
+    opts: 
+      { 'DEFAULT' or ConfigGroup : [ConfigOpt] }
+      or
+      [('DEFAULT' or ConfigGroup, [ConfigOpt])]
+    ret: 
+      { 'DEFAULT' or ConfigGroup : [ConfigOpt] }
+    """
+
+    if type(opts) == dict:
+        return opts
+
+    ret = {}
+    for opt in opts:
+        ret[opt[0]] = opt[1]
     return ret
 
 def merge_opts(opts_arr):

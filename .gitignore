@@ -6,6 +6,7 @@ lib
 openstack
 output
 share
+tmp
 pip-selfcheck.json
 
 *~
