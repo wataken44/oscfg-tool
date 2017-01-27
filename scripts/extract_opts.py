@@ -116,9 +116,10 @@ def extract_opts(input_filename, input_base_dir, output_dir):
         }
     }
 
-    ofp = open(output_filename, "w")
-    json.dump(data, ofp, indent=2, sort_keys=True)
-    ofp.close()
+    if len(data["Out"]["groups"]) > 0:
+        ofp = open(output_filename, "w")
+        json.dump(data, ofp, indent=2, sort_keys=True)
+        ofp.close()
 
     log_write("debug: \n")
     for i in range(3):

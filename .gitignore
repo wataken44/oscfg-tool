@@ -1,9 +1,11 @@
 
 bin
+etc
 include
 lib
 openstack
 output
+share
 pip-selfcheck.json
 
 *~
