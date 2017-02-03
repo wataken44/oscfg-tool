@@ -67,7 +67,8 @@ def create_shellscript(repos):
         elif type(repo) == type([]):
             name = repo[0]
         pkg = name.replace(".","_").replace("-","_")
-        os.system("find openstack/%s/%s -name '*.py' | grep -v '/tests/' | sed -e 's/^/python scripts\\/extract_opts.py /g;s/$/ openstack output\\/json/g' > tmp/run-%s.sh" % (name, pkg, name))
+        os.system("find openstack/%s/%s -name '*.py' | grep -v '/tests/' | sed -e 's/^/python scripts\\/extract_opts.py /g;s/$/ openstack output\\/json/g' > tmp/json-%s.sh" % (name, pkg, name))
+        os.system("echo 'python scripts/json_to_text.py output/json/%s/ > output/text/%s.txt' > tmp/text-%s.sh" % (name, name, name))
 
 if __name__ == "__main__":
     main()

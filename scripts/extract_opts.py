@@ -83,30 +83,54 @@ def extract_opts(input_filename, input_base_dir, output_dir):
         log_close()
         return
 
-    opts0 = list_opts_from_conf(cfg.CONF)
-
-    opts1 = {}    
+    opts_arr = [list_opts_from_conf(cfg.CONF)]
+    function_appended = False
+    
     try:
-        conf = cfg.ConfigOpts()
-        
-        log_write('dummy_module.register_opts(conf) : ')
-        dummy_module.register_opts(conf)
-        log_write("succeeded\n")
+        for fn in dir(dummy_module):
+            if fn.find("register") < 0 or fn.find("opts") < 0:
+                continue
+            conf = cfg.ConfigOpts()
 
-        opts1 = list_opts_from_conf(conf)
+            log_write('dummy_module.%s(conf) : ' % fn)
+            dummy_module.__getattribute__(fn)(conf)
+            log_write("succeeded\n")
+
+            opts_arr.append( list_opts_from_conf(conf) )
+            function_appended = True
     except Exception as e:
         log_write("failed\n" + str(e) + "\n")
 
-    opts2 = {}
+
     try:
+        if not function_appended:
+            for gv in dir(dummy_module):
+                if not gv.endswith("OPTS"):
+                    continue
+                conf = cfg.ConfigOpts()
+                log_write('conf.register_opts(%s) : ' % gv)
+                conf.register_opts(dummy_module.__getattribute__(gv))
+                log_write("succeeded\n")
+
+                opts_arr.append( list_opts_from_conf(conf) )
+        else:
+            log_write('global variable search skipped \n')
+
+    except Exception as e:
+        log_write("failed\n" + str(e) + "\n")
+
+    try:
+        opts2 = {}
         log_write('opts = dummy_module.list_opts() : ')
         opts2 = list_opts_from_opts(dummy_module.list_opts())
         log_write("succeeded\n")
+
+        opts_arr.append(opts2)
     except Exception as e:
         log_write("failed\n" + str(e) + "\n")
 
     log_write("merge: \n")
-    groups, options = merge_opts([opts0, opts1, opts2])
+    groups, options = merge_opts(opts_arr)
 
     data = {
         "In": os.path.relpath(input_filename, input_base_dir),
@@ -122,8 +146,8 @@ def extract_opts(input_filename, input_base_dir, output_dir):
         ofp.close()
 
     log_write("debug: \n")
-    for i in range(3):
-        o = [opts0, opts1, opts2][i]
+    for i in range(len(opts_arr)):
+        o = opts_arr[i]
         log_write(("opts%d = " % i) + json.dumps(object_to_data(o), indent=2, sort_keys=True) + "\n")
     log_close()
     
@@ -158,7 +182,7 @@ def list_opts_from_opts(opts):
     opts: 
       { 'DEFAULT' or ConfigGroup : [ConfigOpt] }
       or
-      [('DEFAULT' or ConfigGroup, [ConfigOpt])]
+      [('DEFAULT' or ConfigGroup or None, [ConfigOpt])]
     ret: 
       { 'DEFAULT' or ConfigGroup : [ConfigOpt] }
     """
@@ -168,7 +192,10 @@ def list_opts_from_opts(opts):
 
     ret = {}
     for opt in opts:
-        ret[opt[0]] = opt[1]
+        key = opt[0]
+        if key is None:
+            key = "DEFAULT"
+        ret[key] = opt[1]
     return ret
 
 def merge_opts(opts_arr):
@@ -182,10 +209,9 @@ def merge_opts(opts_arr):
                 name = kg
             else:
                 name = kg.name # OptGroup.name
-            if name in groups:
-                continue
-            groups[name] = kg
-            options[name] = {}
+            if name not in groups:
+                groups[name] = kg
+                options[name] = {}
 
             for ko in opts[kg]:
                 if ko.name in options[name]:
