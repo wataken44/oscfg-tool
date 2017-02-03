@@ -1,0 +1,60 @@
+[DEFAULT]
+
+config-dir = ['~/.project/project.conf.d/', '~/project.conf.d/', '/etc/project/project.conf.d/', '/etc/project.conf.d/']
+# class:      <class 'oslo_config.cfg._ConfigDirOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path to a config directory to pull *.conf files from. This file set is sorted, so as to provide a predictable parse order if individual options are over-ridden. The set is parsed after the file(s) specified via previous --config-file, arguments hence over-ridden options in the directory take precedence.
+
+config-file = ['~/.project/project.conf', '~/project.conf', '/etc/project/project.conf', '/etc/project.conf']
+# class:      <class 'oslo_config.cfg._ConfigFileOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path to a config file to use. Multiple config files can be specified, with values in later files taking precedence. Defaults to %(default)s.
+
+minimal = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Generate a minimal required configuration.
+
+namespace = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   True
+# help:
+# Option namespace under "oslo.config.opts" in which to query for options.
+
+output-file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path of the file to write to. Defaults to stdout.
+
+summarize = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Only output summaries of help text to config files. Retain longer help text for Sphinx documents.
+
+wrap-width = 70
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The maximum length of help lines.
+
+
+

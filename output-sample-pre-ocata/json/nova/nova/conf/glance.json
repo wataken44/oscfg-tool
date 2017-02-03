@@ -1,0 +1,279 @@
+{
+  "In": "nova/nova/conf/glance.py",
+  "Out": {
+    "groups": {
+      "glance": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "Configuration options for the Image service",
+        "name": "glance",
+        "title": "Glance Options"
+      }
+    },
+    "options": {
+      "glance": {
+        "allowed_direct_url_schemes": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "allowed_direct_url_schemes",
+          "help": "\nList of url schemes that can be directly accessed.\n\nThis option specifies a list of url schemes that can be downloaded\ndirectly via the direct_url. This direct_URL can be fetched from\nImage metadata which can be used by nova to get the\nimage more efficiently. nova-compute could benefit from this by\ninvoking a copy when it has access to the same file system as glance.\n\nPossible values:\n\n* [file], Empty list (default)\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "allowed_direct_url_schemes",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "api_insecure": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "api_insecure",
+          "help": "\nEnable insecure SSL (https) requests to glance.\n\nThis setting can be used to turn off verification of the glance server\ncertificate against the certificate authorities.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "api_insecure",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "api_servers": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "api_servers",
+          "help": "\nList of glance api servers endpoints available to nova.\n\nhttps is used for ssl-based glance api servers.\n\nPossible values:\n\n* A list of any fully qualified url of the form \"scheme://hostname:port[/path]\"\n  (i.e. \"http://10.0.1.0:9292\" or \"https://my.glance.server/image\").\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "api_servers",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "debug": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "debug",
+          "help": "Enable or disable debug logging with glanceclient.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "debug",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "num_retries": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "num_retries",
+          "help": "\nEnable glance operation retries.\n\nSpecifies the number of retries when uploading / downloading\nan image to / from glance. 0 means no retries.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "num_retries",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "verify_glance_signatures": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "verify_glance_signatures",
+          "help": "\nEnable image signature verification.\n\nnova uses the image signature metadata from glance and verifies the signature\nof a signed image while downloading that image. If the image signature cannot\nbe verified or if the image signature metadata is either incomplete or\nunavailable, then nova will not boot the image and instead will place the\ninstance into an error state. This provides end users with stronger assurances\nof the integrity of the image data they are using to create servers.\n\nRelated options:\n\n* The options in the `key_manager` group, as the key_manager is used\n  for the signature validation.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "verify_glance_signatures",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        }
+      }
+    }
+  }
+}

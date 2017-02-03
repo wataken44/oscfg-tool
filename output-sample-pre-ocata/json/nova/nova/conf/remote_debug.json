@@ -1,0 +1,91 @@
+{
+  "In": "nova/nova/conf/remote_debug.py",
+  "Out": {
+    "groups": {
+      "remote_debug": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "remote_debug",
+        "title": "debugger options"
+      }
+    },
+    "options": {
+      "remote_debug": {
+        "host": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "host",
+          "help": "\nDebug host (IP or name) to connect to. This command line parameter is used when\nyou want to connect to a nova service via a debugger running on a different\nhost.\n\nNote that using the remote debug option changes how Nova uses the eventlet\nlibrary to support async IO. This could result in failures that do not occur\nunder normal operation. Use at your own risk.\n\nPossible Values:\n\n   * IP address of a remote host as a command line parameter\n     to a nova service. For Example:\n\n    /usr/local/bin/nova-compute --config-file /etc/nova/nova.conf\n    --remote_debug-host <IP address where the debugger is running>\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "port",
+          "help": "\nDebug port to connect to. This command line parameter allows you to specify\nthe port you want to use to connect to a nova service via a debugger running\non different host.\n\nNote that using the remote debug option changes how Nova uses the eventlet\nlibrary to support async IO. This could result in failures that do not occur\nunder normal operation. Use at your own risk.\n\nPossible Values:\n\n   * Port number you want to use as a command line parameter\n     to a nova service. For Example:\n\n    /usr/local/bin/nova-compute --config-file /etc/nova/nova.conf\n    --remote_debug-host <IP address where the debugger is running>\n    --remote_debug-port <port> it's listening on>.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        }
+      }
+    }
+  }
+}

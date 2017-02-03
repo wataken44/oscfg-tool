@@ -1,0 +1,132 @@
+{
+  "In": "nova/nova/conf/configdrive.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "config_drive_format": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "iso9660",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "config_drive_format",
+          "help": "\nConfiguration drive format\n\nConfiguration drive format that will contain metadata attached to the\ninstance when it boots.\n\nPossible values:\n\n* iso9660: A file system image standard that is widely supported across\n  operating systems. NOTE: Mind the libvirt bug\n  (https://bugs.launchpad.net/nova/+bug/1246201) - If your hypervisor\n  driver is libvirt, and you want live migrate to work without shared storage,\n  then use VFAT.\n* vfat: For legacy reasons, you can configure the configuration drive to\n  use VFAT format instead of ISO 9660.\n\nRelated options:\n\n* This option is meaningful when one of the following alternatives occur:\n  1. force_config_drive option set to 'true'\n  2. the REST API call to create the instance contains an enable flag for\n     config drive option\n  3. the image used to create the instance requires a config drive,\n     this is defined by img_config_drive property for that image.\n* A compute node running Hyper-V hypervisor can be configured to attach\n  configuration drive as a CD drive. To attach the configuration drive as a CD\n  drive, set config_drive_cdrom option at hyperv section, to true.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "config_drive_format",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "iso9660",
+              "vfat"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "force_config_drive": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "force_config_drive",
+          "help": "\nForce injection to take place on a config drive\n\nWhen this option is set to true configuration drive functionality will be\nforced enabled by default, otherwise user can still enable configuration\ndrives via the REST API or image metadata properties.\n\nPossible values:\n\n* True: Force to use of configuration drive regardless the user's input in the\n        REST API call.\n* False: Do not force use of configuration drive. Config drives can still be\n         enabled via the REST API or image metadata properties.\n\nRelated options:\n\n* Use the 'mkisofs_cmd' flag to set the path where you install the\n  genisoimage program. If genisoimage is in same path as the\n  nova-compute service, you do not need to set this flag.\n* To use configuration drive with Hyper-V, you must set the\n  'mkisofs_cmd' value to the full path to an mkisofs.exe installation.\n  Additionally, you must set the qemu_img_cmd value in the hyperv\n  configuration section to the full path to an qemu-img command\n  installation.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "force_config_drive",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "mkisofs_cmd": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "genisoimage",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "mkisofs_cmd",
+          "help": "\nName or path of the tool used for ISO image creation\n\nUse the mkisofs_cmd flag to set the path where you install the genisoimage\nprogram. If genisoimage is on the system path, you do not need to change\nthe default value.\n\nTo use configuration drive with Hyper-V, you must set the mkisofs_cmd value\nto the full path to an mkisofs.exe installation. Additionally, you must set\nthe qemu_img_cmd value in the hyperv configuration section to the full path\nto an qemu-img command installation.\n\nPossible values:\n\n* Name of the ISO image creator program, in case it is in the same directory\n  as the nova-compute service\n* Path to ISO image creator program\n\nRelated options:\n\n* This option is meaningful when config drives are enabled.\n* To use configuration drive with Hyper-V, you must set the qemu_img_cmd\n  value in the hyperv configuration section to the full path to an qemu-img\n  command installation.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "mkisofs_cmd",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

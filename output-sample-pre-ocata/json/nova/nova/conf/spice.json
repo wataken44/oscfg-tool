@@ -1,0 +1,322 @@
+{
+  "In": "nova/nova/conf/spice.py",
+  "Out": {
+    "groups": {
+      "spice": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nSPICE console feature allows you to connect to a guest virtual machine.\nSPICE is a replacement for fairly limited VNC protocol.\n\nFollowing requirements must be met in order to use SPICE:\n\n* Virtualization driver must be libvirt\n* spice.enabled set to True\n* vnc.enabled set to False\n* update html5proxy_base_url\n* update server_proxyclient_address\n",
+        "name": "spice",
+        "title": "SPICE console features"
+      }
+    },
+    "options": {
+      "spice": {
+        "agent_enabled": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "agent_enabled",
+          "help": "\nEnable the SPICE guest agent support on the instances.\n\nThe Spice agent works with the Spice protocol to offer a better guest console\nexperience. However, the Spice console can still be used without the Spice\nAgent. With the Spice agent installed the following features are enabled:\n\n* Copy & Paste of text and images between the guest and client machine\n* Automatic adjustment of resolution when the client screen changes - e.g.\n  if you make the Spice console full screen the guest resolution will adjust to\n  match it rather than letterboxing.\n* Better mouse integration - The mouse can be captured and released without\n  needing to click inside the console or press keys to release it. The\n  performance of mouse movement is also improved.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "agent_enabled",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "enabled": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled",
+          "help": "\nEnable SPICE related features.\n\nRelated options:\n\n* VNC must be explicitly disabled to get access to the SPICE console. Set the\n  enabled option to False in the [vnc] section to disable the VNC console.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "html5proxy_base_url": {
+          "__class__": "<class 'oslo_config.cfg.URIOpt'>",
+          "advanced": false,
+          "default": "http://127.0.0.1:6082/spice_auto.html",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "html5proxy_base_url",
+          "help": "\nLocation of the SPICE HTML5 console proxy.\n\nEnd user would use this URL to connect to the `nova-spicehtml5proxy``\nservice. This service will forward request to the console of an instance.\n\nIn order to use SPICE console, the service ``nova-spicehtml5proxy`` should be\nrunning. This service is typically launched on the controller node.\n\nPossible values:\n\n* Must be a valid URL of the form:  ``http://host:port/spice_auto.html``\n  where host is the node running ``nova-spicehtml5proxy`` and the port is\n  typically 6082. Consider not using default value as it is not well defined\n  for any real deployment.\n\nRelated options:\n\n* This option depends on ``html5proxy_host`` and ``html5proxy_port`` options.\n  The access URL returned by the compute node must have the host\n  and port where the ``nova-spicehtml5proxy`` service is listening.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "html5proxy_base_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.URI'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max_length": null,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "schemes": null,
+            "type_name": "uri value",
+            "value": "http://127.0.0.1:6082/spice_auto.html"
+          }
+        },
+        "html5proxy_host": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "0.0.0.0",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "html5proxy_host",
+          "help": "\nIP address or a hostname on which the ``nova-spicehtml5proxy`` service\nlistens for incoming requests.\n\nRelated options:\n\n* This option depends on the ``html5proxy_base_url`` option.\n  The ``nova-spicehtml5proxy`` service must be listening on a host that is\n  accessible from the HTML5 client.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "html5proxy_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "html5proxy_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 6082,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "html5proxy_port",
+          "help": "\nPort on which the ``nova-spicehtml5proxy`` service listens for incoming\nrequests.\n\nRelated options:\n\n* This option depends on the ``html5proxy_base_url`` option.\n  The ``nova-spicehtml5proxy`` service must be listening on a port that is\n  accessible from the HTML5 client.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "html5proxy_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "keymap": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "en-us",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "keymap",
+          "help": "\nA keyboard layout which is supported by the underlying hypervisor on this\nnode.\n\nPossible values:\n* This is usually an 'IETF language tag' (default is 'en-us'). If you\n  use QEMU as hypervisor, you should find the list of supported keyboard\n  layouts at /usr/share/qemu/keymaps.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "keymap",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "server_listen": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "127.0.0.1",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "server_listen",
+          "help": "\nThe  address where the SPICE server running on the instances should listen.\n\nTypically, the ``nova-spicehtml5proxy`` proxy client runs on the controller\nnode and connects over the private network to this address on the compute\nnode(s).\n\nPossible values:\n\n* IP address to listen on.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "server_listen",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "server_proxyclient_address": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "127.0.0.1",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "server_proxyclient_address",
+          "help": "\nThe address used by ``nova-spicehtml5proxy`` client to connect to instance\nconsole.\n\nTypically, the ``nova-spicehtml5proxy`` proxy client runs on the\ncontroller node and connects over the private network to this address on the\ncompute node(s).\n\nPossible values:\n\n* Any valid IP address on the compute node.\n\nRelated options:\n\n* This option depends on the ``server_listen`` option.\n  The proxy client must be able to access the address specified in\n  ``server_listen`` using the value of this option.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "server_proxyclient_address",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

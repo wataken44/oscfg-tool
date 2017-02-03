@@ -1,0 +1,203 @@
+{
+  "In": "nova/nova/conf/floating_ips.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "auto_assign_floating_ip": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "auto_assign_floating_ip",
+          "help": "\nAutoassigning floating IP to VM\n\nWhen set to True, floating IP is auto allocated and associated\nto the VM upon creation.\n\nRelated options:\n\n* use_neutron: this options only works with nova-network.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "auto_assign_floating_ip",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "default_floating_pool": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_floating_pool",
+          "help": "\nDefault pool for floating IPs.\n\nThis option specifies the default floating IP pool for allocating floating IPs.\n\nWhile allocating a floating ip, users can optionally pass in the name of the\npool they want to allocate from, otherwise it will be pulled from the\ndefault pool.\n\nIf this option is not set, then 'nova' is used as default floating pool.\n\nPossible values:\n\n* Any string representing a floating IP pool name\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default_floating_pool",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "floating_ip_dns_manager": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.network.noop_dns_driver.NoopDNSDriver",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "floating_ip_dns_manager",
+          "help": "\nFull class name for the DNS Manager for floating IPs.\n\nThis option specifies the class of the driver that provides functionality\nto manage DNS entries associated with floating IPs.\n\nWhen a user adds a DNS entry for a specified domain to a floating IP,\nnova will add a DNS entry using the specified floating DNS driver.\nWhen a floating IP is deallocated, its DNS entry will automatically be deleted.\n\nPossible values:\n\n* Full Python path to the class to be used\n\nRelated options:\n\n* use_neutron: this options only works with nova-network.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "floating_ip_dns_manager",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "instance_dns_domain": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "instance_dns_domain",
+          "help": "\nIf specified, Nova checks if the availability_zone of every instance matches\nwhat the database says the availability_zone should be for the specified\ndns_domain.\n\nRelated options:\n\n* use_neutron: this options only works with nova-network.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "instance_dns_domain",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "instance_dns_manager": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.network.noop_dns_driver.NoopDNSDriver",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "instance_dns_manager",
+          "help": "\nFull class name for the DNS Manager for instance IPs.\n\nThis option specifies the class of the driver that provides functionality\nto manage DNS entries for instances.\n\nOn instance creation, nova will add DNS entries for the instance name and\nid, using the specified instance DNS driver and domain. On instance deletion,\nnova will remove the DNS entries.\n\nPossible values:\n\n* Full Python path to the class to be used\n\nRelated options:\n\n* use_neutron: this options only works with nova-network.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "instance_dns_manager",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

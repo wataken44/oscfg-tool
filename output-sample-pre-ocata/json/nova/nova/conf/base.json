@@ -1,0 +1,328 @@
+{
+  "In": "nova/nova/conf/base.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "instance_usage_audit_period": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "month",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "instance_usage_audit_period",
+          "help": "\nTime period to generate instance usages for. It is possible to define optional\noffset to given period by appending @ character followed by a number defining\noffset.\n\nPossible values:\n\n*  period, example: ``hour``, ``day``, ``month` or ``year``\n*  period with offset, example: ``month@15`` will result in monthly audits\n   starting on 15th day of month.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "instance_usage_audit_period",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": {
+              "__class__": "<class '_sre.SRE_Pattern'>",
+              "findall": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "finditer": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "flags": 32,
+              "fullmatch": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "groupindex": {},
+              "groups": 3,
+              "match": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "pattern": "(hour|month|day|year)(@([0-9]+))?",
+              "scanner": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "search": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "split": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "sub": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "subn": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              }
+            },
+            "type_name": "string value"
+          }
+        },
+        "monkey_patch": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "monkey_patch",
+          "help": "\nDetermine if monkey patching should be applied.\n\nRelated options:\n\n* ``monkey_patch_modules``: This must have values set for this option to\n  have any effect\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "monkey_patch",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "monkey_patch_modules": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [
+            "nova.compute.api:nova.notifications.notify_decorator"
+          ],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "monkey_patch_modules",
+          "help": "\nList of modules/decorators to monkey patch.\n\nThis option allows you to patch a decorator for all functions in specified\nmodules.\n\nPossible values:\n\n* nova.compute.api:nova.notifications.notify_decorator\n* nova.api.ec2.cloud:nova.notifications.notify_decorator\n* [...]\n\nRelated options:\n\n* ``monkey_patch``: This must be set to ``True`` for this option to\n  have any effect\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "monkey_patch_modules",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "password_length": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 12,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "password_length",
+          "help": "Length of generated instance admin passwords.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "password_length",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "rootwrap_config": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "/etc/nova/rootwrap.conf",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "rootwrap_config",
+          "help": "\nPath to the rootwrap configuration file.\n\nGoal of the root wrapper is to allow a service-specific unprivileged user to\nrun a number of actions as the root user in the safest manner possible.\nThe configuration file used here must match the one defined in the sudoers\nentry.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "rootwrap_config",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "tempdir": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "tempdir",
+          "help": "Explicitly specify the temporary working directory.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "tempdir",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "use_rootwrap_daemon": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "use_rootwrap_daemon",
+          "help": "\nStart and use a daemon that can run the commands that need to be run with\nroot privileges. This option is usually enabled on nodes that run nova compute\nprocesses.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "use_rootwrap_daemon",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        }
+      }
+    }
+  }
+}

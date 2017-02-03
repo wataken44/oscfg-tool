@@ -1,0 +1,146 @@
+{
+  "In": "nova/nova/conf/workarounds.py",
+  "Out": {
+    "groups": {
+      "workarounds": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nA collection of workarounds used to mitigate bugs or issues found in system\ntools (e.g. Libvirt or QEMU) or Nova itself under certain conditions. These\nshould only be enabled in exceptional circumstances. All options are linked\nagainst bug IDs, where more information on the issue can be found.\n",
+        "name": "workarounds",
+        "title": "Workaround Options"
+      }
+    },
+    "options": {
+      "workarounds": {
+        "disable_libvirt_livesnapshot": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "disable_libvirt_livesnapshot",
+          "help": "\nDisable live snapshots when using the libvirt driver.\n\nLive snapshots allow the snapshot of the disk to happen without an\ninterruption to the guest, using coordination with a guest agent to\nquiesce the filesystem.\n\nWhen using libvirt 1.2.2 live snapshots fail intermittently under load\n(likely related to concurrent libvirt/qemu operations). This config\noption provides a mechanism to disable live snapshot, in favor of cold\nsnapshot, while this is resolved. Cold snapshot causes an instance\noutage while the guest is going through the snapshotting process.\n\nFor more information, refer to the bug report:\n\n  https://bugs.launchpad.net/nova/+bug/1334398\n\nPossible values:\n\n* True: Live snapshot is disabled when using libvirt\n* False: Live snapshots are always used when snapshotting (as long as\n  there is a new enough libvirt and the backend storage supports it)\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "disable_libvirt_livesnapshot",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "disable_rootwrap": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "disable_rootwrap",
+          "help": "\nUse sudo instead of rootwrap.\n\nAllow fallback to sudo for performance reasons.\n\nFor more information, refer to the bug report:\n\n  https://bugs.launchpad.net/nova/+bug/1415106\n\nPossible values:\n\n* True: Use sudo instead of rootwrap\n* False: Use rootwrap as usual\n\nInterdependencies to other options:\n\n* Any options that affect 'rootwrap' will be ignored.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "disable_rootwrap",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "handle_virt_lifecycle_events": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "handle_virt_lifecycle_events",
+          "help": "\nEnable handling of events emitted from compute drivers.\n\nMany compute drivers emit lifecycle events, which are events that occur when,\nfor example, an instance is starting or stopping. If the instance is going\nthrough task state changes due to an API operation, like resize, the events\nare ignored.\n\nThis is an advanced feature which allows the hypervisor to signal to the\ncompute service that an unexpected state change has occurred in an instance\nand that the instance can be shutdown automatically. Unfortunately, this can\nrace in some conditions, for example in reboot operations or when the compute\nservice or when host is rebooted (planned or due to an outage). If such races\nare common, then it is advisable to disable this feature.\n\nCare should be taken when this feature is disabled and\n'sync_power_state_interval' is set to a negative value. In this case, any\ninstances that get out of sync between the hypervisor and the Nova database\nwill have to be synchronized manually.\n\nFor more information, refer to the bug report:\n\n  https://bugs.launchpad.net/bugs/1444630\n\nInterdependencies to other options:\n\n* If ``sync_power_state_interval`` is negative and this feature is disabled,\n  then instances that get out of sync between the hypervisor and the Nova\n  database will have to be synchronized manually.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "handle_virt_lifecycle_events",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        }
+      }
+    }
+  }
+}

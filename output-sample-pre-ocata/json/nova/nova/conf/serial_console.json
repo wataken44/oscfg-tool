@@ -1,0 +1,275 @@
+{
+  "In": "nova/nova/conf/serial_console.py",
+  "Out": {
+    "groups": {
+      "serial_console": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nThe serial console feature allows you to connect to a guest in case a\ngraphical console like VNC, RDP or SPICE is not available. This is only\ncurrently supported for the libvirt, Ironic and hyper-v drivers.",
+        "name": "serial_console",
+        "title": "The serial console feature"
+      }
+    },
+    "options": {
+      "serial_console": {
+        "base_url": {
+          "__class__": "<class 'oslo_config.cfg.URIOpt'>",
+          "advanced": false,
+          "default": "ws://127.0.0.1:6083/",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "base_url",
+          "help": "\nThe URL an end user would use to connect to the ``nova-serialproxy`` service.\n\nThe ``nova-serialproxy`` service is called with this token enriched URL\nand establishes the connection to the proper instance.\n\nRelated options:\n\n* The IP address must be identical to the address to which the\n  ``nova-serialproxy`` service is listening (see option ``serialproxy_host``\n  in this section).\n* The port must be the same as in the option ``serialproxy_port`` of this\n  section.\n* If you choose to use a secured websocket connection, then start this option\n  with ``wss://`` instead of the unsecured ``ws://``. The options ``cert``\n  and ``key`` in the ``[DEFAULT]`` section have to be set for that.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "base_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.URI'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max_length": null,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "schemes": null,
+            "type_name": "uri value",
+            "value": "ws://127.0.0.1:6083/"
+          }
+        },
+        "enabled": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled",
+          "help": "\nEnable the serial console feature.\n\nIn order to use this feature, the service ``nova-serialproxy`` needs to run.\nThis service is typically executed on the controller node.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "port_range": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "10000:20000",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "port_range",
+          "help": "\nA range of TCP ports a guest can use for its backend.\n\nEach instance which gets created will use one port out of this range. If the\nrange is not big enough to provide another port for an new instance, this\ninstance won't get launched.\n\nPossible values:\n\n* Each string which passes the regex ``\\d+:\\d+`` For example ``10000:20000``.\n  Be sure that the first port number is lower than the second port number\n  and that both are in range from 0 to 65535.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "port_range",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": {
+              "__class__": "<class '_sre.SRE_Pattern'>",
+              "findall": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "finditer": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "flags": 32,
+              "fullmatch": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "groupindex": {},
+              "groups": 0,
+              "match": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "pattern": "\\d+:\\d+",
+              "scanner": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "search": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "split": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "sub": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "subn": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              }
+            },
+            "type_name": "string value"
+          }
+        },
+        "proxyclient_address": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "127.0.0.1",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "proxyclient_address",
+          "help": "\nThe IP address to which proxy clients (like ``nova-serialproxy``) should\nconnect to get the serial console of an instance.\n\nThis is typically the IP address of the host of a ``nova-compute`` service.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "proxyclient_address",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "serialproxy_host": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "0.0.0.0",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "serialproxy_host",
+          "help": "\nThe IP address which is used by the ``nova-serialproxy`` service to listen\nfor incoming requests.\n\nThe ``nova-serialproxy`` service listens on this IP address for incoming\nconnection requests to instances which expose serial console.\n\nRelated options:\n\n* Ensure that this is the same IP address which is defined in the option\n  ``base_url`` of this section or use ``0.0.0.0`` to listen on all addresses.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "serialproxy_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "serialproxy_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 6083,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "serialproxy_port",
+          "help": "\nThe port number which is used by the ``nova-serialproxy`` service to listen\nfor incoming requests.\n\nThe ``nova-serialproxy`` service listens on this port number for incoming\nconnection requests to instances which expose serial console.\n\nRelated options:\n\n* Ensure that this is the same port number which is defined in the option\n  ``base_url`` of this section.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "serialproxy_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        }
+      }
+    }
+  }
+}

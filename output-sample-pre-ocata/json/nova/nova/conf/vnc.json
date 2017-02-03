@@ -1,0 +1,447 @@
+{
+  "In": "nova/nova/conf/vnc.py",
+  "Out": {
+    "groups": {
+      "vnc": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nVirtual Network Computer (VNC) can be used to provide remote desktop\nconsole access to instances for tenants and/or administrators.",
+        "name": "vnc",
+        "title": "VNC options"
+      }
+    },
+    "options": {
+      "vnc": {
+        "enabled": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "vnc_enabled"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled",
+          "help": "\nEnable VNC related features.\n\nGuests will get created with graphical devices to support this. Clients\n(for example Horizon) can then establish a VNC connection to the guest.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "keymap": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "en-us",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "vnc_keymap"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "keymap",
+          "help": "\nKeymap for VNC.\n\nThe keyboard mapping (keymap) determines which keyboard layout a VNC\nsession should use by default.\n\nPossible values:\n\n* A keyboard layout which is supported by the underlying hypervisor on\n  this node. This is usually an 'IETF language tag' (for example\n  'en-us').  If you use QEMU as hypervisor, you should find the  list\n  of supported keyboard layouts at ``/usr/share/qemu/keymaps``.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "keymap",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "novncproxy_base_url": {
+          "__class__": "<class 'oslo_config.cfg.URIOpt'>",
+          "advanced": false,
+          "default": "http://127.0.0.1:6080/vnc_auto.html",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "novncproxy_base_url",
+          "help": "\nPublic address of noVNC VNC console proxy.\n\nThe VNC proxy is an OpenStack component that enables compute service\nusers to access their instances through VNC clients. noVNC provides\nVNC support through a websocket-based client.\n\nThis option sets the public base URL to which client systems will\nconnect. noVNC clients can use this address to connect to the noVNC\ninstance and, by extension, the VNC sessions.\n\nRelated options:\n\n* novncproxy_host\n* novncproxy_port\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "novncproxy_base_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.URI'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max_length": null,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "schemes": null,
+            "type_name": "uri value",
+            "value": "http://127.0.0.1:6080/vnc_auto.html"
+          }
+        },
+        "novncproxy_host": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "0.0.0.0",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "novncproxy_host",
+          "help": "\nIP address that the noVNC console proxy should bind to.\n\nThe VNC proxy is an OpenStack component that enables compute service\nusers to access their instances through VNC clients. noVNC provides\nVNC support through a websocket-based client.\n\nThis option sets the private address to which the noVNC console proxy\nservice should bind to.\n\nRelated options:\n\n* novncproxy_port\n* novncproxy_base_url\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "novncproxy_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "novncproxy_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 6080,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "novncproxy_port",
+          "help": "\nPort that the noVNC console proxy should bind to.\n\nThe VNC proxy is an OpenStack component that enables compute service\nusers to access their instances through VNC clients. noVNC provides\nVNC support through a websocket-based client.\n\nThis option sets the private port to which the noVNC console proxy\nservice should bind to.\n\nRelated options:\n\n* novncproxy_host\n* novncproxy_base_url\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "novncproxy_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "vncserver_listen": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "127.0.0.1",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vncserver_listen",
+          "help": "\nThe IP address or hostname on which an instance should listen to for\nincoming VNC connection requests on this node.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vncserver_listen",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "vncserver_proxyclient_address": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "127.0.0.1",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vncserver_proxyclient_address",
+          "help": "\nPrivate, internal IP address or hostname of VNC console proxy.\n\nThe VNC proxy is an OpenStack component that enables compute service\nusers to access their instances through VNC clients.\n\nThis option sets the private address to which proxy clients, such as\n``nova-xvpvncproxy``, should connect to.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vncserver_proxyclient_address",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "xvpvncproxy_base_url": {
+          "__class__": "<class 'oslo_config.cfg.URIOpt'>",
+          "advanced": false,
+          "default": "http://127.0.0.1:6081/console",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "xvpvncproxy_base_url",
+          "help": "\nPublic URL address of XVP VNC console proxy.\n\nThe VNC proxy is an OpenStack component that enables compute service\nusers to access their instances through VNC clients. Xen provides\nthe Xenserver VNC Proxy, or XVP, as an alternative to the\nwebsocket-based noVNC proxy used by Libvirt. In contrast to noVNC,\nXVP clients are Java-based.\n\nThis option sets the public base URL to which client systems will\nconnect. XVP clients can use this address to connect to the XVP\ninstance and, by extension, the VNC sessions.\n\nRelated options:\n\n* xvpvncproxy_host\n* xvpvncproxy_port\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "xvpvncproxy_base_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.URI'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max_length": null,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "schemes": null,
+            "type_name": "uri value",
+            "value": "http://127.0.0.1:6081/console"
+          }
+        },
+        "xvpvncproxy_host": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "0.0.0.0",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "xvpvncproxy_host",
+          "help": "\nIP address or hostname that the XVP VNC console proxy should bind to.\n\nThe VNC proxy is an OpenStack component that enables compute service\nusers to access their instances through VNC clients. Xen provides\nthe Xenserver VNC Proxy, or XVP, as an alternative to the\nwebsocket-based noVNC proxy used by Libvirt. In contrast to noVNC,\nXVP clients are Java-based.\n\nThis option sets the private address to which the XVP VNC console proxy\nservice should bind to.\n\nRelated options:\n\n* xvpvncproxy_port\n* xvpvncproxy_base_url\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "xvpvncproxy_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "xvpvncproxy_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 6081,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "xvpvncproxy_port",
+          "help": "\nPort that the XVP VNC console proxy should bind to.\n\nThe VNC proxy is an OpenStack component that enables compute service\nusers to access their instances through VNC clients. Xen provides\nthe Xenserver VNC Proxy, or XVP, as an alternative to the\nwebsocket-based noVNC proxy used by Libvirt. In contrast to noVNC,\nXVP clients are Java-based.\n\nThis option sets the private port to which the XVP VNC console proxy\nservice should bind to.\n\nRelated options:\n\n* xvpvncproxy_host\n* xvpvncproxy_base_url\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "xvpvncproxy_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        }
+      }
+    }
+  }
+}

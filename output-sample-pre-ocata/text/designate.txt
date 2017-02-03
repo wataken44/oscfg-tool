@@ -1,0 +1,2914 @@
+[DEFAULT]
+
+all-tcp = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Send all traffic over TCP
+
+allow-notify = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of IP addresses allowed to NOTIFY The Agent
+
+allowed_remote_exmods = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Additional modules that contains allowed RPC exceptions.
+
+backend-driver = bind9
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The backend driver to use, e.g. bind9, djbdns, knot2
+
+backend_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The backend URL to use for distributed coordination. If unset services that need coordination will function as a standalone service.
+
+backlog = 4096
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of backlog requests to configure the socket with
+
+cache-driver = memcache
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The cache driver to use
+
+central-topic = central
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Central Topic
+
+default-limit-admin = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default per-page limit for the Admin API, a value of None means show all results by default
+
+default-limit-v2 = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default per-page limit for the V2 API, a value of None means show all results by default
+
+default-soa-expire = 86400
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+default-soa-minimum = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+default-soa-refresh-max = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+default-soa-refresh-min = 3500
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+default-soa-retry = 600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+default-ttl = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+dns_view = default
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+enable-recovery-timer = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The flag for the recovery timer
+
+enable-sync-timer = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The flag for the sync timer
+
+enabled = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Whether to send events to worker instead of Pool Manager
+
+enabled-extensions-admin = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled Admin API Extensions
+
+enabled-extensions-v2 = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled API Extensions for the V2 API
+
+enabled_tasks = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled tasks to run
+
+expiration = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Time in seconds to expire cache.
+
+export-synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Whether to allow synchronous zone exports
+
+heartbeat_interval = 1.0
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of seconds between heartbeats for distributed coordination.
+
+host = deploy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of this node
+
+http_pool_connections = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+http_pool_maxsize = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+listen = ['0.0.0.0:5354']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# mDNS host:port pairs to listen on
+
+listen = ['0.0.0.0:5358']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Agent host:port pairs to listen on
+
+masters = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of masters for the Agent, format ip:port
+
+max-limit-admin = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Max per-page limit for the Admin API
+
+max-limit-v2 = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Max per-page limit for the V2 API
+
+max-message-size = 65535
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum message size to emit
+
+mdns-topic = mdns
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# mDNS Topic
+
+memcached_servers = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Memcached servers or None for in process cache.
+
+multi_tenant = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+network_api = neutron
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Which API to use.
+
+network_view = default
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+notify = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Whether to allow worker to send NOTIFYs, this will noop NOTIFYs in mdns if true
+
+notify-delay = 0.0
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Delay after a NOTIFY arrives for a zone that the Agent will pause and drop subsequent NOTIFYs for that zone
+
+notify_api_faults = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Send notifications if there's a failure in the API.
+
+ns_group = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+periodic-recovery-interval = 120
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time between recovering from failures
+
+periodic-sync-interval = 1800
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time between synchronizing the servers with storage
+
+periodic-sync-max-attempts = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of attempts to update a zone during sync
+
+periodic-sync-retry-interval = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between zone update attempts during sync
+
+periodic-sync-seconds = 21600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Zones Updated within last N seconds will be syncd.Use an empty value to sync all zones.
+
+poll-delay = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time to wait before sending the first request to a server
+
+poll-max-retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The maximum number of times to retry sending a request and wait for a response from a server
+
+poll-retry-interval = 15
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time between retrying to send a request and waiting for a response from a server
+
+poll-timeout = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time to wait for a response from a server
+
+pool-id = 794ccc2c-d751-44fe-b57f-8894c9f5c842
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The ID of the pool managed by this instance of the Pool Manager
+
+pool-manager-topic = pool_manager
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Pool Manager Topic
+
+port = None
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# mDNS Port Number
+
+port = None
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Agent Port Number
+
+pybasedir = /home/watanabe-k/oscfg-tool/lib/python3.4/site-packages
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory where the designate python module is installed
+
+query-enforce-tsig = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enforce all incoming queries (including AXFR) are TSIG signed
+
+quota-api-export-size = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of recordsets allowed in a zone export
+
+quota-driver = storage
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Quota driver to use
+
+quota-recordset-records = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of records allowed per recordset
+
+quota-zone-records = 500
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of records allowed per zone
+
+quota-zone-recordsets = 500
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of recordsets allowed per zone
+
+quota-zones = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of zones allowed per tenant
+
+root-helper = sudo designate-rootwrap /etc/designate/rootwrap.conf
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+run_watchers_interval = 10.0
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of seconds between checks to see if group membership has changed
+
+sslverify = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+state-path = /var/lib/designate
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Top-level directory for maintaining designate's state
+
+storage-driver = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The storage driver to use
+
+supported-record-type = ['A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'SPF', 'NS', 'PTR', 'SSHFP', 'SOA']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Supported record types
+
+tcp-backlog = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# mDNS TCP Backlog
+
+tcp-backlog = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The Agent TCP Backlog
+
+tcp-recv-timeout = 0.5
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# mDNS TCP Receive Timeout
+
+tcp-recv-timeout = 0.5
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Agent TCP Receive Timeout
+
+tcp_keepidle = 600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Sets the value of TCP_KEEPIDLE in seconds for each server socket. Not supported on OS X.
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Producer greenthreads to spawn
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of mdns greenthreads to spawn
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of agent greenthreads to spawn
+
+threads = 200
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Worker threads to spawn per process
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Pool Manager greenthreads to spawn
+
+threshold-percentage = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The percentage of servers requiring a successful update for a domain change to be considered active
+
+threshold-percentage = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The percentage of servers requiring a successful update for a zone change to be considered active
+
+transfer-source = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# An IP address to be used to fetch zones transferred in
+
+username = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+wapi_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+worker-topic = worker
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Worker Topic
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Producer worker processes to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of mdns worker processes to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of agent worker processes to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Worker worker processes to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Pool Manager worker processes to spawn
+
+
+
+[backend:agent:bind9]
+# Configuration for bind9 backend
+# None
+
+query-destination = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Host to query when finding zones
+
+rndc-config-file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# RNDC Config File
+
+rndc-host = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# RNDC Host
+
+rndc-key-file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# RNDC Key File
+
+rndc-port = 953
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# RNDC Port
+
+zone-file-path = $state_path/zones
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path where zone files are stored
+
+
+
+[backend:agent:denominator]
+# Backend options for Denominator
+# None
+
+config_file = /etc/denominator.conf
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path to Denominator configuration file
+
+name = fake
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of the affected provider
+
+
+
+[backend:agent:djbdns]
+# Configuration for Djbdns backend
+# None
+
+axfr-get-cmd-name = axfr-get
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# axfr-get executable path or rootwrap command name
+
+query-destination = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Host to query when finding zones
+
+tcpclient-cmd-name = tcpclient
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# tcpclient executable path or rootwrap command name
+
+tinydns-data-cmd-name = tinydns-data
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# tinydns-data executable path or rootwrap command name
+
+tinydns-datadir = /var/lib/djbdns
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# TinyDNS data directory
+
+
+
+[backend:agent:gdnsd]
+# Configuration for gdnsd backend
+# None
+
+confdir-path = /etc/gdnsd
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# gdnsd configuration directory path
+
+gdnsd-cmd-name = gdnsd
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# gdnsd executable path or rootwrap command name
+
+query-destination = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Host to query when finding zones
+
+
+
+[backend:agent:knot2]
+# Configuration for Knot2 backend
+# None
+
+knotc-cmd-name = knotc
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# knotc executable path or rootwrap command name
+
+query-destination = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Host to query when finding zones
+
+
+
+[backend:agent:msdns]
+# Configuration for Microsoft DNS Server
+# None
+
+
+
+[backend:akamai]
+# Backend options for Akamai
+# None
+
+enhanceddns_wsdl = file:///home/watanabe-k/oscfg-tool/lib/python3.4/site-packages/designate/backend/../resources/wsdl/EnhancedDNS.xml
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Akamai EnhancedDNS WSDL URL
+
+
+
+[backend:dynect]
+# Backend options for DynECT
+# None
+
+job_timeout = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout in seconds for pulling a job in DynECT.
+
+timeout = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout in seconds for API Requests.
+
+timings = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Measure requests timings.
+
+
+
+[backend:infoblox]
+# Configuration for Infoblox Backend
+# None
+
+dns_view = default
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+http_pool_connections = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+http_pool_maxsize = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+multi_tenant = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+network_view = default
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+ns_group = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+sslverify = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+username = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+wapi_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# None
+
+
+
+[backend:powerdns]
+# backend:powerdns options
+# None
+
+backend = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The back end to use for the database.
+
+connection_debug = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verbosity of SQL debugging information: 0=None, 100=Everything.
+
+connection_trace = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Add Python stack traces to SQL as comment strings.
+
+db_inc_retry_interval = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, increases the interval between retries of a database operation up to db_max_retry_interval.
+
+db_max_retries = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum retries in case of connection error or deadlock error before error is raised. Set to -1 to specify an infinite retry count.
+
+db_max_retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If db_inc_retry_interval is set, the maximum seconds between retries of a database operation.
+
+db_retry_interval = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between retries of a database transaction.
+
+idle_timeout = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout before idle SQL connections are reaped.
+
+max_overflow = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for max_overflow with SQLAlchemy.
+
+max_pool_size = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of SQL connections to keep open in a pool. Setting a value of 0 indicates no limit.
+
+max_retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of database connection retries during startup. Set to -1 to specify an infinite retry count.
+
+min_pool_size = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimum number of SQL connections to keep open in a pool.
+
+mysql_sql_mode = TRADITIONAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQL mode to be used for MySQL sessions. This option, including the default, overrides any server-set SQL mode. To use whatever SQL mode is set by the server configuration, set this to no value. Example: mysql_sql_mode=
+
+pool_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for pool_timeout with SQLAlchemy.
+
+retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between retries of opening a SQL connection.
+
+sqlite_synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, SQLite uses synchronous mode.
+
+use_db_reconnect = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable the experimental use of database reconnect on connection lost.
+
+
+
+[coordination]
+# coordination options
+# None
+
+backend_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The backend URL to use for distributed coordination. If unset services that need coordination will function as a standalone service.
+
+heartbeat_interval = 1.0
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of seconds between heartbeats for distributed coordination.
+
+run_watchers_interval = 10.0
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of seconds between checks to see if group membership has changed
+
+
+
+[handler:neutron_floatingip]
+# Configuration for Neutron Notification Handler
+# None
+
+control-exchange = neutron
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+format = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: True
+# multi:      True
+# required:   False
+# help:
+# None
+
+formatv4 = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# None
+
+formatv6 = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# None
+
+notification-topics = ['notifications']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+zone-id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+
+
+[handler:nova_fixed]
+# Configuration for Nova Notification Handler
+# None
+
+control-exchange = nova
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+format = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: True
+# multi:      True
+# required:   False
+# help:
+# None
+
+formatv4 = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# None
+
+formatv6 = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# None
+
+notification-topics = ['notifications']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+zone-id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+
+
+[heartbeat_emitter]
+# heartbeat_emitter options
+# None
+
+emitter_type = rpc
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Emitter to use
+
+heartbeat_interval = 5.0
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of seconds between heartbeats for reporting state
+
+
+
+[hyperv]
+# hyperv options
+# None
+
+force_volumeutils_v1 = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# DEPRECATED: Force V1 volume utility class
+
+
+
+[monasca:statsd]
+# Configuration for Monasca Statsd
+# None
+
+enabled = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# enable
+
+hostname = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# hostname
+
+port = 8125
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# UDP port
+
+
+
+[network_api:neutron]
+# network_api:neutron options
+# None
+
+admin_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# password for connecting to neutron in admin context
+
+admin_tenant_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# tenant name for connecting to neutron in admin context
+
+admin_username = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# username for connecting to neutron in admin context
+
+auth_strategy = keystone
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# auth strategy for connecting to neutron in admin context
+
+auth_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# auth url for connecting to neutron in admin context
+
+ca_certificates_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location of ca certificates file to use for neutron client requests.
+
+endpoint_type = publicURL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Endpoint type to use
+
+endpoints = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# URL to use if None in the ServiceCatalog that is passed by the request context. Format: <region>|<url>
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# if set, ignore any SSL validation issues
+
+timeout = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# timeout value for connecting to neutron in seconds
+
+
+
+[oslo_concurrency]
+# oslo_concurrency options
+# None
+
+disable_process_locking = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables inter-process locks.
+
+lock_path = $state_path
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+
+
+
+[oslo_policy]
+# oslo_policy options
+# None
+
+policy_default_rule = default
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default rule. Enforced when a requested rule is not found.
+
+policy_dirs = ['policy.d']
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched.  Missing or empty directories are ignored.
+
+policy_file = policy.json
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The file that defines policies.
+
+
+
+[pool_manager_cache:memcache]
+# Configuration for memcache Pool Manager Cache
+# None
+
+expiration = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Time in seconds to expire cache.
+
+memcached_servers = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Memcached servers or None for in process cache.
+
+
+
+[pool_manager_cache:sqlalchemy]
+# Configuration for SQLAlchemy Pool Manager Cache
+# None
+
+backend = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The back end to use for the database.
+
+connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the database.
+
+connection_debug = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verbosity of SQL debugging information: 0=None, 100=Everything.
+
+connection_trace = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Add Python stack traces to SQL as comment strings.
+
+db_inc_retry_interval = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, increases the interval between retries of a database operation up to db_max_retry_interval.
+
+db_max_retries = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum retries in case of connection error or deadlock error before error is raised. Set to -1 to specify an infinite retry count.
+
+db_max_retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If db_inc_retry_interval is set, the maximum seconds between retries of a database operation.
+
+db_retry_interval = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between retries of a database transaction.
+
+idle_timeout = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout before idle SQL connections are reaped.
+
+max_overflow = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for max_overflow with SQLAlchemy.
+
+max_pool_size = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of SQL connections to keep open in a pool. Setting a value of 0 indicates no limit.
+
+max_retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of database connection retries during startup. Set to -1 to specify an infinite retry count.
+
+min_pool_size = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimum number of SQL connections to keep open in a pool.
+
+mysql_sql_mode = TRADITIONAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQL mode to be used for MySQL sessions. This option, including the default, overrides any server-set SQL mode. To use whatever SQL mode is set by the server configuration, set this to no value. Example: mysql_sql_mode=
+
+pool_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for pool_timeout with SQLAlchemy.
+
+retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between retries of opening a SQL connection.
+
+slave_connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the slave database.
+
+sqlite_db = oslo.sqlite
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The file name to use with SQLite.
+
+sqlite_synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, SQLite uses synchronous mode.
+
+use_db_reconnect = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable the experimental use of database reconnect on connection lost.
+
+
+
+[producer_task:delayed_notify]
+# producer_task:delayed_notify options
+# None
+
+batch_size = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# How many zones to receive NOTIFY on each run
+
+interval = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Run interval in seconds
+
+per_page = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+
+
+[producer_task:periodic_exists]
+# producer_task:periodic_exists options
+# None
+
+interval = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Run interval in seconds
+
+per_page = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+
+
+[producer_task:periodic_secondary_refresh]
+# producer_task:periodic_secondary_refresh options
+# None
+
+interval = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Run interval in seconds
+
+per_page = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+
+
+[producer_task:worker_periodic_recovery]
+# producer_task:worker_periodic_recovery options
+# None
+
+interval = 120
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Run interval in seconds
+
+per_page = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+
+
+[producer_task:zone_purge]
+# producer_task:zone_purge options
+# None
+
+batch_size = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# How many zones to be purged on each run
+
+interval = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Run interval in seconds
+
+per_page = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+time_threshold = 604800
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# How old deleted zones should be (deleted_at) to be purged, in seconds
+
+
+
+[proxy]
+# Configuration for Client Proxy
+# None
+
+http_proxy = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Proxy HTTP requests via this proxy.
+
+https_proxy = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Proxy HTTPS requests via this proxy
+
+no_proxy = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# These addresses should not be proxied
+
+
+
+[service:agent]
+# Configuration for the Agent Service
+# None
+
+allow-notify = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of IP addresses allowed to NOTIFY The Agent
+
+backend-driver = bind9
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The backend driver to use, e.g. bind9, djbdns, knot2
+
+host = None
+# class:      <class 'oslo_config.cfg.IPOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Agent Bind Host
+
+listen = ['0.0.0.0:5358']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Agent host:port pairs to listen on
+
+masters = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of masters for the Agent, format ip:port
+
+notify-delay = 0.0
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Delay after a NOTIFY arrives for a zone that the Agent will pause and drop subsequent NOTIFYs for that zone
+
+port = None
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Agent Port Number
+
+tcp-backlog = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The Agent TCP Backlog
+
+tcp-recv-timeout = 0.5
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Agent TCP Receive Timeout
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of agent greenthreads to spawn
+
+transfer-source = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# An IP address to be used to fetch zones transferred in
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of agent worker processes to spawn
+
+
+
+[service:api]
+# Configuration for API Service
+# None
+
+api-base-uri = http://127.0.0.1:9001/
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+api_host = None
+# class:      <class 'oslo_config.cfg.IPOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# API Bind Host
+
+api_paste_config = api-paste.ini
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# File name for the paste.deploy config for designate-api
+
+api_port = None
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# API Port Number
+
+auth_strategy = keystone
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The strategy to use for auth. Supports noauth or keystone
+
+default-limit-admin = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default per-page limit for the Admin API, a value of None means show all results by default
+
+default-limit-v2 = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default per-page limit for the V2 API, a value of None means show all results by default
+
+enable-api-admin = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+enable-api-v1 = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+enable-api-v2 = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# None
+
+enable-host-header = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable host request headers
+
+enabled-extensions-admin = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled Admin API Extensions
+
+enabled-extensions-v1 = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled API Extensions
+
+enabled-extensions-v2 = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled API Extensions for the V2 API
+
+listen = ['0.0.0.0:9001']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# API host:port pairs to listen on
+
+maintenance-mode = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable API Maintenance Mode
+
+maintenance-mode-role = admin
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Role allowed to bypass maintaince mode
+
+max-limit-admin = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Max per-page limit for the Admin API
+
+max-limit-v2 = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Max per-page limit for the V2 API
+
+max_header_line = 16384
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum line size of message headers to be accepted. max_header_line may need to be increased when using large tokens (typically those generated by the Keystone v3 API with big service catalogs).
+
+override-proto = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A scheme that will be used to override the request protocol scheme, even if it was set by an SSL terminating proxy.
+
+pecan_debug = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Pecan HTML Debug Interface
+
+secure-proxy-ssl-header = X-Forwarded-Proto
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The HTTP Header that will be used to determine which the original request protocol scheme was, even if it was removed by an SSL terminating proxy.
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of api greenthreads to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of api worker processes to spawn
+
+
+
+[service:central]
+# Configuration for Central Service
+# None
+
+default_pool_id = 794ccc2c-d751-44fe-b57f-8894c9f5c842
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The name of the default pool
+
+enabled-notification-handlers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled Notification Handlers
+
+managed_resource_email = hostmaster@example.com
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# E-Mail for Managed resources
+
+managed_resource_tenant_id = 00000000-0000-0000-0000-000000000000
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The Tenant ID that will own any managed resources.
+
+max_recordset_name_len = 255
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum recordset name length
+
+max_zone_name_len = 255
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum zone name length
+
+min_ttl = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimum TTL allowed
+
+scheduler_filters = ['default_pool']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled Pool Scheduling filters
+
+storage-driver = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The storage driver to use
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of central greenthreads to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of central worker processes to spawn
+
+
+
+[service:mdns]
+# Configuration for mDNS Service
+# None
+
+all-tcp = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Send all traffic over TCP
+
+host = None
+# class:      <class 'oslo_config.cfg.IPOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# mDNS Bind Host
+
+listen = ['0.0.0.0:5354']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# mDNS host:port pairs to listen on
+
+max-message-size = 65535
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum message size to emit
+
+port = None
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# mDNS Port Number
+
+query-enforce-tsig = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enforce all incoming queries (including AXFR) are TSIG signed
+
+storage-driver = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The storage driver to use
+
+tcp-backlog = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# mDNS TCP Backlog
+
+tcp-recv-timeout = 0.5
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# mDNS TCP Receive Timeout
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of mdns greenthreads to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of mdns worker processes to spawn
+
+xfr_timeout = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout in seconds for XFR's.
+
+
+
+[service:pool_manager]
+# Configuration for Pool Manager Service
+# None
+
+cache-driver = memcache
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The cache driver to use
+
+enable-recovery-timer = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The flag for the recovery timer
+
+enable-sync-timer = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The flag for the sync timer
+
+periodic-recovery-interval = 120
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time between recovering from failures
+
+periodic-sync-interval = 1800
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time between synchronizing the servers with storage
+
+periodic-sync-max-attempts = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of attempts to update a zone during sync
+
+periodic-sync-retry-interval = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between zone update attempts during sync
+
+periodic-sync-seconds = 21600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Zones Updated within last N seconds will be syncd.Use an empty value to sync all zones.
+
+poll-delay = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The time to wait before sending the first request to a server
+
+poll-max-retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The maximum number of times to retry sending a request and wait for a response from a server
+
+poll-retry-interval = 15
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The time between retrying to send a request and waiting for a response from a server
+
+poll-timeout = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The time to wait for a response from a server
+
+pool-id = 794ccc2c-d751-44fe-b57f-8894c9f5c842
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The ID of the pool managed by this instance of the Pool Manager
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Pool Manager greenthreads to spawn
+
+threshold-percentage = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The percentage of servers requiring a successful update for a zone change to be considered active
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Pool Manager worker processes to spawn
+
+
+
+[service:producer]
+# Configuration for Producer Service
+# None
+
+enabled_tasks = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled tasks to run
+
+export-synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Whether to allow synchronous zone exports
+
+storage-driver = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The storage driver to use
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Producer greenthreads to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Producer worker processes to spawn
+
+
+
+[service:sink]
+# Configuration for Sink Service
+# None
+
+enabled-notification-handlers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enabled Notification Handlers
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of sink greenthreads to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of sink worker processes to spawn
+
+
+
+[service:worker]
+# Configuration for the Worker Service
+# None
+
+enabled = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Whether to send events to worker instead of Pool Manager
+
+export-synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Whether to allow synchronous zone exports
+
+notify = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Whether to allow worker to send NOTIFYs, this will noop NOTIFYs in mdns if true
+
+poll-delay = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time to wait before sending the first request to a server
+
+poll-max-retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The maximum number of times to retry sending a request and wait for a response from a server
+
+poll-retry-interval = 15
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time between retrying to send a request and waiting for a response from a server
+
+poll-timeout = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The time to wait for a response from a server
+
+storage-driver = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The storage driver to use
+
+threads = 200
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Worker threads to spawn per process
+
+threshold-percentage = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The percentage of servers requiring a successful update for a domain change to be considered active
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Worker worker processes to spawn
+
+
+
+[service:zone_manager]
+# Configuration for Zone Manager Service
+# None
+
+enabled_tasks = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Enabled tasks to run
+
+export-synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Whether to allow synchronous zone exports
+
+storage-driver = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The storage driver to use
+
+threads = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Number of Zone Manager greenthreads to spawn
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Number of Zone Manager worker processes to spawn
+
+
+
+[storage:sqlalchemy]
+# Configuration for SQLAlchemy Storage
+# None
+
+backend = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The back end to use for the database.
+
+connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the database.
+
+connection_debug = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verbosity of SQL debugging information: 0=None, 100=Everything.
+
+connection_trace = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Add Python stack traces to SQL as comment strings.
+
+db_inc_retry_interval = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, increases the interval between retries of a database operation up to db_max_retry_interval.
+
+db_max_retries = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum retries in case of connection error or deadlock error before error is raised. Set to -1 to specify an infinite retry count.
+
+db_max_retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If db_inc_retry_interval is set, the maximum seconds between retries of a database operation.
+
+db_retry_interval = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between retries of a database transaction.
+
+idle_timeout = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout before idle SQL connections are reaped.
+
+max_overflow = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for max_overflow with SQLAlchemy.
+
+max_pool_size = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of SQL connections to keep open in a pool. Setting a value of 0 indicates no limit.
+
+max_retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of database connection retries during startup. Set to -1 to specify an infinite retry count.
+
+min_pool_size = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimum number of SQL connections to keep open in a pool.
+
+mysql_sql_mode = TRADITIONAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQL mode to be used for MySQL sessions. This option, including the default, overrides any server-set SQL mode. To use whatever SQL mode is set by the server configuration, set this to no value. Example: mysql_sql_mode=
+
+pool_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for pool_timeout with SQLAlchemy.
+
+retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between retries of opening a SQL connection.
+
+slave_connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the slave database.
+
+sqlite_db = oslo.sqlite
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The file name to use with SQLite.
+
+sqlite_synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, SQLite uses synchronous mode.
+
+use_db_reconnect = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable the experimental use of database reconnect on connection lost.
+
+
+

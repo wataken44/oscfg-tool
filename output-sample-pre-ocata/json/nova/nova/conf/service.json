@@ -1,0 +1,523 @@
+{
+  "In": "nova/nova/conf/service.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "enabled_apis": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [
+            "osapi_compute",
+            "metadata"
+          ],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled_apis",
+          "help": "List of APIs to be enabled by default.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled_apis",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": [
+                "osapi_compute",
+                "metadata"
+              ],
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "enabled_ssl_apis": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled_ssl_apis",
+          "help": "\nList of APIs with enabled SSL.\n\nNova provides SSL support for the API servers. enabled_ssl_apis option\nallows configuring the SSL support.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled_ssl_apis",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "metadata_listen": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "0.0.0.0",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "metadata_listen",
+          "help": "\nIP address on which the metadata API will listen.\n\nThe metadata API service listens on this IP address for incoming\nrequests.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "metadata_listen",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "metadata_listen_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 8775,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "metadata_listen_port",
+          "help": "\nPort on which the metadata API will listen.\n\nThe metadata API service listens on this port number for incoming\nrequests.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "metadata_listen_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "metadata_workers": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "metadata_workers",
+          "help": "\nNumber of workers for metadata service. If not specified the number of\navailable CPUs will be used.\n\nThe metadata service can be configured to run as multi-process (workers).\nThis overcomes the problem of reduction in throughput when API request\nconcurrency increases. The metadata service will run in the specified\nnumber of processes.\n\nPossible Values:\n\n* Any positive integer\n* None (default value)\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "metadata_workers",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "network_manager": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.network.manager.VlanManager",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "network_manager",
+          "help": "Full class name for the Manager for network",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "network_manager",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "nova.network.manager.FlatManager",
+              "nova.network.manager.FlatDHCPManager",
+              "nova.network.manager.VlanManager"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "osapi_compute_listen": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "0.0.0.0",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "osapi_compute_listen",
+          "help": "\nIP address on which the OpenStack API will listen.\n\nThe OpenStack API service listens on this IP address for incoming\nrequests.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "osapi_compute_listen",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "osapi_compute_listen_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 8774,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "osapi_compute_listen_port",
+          "help": "\nPort on which the OpenStack API will listen.\n\nThe OpenStack API service listens on this port number for incoming\nrequests.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "osapi_compute_listen_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "osapi_compute_workers": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "osapi_compute_workers",
+          "help": "\nNumber of workers for OpenStack API service. The default will be the number\nof CPUs available.\n\nOpenStack API services can be configured to run as multi-process (workers).\nThis overcomes the problem of reduction in throughput when API request\nconcurrency increases. OpenStack API service will run in the specified\nnumber of processes.\n\nPossible Values:\n\n* Any positive integer\n* None (default value)\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "osapi_compute_workers",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "periodic_enable": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "periodic_enable",
+          "help": "\nEnable periodic tasks.\n\nIf set to true, this option allows services to periodically run tasks\non the manager.\n\nIn case of running multiple schedulers or conductors you may want to run\nperiodic tasks on only one host - in this case disable this option for all\nhosts but one.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "periodic_enable",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "periodic_fuzzy_delay": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "periodic_fuzzy_delay",
+          "help": "\nNumber of seconds to randomly delay when starting the periodic task\nscheduler to reduce stampeding.\n\nWhen compute workers are restarted in unison across a cluster,\nthey all end up running the periodic tasks at the same time\ncausing problems for the external services. To mitigate this\nbehavior, periodic_fuzzy_delay option allows you to introduce a\nrandom initial delay when starting the periodic task scheduler.\n\nPossible Values:\n\n* Any positive integer (in seconds)\n* 0 : disable the random delay\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "periodic_fuzzy_delay",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "report_interval": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "report_interval",
+          "help": "\nNumber of seconds indicating how frequently the state of services on a\ngiven hypervisor is reported. Nova needs to know this to determine the\noverall health of the deployment.\n\nRelated Options:\n\n* service_down_time\n  report_interval should be less than service_down_time. If service_down_time\n  is less than report_interval, services will routinely be considered down,\n  because they report in too rarely.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "report_interval",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "service_down_time": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "service_down_time",
+          "help": "\nMaximum time in seconds since last check-in for up service\n\nEach compute node periodically updates their database status based on the\nspecified report interval. If the compute node hasn't updated the status\nfor more than service_down_time, then the compute node is considered down.\n\nRelated Options:\n\n* report_interval (service_down_time should not be less than report_interval)\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "service_down_time",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      }
+    }
+  }
+}

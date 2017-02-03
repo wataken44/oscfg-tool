@@ -1,0 +1,1052 @@
+{
+  "In": "nova/nova/conf/api.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT",
+      "api": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nOptions under this group are used to define Nova API.\n",
+        "name": "api",
+        "title": "API options"
+      }
+    },
+    "options": {
+      "DEFAULT": {
+        "enable_network_quota": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nCRUD operations on tenant networks are only available when using nova-network\nand nova-network is itself deprecated.",
+          "deprecated_since": "14.0.0",
+          "dest": "enable_network_quota",
+          "help": "\nThis option is used to enable or disable quota checking for tenant networks.\n\nRelated options:\n\n* quota_networks\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enable_network_quota",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "quota_networks": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 3,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nCRUD operations on tenant networks are only available when using nova-network\nand nova-network is itself deprecated.",
+          "deprecated_since": "14.0.0",
+          "dest": "quota_networks",
+          "help": "\nThis option controls the number of private networks that can be created per\nproject (or per tenant).\n\nRelated options:\n\n* enable_network_quota\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "quota_networks",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "vendordata_driver": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.api.metadata.vendordata_json.JsonFileVendorData",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": "13.0.0",
+          "dest": "vendordata_driver",
+          "help": "\nWhen returning instance metadata, this is the class that is used\nfor getting vendor metadata when that class isn't specified in the individual\nrequest. The value should be the full dot-separated path to the class to use.\n\nPossible values:\n\n* Any valid dot-separated class path that can be imported.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_driver",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      },
+      "api": {
+        "allow_instance_snapshots": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "allow_instance_snapshots",
+          "help": "\nOperators can turn off the ability for a user to take snapshots of their\ninstances by setting this option to False. When disabled, any attempt to\ntake a snapshot will result in a HTTP 400 response (\"Bad Request\").\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "allow_instance_snapshots",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "auth_strategy": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "keystone",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "auth_strategy",
+          "help": "\nThis determines the strategy to use for authentication: keystone or noauth2.\n'noauth2' is designed for testing only, as it does no actual credential\nchecking. 'noauth2' provides administrative credentials only if 'admin' is\nspecified as the username.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "auth_strategy",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "keystone",
+              "noauth2"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "compute_link_prefix": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "osapi_compute_link_prefix"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "compute_link_prefix",
+          "help": "\nThis string is prepended to the normal URL that is returned in links to the\nOpenStack Compute API. If it is empty (the default), the URLs are returned\nunchanged.\n\nPossible values:\n\n* Any string, including an empty string (the default).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "compute_link_prefix",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "config_drive_skip_versions": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "1.0 2007-01-19 2007-03-01 2007-08-29 2007-10-10 2007-12-15 2008-02-01 2008-09-01",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "config_drive_skip_versions",
+          "help": "\nWhen gathering the existing metadata for a config drive, the EC2-style\nmetadata is returned for all versions that don't appear in this option.\nAs of the Liberty release, the available versions are:\n\n* 1.0\n* 2007-01-19\n* 2007-03-01\n* 2007-08-29\n* 2007-10-10\n* 2007-12-15\n* 2008-02-01\n* 2008-09-01\n* 2009-04-04\n\nThe option is in the format of a single string, with each version separated\nby a space.\n\nPossible values:\n\n* Any string that represents zero or more versions, separated by spaces.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "config_drive_skip_versions",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "enable_instance_password": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enable_instance_password",
+          "help": "\nEnables returning of the instance password by the relevant server API calls\nsuch as create, rebuild, evacuate, or rescue. If the hypervisor does not\nsupport password injection, then the password returned will not be correct,\nso if your hypervisor does not support password injection, set this to False.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enable_instance_password",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "fping_path": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "/usr/sbin/fping",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "fping_path",
+          "help": "The full path to the fping binary.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "fping_path",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "glance_link_prefix": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "osapi_glance_link_prefix"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "glance_link_prefix",
+          "help": "\nThis string is prepended to the normal URL that is returned in links to\nGlance resources. If it is empty (the default), the URLs are returned\nunchanged.\n\nPossible values:\n\n* Any string, including an empty string (the default).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "glance_link_prefix",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "hide_server_address_states": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [
+            "building"
+          ],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "osapi_hide_server_address_states"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "hide_server_address_states",
+          "help": "\nThis option is a list of all instance states for which network address\ninformation should not be returned from the API.\n\nPossible values:\n\n  A list of strings, where each string is a valid VM state, as defined in\n  nova/compute/vm_states.py. As of the Newton release, they are:\n\n* \"active\"\n* \"building\"\n* \"paused\"\n* \"suspended\"\n* \"stopped\"\n* \"rescued\"\n* \"resized\"\n* \"soft-delete\"\n* \"deleted\"\n* \"error\"\n* \"shelved\"\n* \"shelved_offloaded\"\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "hide_server_address_states",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "max_limit": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 1000,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "osapi_max_limit"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "max_limit",
+          "help": "\nAs a query can potentially return many thousands of items, you can limit the\nmaximum number of items in a single response by setting this option.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "max_limit",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "metadata_cache_expiration": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 15,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "metadata_cache_expiration",
+          "help": "\nThis option is the time (in seconds) to cache metadata. When set to 0,\nmetadata caching is disabled entirely; this is generally not recommended for\nperformance reasons. Increasing this setting should improve response times\nof the metadata API when under heavy load. Higher values may increase memory\nusage, and result in longer times for host metadata changes to take effect.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "metadata_cache_expiration",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "neutron_default_tenant_id": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "default",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "neutron_default_tenant_id",
+          "help": "\nTenant ID for getting the default network from Neutron API (also referred in\nsome places as the 'project ID') to use.\n\nRelated options:\n\n* use_neutron_default_nets\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "neutron_default_tenant_id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "use_forwarded_for": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "use_forwarded_for",
+          "help": "\nWhen True, the 'X-Forwarded-For' header is treated as the canonical remote\naddress. When False (the default), the 'remote_address' header is used.\n\nYou should only enable this if you have an HTML sanitizing proxy.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "use_forwarded_for",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "use_neutron_default_nets": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "use_neutron_default_nets",
+          "help": "\nWhen True, the TenantNetworkController will query the Neutron API to get the\ndefault networks to use.\n\nRelated options:\n\n* neutron_default_tenant_id\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "use_neutron_default_nets",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "vendordata_dynamic_connect_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 5,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vendordata_dynamic_connect_timeout",
+          "help": "\nMaximum wait time for an external REST service to connect.\n\nPossible values:\n\n* Any integer with a value greater than three (the TCP packet retransmission\n  timeout). Note that instance start may be blocked during this wait time,\n  so this value should be kept small.\n\nRelated options:\n\n* vendordata_providers\n* vendordata_dynamic_targets\n* vendordata_dynamic_ssl_certfile\n* vendordata_dynamic_read_timeout\n* vendordata_dynamic_failure_fatal\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_dynamic_connect_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 3,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "vendordata_dynamic_failure_fatal": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vendordata_dynamic_failure_fatal",
+          "help": "\nShould failures to fetch dynamic vendordata be fatal to instance boot?\n\nRelated options:\n\n* vendordata_providers\n* vendordata_dynamic_targets\n* vendordata_dynamic_ssl_certfile\n* vendordata_dynamic_connect_timeout\n* vendordata_dynamic_read_timeout\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_dynamic_failure_fatal",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "vendordata_dynamic_read_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 5,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vendordata_dynamic_read_timeout",
+          "help": "\nMaximum wait time for an external REST service to return data once connected.\n\nPossible values:\n\n* Any integer. Note that instance start is blocked during this wait time,\n  so this value should be kept small.\n\nRelated options:\n\n* vendordata_providers\n* vendordata_dynamic_targets\n* vendordata_dynamic_ssl_certfile\n* vendordata_dynamic_connect_timeout\n* vendordata_dynamic_failure_fatal\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_dynamic_read_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "vendordata_dynamic_ssl_certfile": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vendordata_dynamic_ssl_certfile",
+          "help": "\nPath to an optional certificate file or CA bundle to verify dynamic\nvendordata REST services ssl certificates against.\n\nPossible values:\n\n* An empty string, or a path to a valid certificate file\n\nRelated options:\n\n* vendordata_providers\n* vendordata_dynamic_targets\n* vendordata_dynamic_connect_timeout\n* vendordata_dynamic_read_timeout\n* vendordata_dynamic_failure_fatal\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_dynamic_ssl_certfile",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "vendordata_dynamic_targets": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vendordata_dynamic_targets",
+          "help": "\nA list of targets for the dynamic vendordata provider. These targets are of\nthe form <name>@<url>.\n\nThe dynamic vendordata provider collects metadata by contacting external REST\nservices and querying them for information about the instance. This behaviour\nis documented in the vendordata.rst file in the nova developer reference.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_dynamic_targets",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "vendordata_jsonfile_path": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vendordata_jsonfile_path",
+          "help": "\nCloud providers may store custom data in vendor data file that will then be\navailable to the instances via the metadata service, and to the rendering of\nconfig-drive. The default class for this, JsonFileVendorData, loads this\ninformation from a JSON file, whose path is configured by this option. If\nthere is no path set by this option, the class returns an empty dictionary.\n\nPossible values:\n\n* Any string representing the path to the data file, or an empty string\n    (default).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_jsonfile_path",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "vendordata_providers": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vendordata_providers",
+          "help": "\nA list of vendordata providers.\n\nvendordata providers are how deployers can provide metadata via configdrive\nand metadata that is specific to their deployment. There are currently two\nsupported providers: StaticJSON and DynamicJSON.\n\nStaticJSON reads a JSON file configured by the flag vendordata_jsonfile_path\nand places the JSON from that file into vendor_data.json and\nvendor_data2.json.\n\nDynamicJSON is configured via the vendordata_dynamic_targets flag, which is\ndocumented separately. For each of the endpoints specified in that flag, a\nsection is added to the vendor_data2.json.\n\nFor more information on the requirements for implementing a vendordata\ndynamic endpoint, please see the vendordata.rst file in the nova developer\nreference.\n\nPossible values:\n\n* A list of vendordata providers, with StaticJSON and DynamicJSON being\n  current options.\n\nRelated options:\n\n* vendordata_dynamic_targets\n* vendordata_dynamic_ssl_certfile\n* vendordata_dynamic_connect_timeout\n* vendordata_dynamic_read_timeout\n* vendordata_dynamic_failure_fatal\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vendordata_providers",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        }
+      }
+    }
+  }
+}

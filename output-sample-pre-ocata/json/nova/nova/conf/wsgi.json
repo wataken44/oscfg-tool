@@ -1,0 +1,488 @@
+{
+  "In": "nova/nova/conf/wsgi.py",
+  "Out": {
+    "groups": {
+      "wsgi": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nOptions under this group are used to configure WSGI (Web Server Gateway\nInterface). WSGI is used to serve API requests.\n",
+        "name": "wsgi",
+        "title": "WSGI Options"
+      }
+    },
+    "options": {
+      "wsgi": {
+        "api_paste_config": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "api-paste.ini",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "api_paste_config",
+          "help": "\nThis option represents a file name for the paste.deploy config for nova-api.\n\nPossible values:\n\n* A string representing file name for the paste.deploy config.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "api_paste_config",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "client_socket_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 900,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "client_socket_timeout",
+          "help": "\nThis option specifies the timeout for client connections' socket operations.\nIf an incoming connection is idle for this number of seconds it will be\nclosed. It indicates timeout on individual read/writes on the socket\nconnection. To wait forever set to 0.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "client_socket_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "default_pool_size": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 1000,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "wsgi_default_pool_size"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_pool_size",
+          "help": "\nThis option specifies the size of the pool of greenthreads used by wsgi.\nIt is possible to limit the number of concurrent connections using this\noption.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default_pool_size",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "keep_alive": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "wsgi_keep_alive"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "keep_alive",
+          "help": "\nThis option allows using the same TCP connection to send and receive multiple\nHTTP requests/responses, as opposed to opening a new one for every single\nrequest/response pair. HTTP keep-alive indicates HTTP connection reuse.\n\nPossible values:\n\n* True : reuse HTTP connection.\n* False : closes the client socket connection explicitly.\n\nRelated options:\n\n* tcp_keepidle\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "keep_alive",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "max_header_line": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 16384,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "max_header_line",
+          "help": "\nThis option specifies the maximum line size of message headers to be accepted.\nmax_header_line may need to be increased when using large tokens (typically\nthose generated by the Keystone v3 API with big service catalogs).\n\nSince TCP is a stream based protocol, in order to reuse a connection, the HTTP\nhas to have a way to indicate the end of the previous response and beginning\nof the next. Hence, in a keep_alive case, all messages must have a\nself-defined message length.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "max_header_line",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "secure_proxy_ssl_header": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "secure_proxy_ssl_header",
+          "help": "\nThis option specifies the HTTP header used to determine the protocol scheme\nfor the original request, even if it was removed by a SSL terminating proxy.\n\nPossible values:\n\n* None (default) - the request scheme is not influenced by any HTTP headers.\n* Valid HTTP header, like HTTP_X_FORWARDED_PROTO\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "secure_proxy_ssl_header",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "ssl_ca_file": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ssl_ca_file",
+          "help": "\nThis option allows setting path to the CA certificate file that should be used\nto verify connecting clients.\n\nPossible values:\n\n* String representing path to the CA certificate file.\n\nRelated options:\n\n* enabled_ssl_apis\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ssl_ca_file",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "ssl_cert_file": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ssl_cert_file",
+          "help": "\nThis option allows setting path to the SSL certificate of API server.\n\nPossible values:\n\n* String representing path to the SSL certificate.\n\nRelated options:\n\n* enabled_ssl_apis\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ssl_cert_file",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "ssl_key_file": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ssl_key_file",
+          "help": "\nThis option specifies the path to the file where SSL private key of API\nserver is stored when SSL is in effect.\n\nPossible values:\n\n* String representing path to the SSL private key.\n\nRelated options:\n\n* enabled_ssl_apis\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ssl_key_file",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "tcp_keepidle": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 600,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "tcp_keepidle",
+          "help": "\nThis option sets the value of TCP_KEEPIDLE in seconds for each server socket.\nIt specifies the duration of time to keep connection active. TCP generates a\nKEEPALIVE transmission for an application that requests to keep connection\nactive. Not supported on OS X.\n\nRelated options:\n\n* keep_alive\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "tcp_keepidle",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "wsgi_log_format": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "%(client_ip)s \"%(request_line)s\" status: %(status_code)s len: %(body_length)s time: %(wall_seconds).7f",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "wsgi_log_format",
+          "help": "\nIt represents a python format string that is used as the template to generate\nlog lines. The following values can be formatted into it: client_ip,\ndate_time, request_line, status_code, body_length, wall_seconds.\n\nThis option is used for building custom request loglines.\n\nPossible values:\n\n* '%(client_ip)s \"%(request_line)s\" status: %(status_code)s'\n  'len: %(body_length)s time: %(wall_seconds).7f' (default)\n* Any formatted string formed by specific values.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "wsgi_log_format",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

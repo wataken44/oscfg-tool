@@ -1,0 +1,86 @@
+{
+  "In": "nova/nova/conf/availability_zone.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "default_availability_zone": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_availability_zone",
+          "help": "\nDefault compute node availability_zone.\n\nThis option determines the availability zone to be used when it is not\nspecified in the VM creation request. If this option is not set,\nthe default availability zone 'nova' is used.\n\nPossible values:\n\n* Any string representing an availability zone name\n* 'nova' is the default value\n\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default_availability_zone",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "internal_service_availability_zone": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "internal",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "internal_service_availability_zone",
+          "help": "\nThis option specifies the name of the availability zone for the\ninternal services. Services like nova-scheduler, nova-network,\nnova-conductor are internal services. These services will appear in\ntheir own internal availability_zone.\n\nPossible values:\n\n* Any string representing an availability zone name\n* 'internal' is the default value\n\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "internal_service_availability_zone",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,952 @@
+{
+  "In": "nova/nova/conf/neutron.py",
+  "Out": {
+    "groups": {
+      "neutron": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nConfiguration options for neutron (network connectivity as a service).\n",
+        "name": "neutron",
+        "title": "Neutron Options"
+      },
+      "oslo_concurrency": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "oslo_concurrency",
+        "title": "oslo_concurrency options"
+      }
+    },
+    "options": {
+      "neutron": {
+        "auth-url": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "auth_url",
+          "help": "Authentication URL",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "auth-url",
+          "positional": false,
+          "required": true,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "auth_section": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "auth_section",
+          "help": "Config Section from which to load plugin specific options",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "auth_section",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "auth_type": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": null,
+              "name": "auth_plugin"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "auth_type",
+          "help": "Authentication type to load",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "auth_type",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "cafile": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "cafile",
+          "help": "PEM encoded Certificate Authority to use when verifying HTTPs connections.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "cafile",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "certfile": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "certfile",
+          "help": "PEM encoded client certificate cert file",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "certfile",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "default-domain-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_domain_id",
+          "help": "Optional domain ID to use with v3 and v2 parameters. It will be used for both the user and project domain in v3 and ignored in v2 authentication.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default-domain-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "default-domain-name": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_domain_name",
+          "help": "Optional domain name to use with v3 API and v2 parameters. It will be used for both the user and project domain in v3 and ignored in v2 authentication.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default-domain-name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "domain-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "domain_id",
+          "help": "Domain ID to scope to",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "domain-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "domain-name": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "domain_name",
+          "help": "Domain name to scope to",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "domain-name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "extension_sync_interval": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 600,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "extension_sync_interval",
+          "help": "\nInteger value representing the number of seconds to wait before querying\nNeutron for extensions.  After this number of seconds the next time Nova\nneeds to create a resource in Neutron it will requery Neutron for the\nextensions that it has loaded.  Setting value to 0 will refresh the\nextensions with no wait.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "extension_sync_interval",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "insecure": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "insecure",
+          "help": "Verify HTTPS connections.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "insecure",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "keyfile": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "keyfile",
+          "help": "PEM encoded client certificate key file",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "keyfile",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "metadata_proxy_shared_secret": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "metadata_proxy_shared_secret",
+          "help": "\nThis option holds the shared secret string used to validate proxy requests to\nNeutron metadata requests. In order to be used, the\n'X-Metadata-Provider-Signature' header must be supplied in the request.\n\nRelated options:\n\n* service_metadata_proxy\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "metadata_proxy_shared_secret",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": true,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "ovs_bridge": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "br-int",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ovs_bridge",
+          "help": "\nSpecifies the name of an integration bridge interface used by OpenvSwitch.\nThis option is used only if Neutron does not specify the OVS bridge name.\n\nPossible values:\n\n* Any string representing OVS bridge name.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ovs_bridge",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "password": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "password",
+          "help": "User's password",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "password",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": true,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "project-domain-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "project_domain_id",
+          "help": "Domain ID containing project",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "project-domain-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "project-domain-name": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "project_domain_name",
+          "help": "Domain name containing project",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "project-domain-name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "project-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": null,
+              "name": "tenant-id"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "project_id",
+          "help": "Project ID to scope to",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "project-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "project-name": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": null,
+              "name": "tenant-name"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "project_name",
+          "help": "Project name to scope to",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "project-name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "region_name": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "RegionOne",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "region_name",
+          "help": "\nRegion name for connecting to Neutron in admin context.\n\nThis option is used in multi-region setups. If there are two Neutron\nservers running in two regions in two different machines, then two\nservices need to be created in Keystone with two different regions and\nassociate corresponding endpoints to those services. When requests are made\nto Keystone, the Keystone service uses the region_name to determine the\nregion the request is coming from.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "region_name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "service_metadata_proxy": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "service_metadata_proxy",
+          "help": "\nWhen set to True, this option indicates that Neutron will be used to proxy\nmetadata requests and resolve instance ids. Otherwise, the instance ID must be\npassed to the metadata request in the 'X-Instance-ID' header.\n\nRelated options:\n\n* metadata_proxy_shared_secret\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "service_metadata_proxy",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "tenant-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "tenant_id",
+          "help": "Tenant ID",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "tenant-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "tenant-name": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "tenant_name",
+          "help": "Tenant Name",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "tenant-name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "timeout",
+          "help": "Timeout value for http requests",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "trust-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "trust_id",
+          "help": "Trust ID",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "trust-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "url": {
+          "__class__": "<class 'oslo_config.cfg.URIOpt'>",
+          "advanced": false,
+          "default": "http://127.0.0.1:9696",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "url",
+          "help": "\nThis option specifies the URL for connecting to Neutron.\n\nPossible values:\n\n* Any valid URL that points to the Neutron API service is appropriate here.\n  This typically matches the URL returned for the 'network' service type\n  from the Keystone service catalog.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.URI'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max_length": null,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "schemes": null,
+            "type_name": "uri value",
+            "value": "http://127.0.0.1:9696"
+          }
+        },
+        "user-domain-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "user_domain_id",
+          "help": "User's domain id",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "user-domain-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "user-domain-name": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "user_domain_name",
+          "help": "User's domain name",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "user-domain-name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "user-id": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "user_id",
+          "help": "User id",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "user-id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        },
+        "username": {
+          "__class__": "<class 'oslo_config.cfg.Opt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": null,
+              "name": "user-name"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "username",
+          "help": "Username",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "username",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": "<class 'str'>"
+        }
+      },
+      "oslo_concurrency": {
+        "disable_process_locking": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "disable_process_locking",
+          "help": "Enables or disables inter-process locks.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "disable_process_locking",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "lock_path": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "lock_path",
+          "help": "Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "lock_path",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

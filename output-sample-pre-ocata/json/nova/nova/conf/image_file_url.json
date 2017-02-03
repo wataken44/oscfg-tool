@@ -1,0 +1,66 @@
+{
+  "In": "nova/nova/conf/image_file_url.py",
+  "Out": {
+    "groups": {
+      "image_file_url": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "image_file_url",
+        "title": "Image File URL Options"
+      }
+    },
+    "options": {
+      "image_file_url": {
+        "filesystems": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe feature to download images from glance via filesystem is not used and will\nbe removed in the future.\n",
+          "deprecated_since": "14.0.0",
+          "dest": "filesystems",
+          "help": "\nList of file systems that are configured in this file in the\nimage_file_url:<list entry name> sections\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "filesystems",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        }
+      }
+    }
+  }
+}

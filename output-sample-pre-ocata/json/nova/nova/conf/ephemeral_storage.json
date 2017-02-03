@@ -1,0 +1,132 @@
+{
+  "In": "nova/nova/conf/ephemeral_storage.py",
+  "Out": {
+    "groups": {
+      "ephemeral_storage_encryption": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "ephemeral_storage_encryption",
+        "title": "Ephemeral storage encryption options"
+      }
+    },
+    "options": {
+      "ephemeral_storage_encryption": {
+        "cipher": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "aes-xts-plain64",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "cipher",
+          "help": "\nCipher-mode string to be used.\n\nThe cipher and mode to be used to encrypt ephemeral storage. The set of\ncipher-mode combinations available depends on kernel support.\n\nPossible values:\n\n* Any crypto option listed in ``/proc/crypto``.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "cipher",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "enabled": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled",
+          "help": "\nEnables/disables LVM ephemeral storage encryption.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "key_size": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 512,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "key_size",
+          "help": "\nEncryption key length in bits.\n\nThe bit length of the encryption key to be used to encrypt ephemeral storage.\nIn XTS mode only half of the bits are used for encryption key.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "key_size",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      }
+    }
+  }
+}

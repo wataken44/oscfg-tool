@@ -1,0 +1,757 @@
+{
+  "In": "nova/nova/conf/quota.py",
+  "Out": {
+    "groups": {
+      "quota": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nQuota options allow to manage quotas in openstack deployment.\n",
+        "name": "quota",
+        "title": "Quota Options"
+      }
+    },
+    "options": {
+      "quota": {
+        "cores": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 20,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_cores"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "cores",
+          "help": "\nThe number of instance cores or vCPUs allowed per project.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "cores",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "driver": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.quota.DbQuotaDriver",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_driver"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": "14.0.0",
+          "dest": "driver",
+          "help": "\nThe quota enforcer driver.\n\nProvides abstraction for quota checks. Users can configure a specific\ndriver to use for quota checks.\n\nPossible values:\n\n* nova.quota.DbQuotaDriver (default) or any string representing fully\n  qualified class name.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "driver",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "fixed_ips": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": -1,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_fixed_ips"
+            }
+          ],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "fixed_ips",
+          "help": "\nThe number of fixed IPs allowed per project.\n\nUnlike floating IPs, fixed IPs are allocated dynamically by the network\ncomponent when instances boot up.  This quota value should be at least the\nnumber of instances allowed\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "fixed_ips",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "floating_ips": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_floating_ips"
+            }
+          ],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "floating_ips",
+          "help": "\nThe number of floating IPs allowed per project.\n\nFloating IPs are not allocated to instances by default. Users need to select\nthem from the pool configured by the OpenStack administrator to attach to their\ninstances.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "floating_ips",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "injected_file_content_bytes": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10240,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_injected_file_content_bytes"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "injected_file_content_bytes",
+          "help": "\nThe number of bytes allowed per injected file.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "injected_file_content_bytes",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "injected_file_path_length": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 255,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_injected_file_path_length"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "injected_file_path_length",
+          "help": "\nThe maximum allowed injected file path length.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "injected_file_path_length",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "injected_files": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 5,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_injected_files"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "injected_files",
+          "help": "\nThe number of injected files allowed.\n\nFile injection allows users to customize the personality of an instance by\ninjecting data into it upon boot. Only text file injection is permitted: binary\nor ZIP files are not accepted. During file injection, any existing files that\nmatch specified files are renamed to include ``.bak`` extension appended with a\ntimestamp.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "injected_files",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "instances": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_instances"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "instances",
+          "help": "\nThe number of instances allowed per project.\n\nPossible Values\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "instances",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "key_pairs": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 100,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_key_pairs"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "key_pairs",
+          "help": "\nThe maximum number of key pairs allowed per user.\n\nUsers can create at least one key pair for each project and use the key pair\nfor multiple instances that belong to that project.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "key_pairs",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "max_age": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "max_age",
+          "help": "\nThe number of seconds between subsequent usage refreshes.\n\nThis defaults to 0 (off) to avoid additional load but it is useful to turn on\nto help keep quota usage up-to-date and reduce the impact of out of sync usage\nissues. Note that quotas are not updated on a periodic task, they will update\non a new reservation if max_age has passed since the last reservation.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "max_age",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "metadata_items": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 128,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_metadata_items"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "metadata_items",
+          "help": "\nThe number of metadata items allowed per instance.\n\nUsers can associate metadata with an instance during instance creation. This\nmetadata takes the form of key-value pairs.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "metadata_items",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "ram": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 51200,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_ram"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ram",
+          "help": "\nThe number of megabytes of instance RAM allowed per project.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ram",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "reservation_expire": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 86400,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "reservation_expire",
+          "help": "\nThe number of seconds until a reservation expires.\n\nThis quota represents the time period for invalidating quota reservations.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "reservation_expire",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "security_group_rules": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 20,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_security_group_rules"
+            }
+          ],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "security_group_rules",
+          "help": "\nThe number of security rules per security group.\n\nThe associated rules in each security group control the traffic to instances in\nthe group.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "security_group_rules",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "security_groups": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_security_groups"
+            }
+          ],
+          "deprecated_reason": "\nnova-network is deprecated, as are any related configuration options.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "security_groups",
+          "help": "\nThe number of security groups per project.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "security_groups",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "server_group_members": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_server_group_members"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "server_group_members",
+          "help": "\nThe maximum number of servers per server group.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "server_group_members",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "server_groups": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "quota_server_groups"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "server_groups",
+          "help": "\nThe maxiumum number of server groups per project.\n\nServer groups are used to control the affinity and anti-affinity scheduling\npolicy for a group of servers or instances. Reducing the quota will not affect\nany existing group, but new servers will not be allowed into groups that have\nbecome over quota.\n\nPossible values:\n\n* A positive integer or 0.\n* -1 to disable the quota.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "server_groups",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "until_refresh": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "until_refresh",
+          "help": "\nThe count of reservations until usage is refreshed.\n\nThis defaults to 0 (off) to avoid additional load but it is useful to turn on\nto help keep quota usage up-to-date and reduce the impact of out of sync usage\nissues.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "until_refresh",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      }
+    }
+  }
+}

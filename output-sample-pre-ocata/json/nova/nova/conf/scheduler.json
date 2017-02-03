@@ -1,0 +1,1586 @@
+{
+  "In": "nova/nova/conf/scheduler.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT",
+      "filter_scheduler": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "filter_scheduler",
+        "title": "Filter scheduler options"
+      },
+      "metrics": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nConfiguration options for metrics\n\nOptions under this group allow to adjust how values assigned to metrics are\ncalculated.\n",
+        "name": "metrics",
+        "title": "Metrics parameters"
+      },
+      "scheduler": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "scheduler",
+        "title": "Scheduler configuration"
+      },
+      "trusted_computing": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nConfiguration options for enabling Trusted Platform Module.\n",
+        "name": "trusted_computing",
+        "title": "Trust parameters"
+      }
+    },
+    "options": {
+      "DEFAULT": {
+        "scheduler_topic": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "scheduler",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThere is no need to let users choose the RPC topic for all services - there\nis little gain from this. Furthermore, it makes it really easy to break Nova\nby using this option.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "scheduler_topic",
+          "help": "\nScheduler message queue topic.\n\nThis is the message queue topic that the scheduler 'listens' on. It is used\nwhen the scheduler service is started up to configure the queue, and whenever\nan RPC call to the scheduler is made. There is almost never any reason to ever\nchange this value.\n\nPossible values:\n\n* A valid AMQP topic name\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "scheduler_topic",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      },
+      "filter_scheduler": {
+        "aggregate_image_properties_isolation_namespace": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "aggregate_image_properties_isolation_namespace",
+          "help": "\nImage property namespace for use in the host aggregate.\n\nImages and hosts can be configured so that certain images can only be scheduled\nto hosts in a particular aggregate. This is done with metadata values set on\nthe host aggregate that are identified by beginning with the value of this\noption. If the host is part of an aggregate with such a metadata key, the image\nin the request spec must have the value of that metadata in its properties in\norder for the scheduler to consider the host as acceptable.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'aggregate_image_properties_isolation' filter is\nenabled.\n\nPossible values:\n\n* A string, where the string corresponds to an image property namespace\n\nRelated options:\n\n* aggregate_image_properties_isolation_separator\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "aggregate_image_properties_isolation_namespace",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "aggregate_image_properties_isolation_separator": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": ".",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "aggregate_image_properties_isolation_separator",
+          "help": "\nSeparator character(s) for image property namespace and name.\n\nWhen using the aggregate_image_properties_isolation filter, the relevant\nmetadata keys are prefixed with the namespace defined in the\naggregate_image_properties_isolation_namespace configuration option plus a\nseparator. This option defines the separator to be used.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'aggregate_image_properties_isolation' filter\nis enabled.\n\nPossible values:\n\n* A string, where the string corresponds to an image property namespace\n  separator character\n\nRelated options:\n\n* aggregate_image_properties_isolation_namespace\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "aggregate_image_properties_isolation_separator",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "available_filters": {
+          "__class__": "<class 'oslo_config.cfg.MultiStrOpt'>",
+          "advanced": false,
+          "default": [
+            "nova.scheduler.filters.all_filters"
+          ],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_available_filters"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "available_filters",
+          "help": "\nFilters that the scheduler can use.\n\nAn unordered list of the filter classes the nova scheduler may apply.  Only the\nfilters specified in the 'scheduler_enabled_filters' option will be used, but\nany filter appearing in that option must also be included in this list.\n\nBy default, this is set to all filters that are included with nova.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* A list of zero or more strings, where each string corresponds to the name of\n  a filter that may be used for selecting a host\n\nRelated options:\n\n* scheduler_enabled_filters\n",
+          "metavar": null,
+          "multi": true,
+          "mutable": false,
+          "name": "available_filters",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": [
+              ""
+            ],
+            "__class__": "<class 'oslo_config.types.MultiString'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": false,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": false,
+            "regex": null,
+            "type_name": "multi valued"
+          }
+        },
+        "baremetal_enabled_filters": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [
+            "RetryFilter",
+            "AvailabilityZoneFilter",
+            "ComputeFilter",
+            "ComputeCapabilitiesFilter",
+            "ImagePropertiesFilter",
+            "ExactRamFilter",
+            "ExactDiskFilter",
+            "ExactCoreFilter"
+          ],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "baremetal_scheduler_default_filters"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "baremetal_enabled_filters",
+          "help": "\nFilters used for filtering baremetal hosts.\n\nFilters are applied in order, so place your most restrictive filters first to\nmake the filtering process more efficient.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* A list of zero or more strings, where each string corresponds to the name of\n  a filter to be used for selecting a baremetal host\n\nRelated options:\n\n* If the 'scheduler_use_baremetal_filters' option is False, this option has\n  no effect.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "baremetal_enabled_filters",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "disk_weight_multiplier": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 1.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "disk_weight_multiplier",
+          "help": "\nDisk weight multipler ratio.\n\nMultiplier used for weighing free disk space. Negative numbers mean to\nstack vs spread.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'ram' weigher is enabled.\n\nPossible values:\n\n* An integer or float value, where the value corresponds to the multipler\n  ratio for this weigher.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "disk_weight_multiplier",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "enabled_filters": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [
+            "RetryFilter",
+            "AvailabilityZoneFilter",
+            "RamFilter",
+            "DiskFilter",
+            "ComputeFilter",
+            "ComputeCapabilitiesFilter",
+            "ImagePropertiesFilter",
+            "ServerGroupAntiAffinityFilter",
+            "ServerGroupAffinityFilter"
+          ],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_default_filters"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled_filters",
+          "help": "\nFilters that the scheduler will use.\n\nAn ordered list of filter class names that will be used for filtering\nhosts. Ignore the word 'default' in the name of this option: these filters will\n*always* be applied, and they will be applied in the order they are listed so\nplace your most restrictive filters first to make the filtering process more\nefficient.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* A list of zero or more strings, where each string corresponds to the name of\n  a filter to be used for selecting a host\n\nRelated options:\n\n* All of the filters in this option *must* be present in the\n  'scheduler_available_filters' option, or a SchedulerHostFilterNotFound\n  exception will be raised.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled_filters",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "host_subset_size": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 1,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_host_subset_size"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "host_subset_size",
+          "help": "\nSize of subset of best hosts selected by scheduler.\n\nNew instances will be scheduled on a host chosen randomly from a subset of the\nN best hosts, where N is the value set by this option.\n\nSetting this to a value greater than 1 will reduce the chance that multiple\nscheduler processes handling similar requests will select the same host,\ncreating a potential race condition. By selecting a host randomly from the N\nhosts that best fit the request, the chance of a conflict is reduced. However,\nthe higher you set this value, the less optimal the chosen host may be for a\ngiven request.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* An integer, where the integer corresponds to the size of a host subset. Any\n  integer is valid, although any value less than 1 will be treated as 1\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "host_subset_size",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "io_ops_weight_multiplier": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": -1.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "io_ops_weight_multiplier",
+          "help": "\nIO operations weight multipler ratio.\n\nThis option determines how hosts with differing workloads are weighed. Negative\nvalues, such as the default, will result in the scheduler preferring hosts with\nlighter workloads whereas positive values will prefer hosts with heavier\nworkloads. Another way to look at it is that positive values for this option\nwill tend to schedule instances onto hosts that are already busy, while\nnegative values will tend to distribute the workload across more hosts. The\nabsolute value, whether positive or negative, controls how strong the io_ops\nweigher is relative to other weighers.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'io_ops' weigher is enabled.\n\nPossible values:\n\n* An integer or float value, where the value corresponds to the multipler\n  ratio for this weigher.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "io_ops_weight_multiplier",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "isolated_hosts": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "isolated_hosts",
+          "help": "\nList of hosts that can only run certain images.\n\nIf there is a need to restrict some images to only run on certain designated\nhosts, list those host names here.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'IsolatedHostsFilter' filter is enabled.\n\nPossible values:\n\n* A list of strings, where each string corresponds to the name of a host\n\nRelated options:\n\n* scheduler/isolated_images\n* scheduler/restrict_isolated_hosts_to_isolated_images\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "isolated_hosts",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "isolated_images": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "isolated_images",
+          "help": "\nList of UUIDs for images that can only be run on certain hosts.\n\nIf there is a need to restrict some images to only run on certain designated\nhosts, list those image UUIDs here.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'IsolatedHostsFilter' filter is enabled.\n\nPossible values:\n\n* A list of UUID strings, where each string corresponds to the UUID of an\n  image\n\nRelated options:\n\n* scheduler/isolated_hosts\n* scheduler/restrict_isolated_hosts_to_isolated_images\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "isolated_images",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "max_instances_per_host": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 50,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "max_instances_per_host",
+          "help": "\nMaximum number of instances that be active on a host.\n\nIf you need to limit the number of instances on any given host, set this option\nto the maximum number of instances you want to allow. The num_instances_filter\nwill reject any host that has at least as many instances as this option's\nvalue.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'num_instances_filter' filter is enabled.\n\nPossible values:\n\n* An integer, where the integer corresponds to the max instances that can be\n  scheduled on a host.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "max_instances_per_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "max_io_ops_per_host": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 8,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "max_io_ops_per_host",
+          "help": "\nThe number of instances that can be actively performing IO on a host.\n\nInstances performing IO includes those in the following states: build, resize,\nsnapshot, migrate, rescue, unshelve.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'io_ops_filter' filter is enabled.\n\nPossible values:\n\n* An integer, where the integer corresponds to the max number of instances\n  that can be actively performing IO on any given host.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "max_io_ops_per_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "ram_weight_multiplier": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 1.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ram_weight_multiplier",
+          "help": "\nRam weight multipler ratio.\n\nThis option determines how hosts with more or less available RAM are weighed. A\npositive value will result in the scheduler preferring hosts with more\navailable RAM, and a negative number will result in the scheduler preferring\nhosts with less available RAM. Another way to look at it is that positive\nvalues for this option will tend to spread instances across many hosts, while\nnegative values will tend to fill up (stack) hosts as much as possible before\nscheduling to a less-used host. The absolute value, whether positive or\nnegative, controls how strong the RAM weigher is relative to other weighers.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'ram' weigher is enabled.\n\nPossible values:\n\n* An integer or float value, where the value corresponds to the multipler\n  ratio for this weigher.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ram_weight_multiplier",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "restrict_isolated_hosts_to_isolated_images": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "restrict_isolated_hosts_to_isolated_images",
+          "help": "\nPrevent non-isolated images from being built on isolated hosts.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'IsolatedHostsFilter' filter is enabled. Even\nthen, this option doesn't affect the behavior of requests for isolated images,\nwhich will *always* be restricted to isolated hosts.\n\nRelated options:\n\n* scheduler/isolated_images\n* scheduler/isolated_hosts\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "restrict_isolated_hosts_to_isolated_images",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "soft_affinity_weight_multiplier": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 1.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "soft_affinity_weight_multiplier",
+          "help": "\nMultiplier used for weighing hosts for group soft-affinity.\n\nPossible values:\n\n* An integer or float value, where the value corresponds to weight multiplier\n  for hosts with group soft affinity. Only a positive value are meaningful, as\n  negative values would make this behave as a soft anti-affinity weigher.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "soft_affinity_weight_multiplier",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "soft_anti_affinity_weight_multiplier": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 1.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "soft_anti_affinity_weight_multiplier",
+          "help": "\nMultiplier used for weighing hosts for group soft-anti-affinity.\n\nPossible values:\n\n* An integer or float value, where the value corresponds to weight multiplier\n  for hosts with group soft anti-affinity. Only a positive value are\n  meaningful, as negative values would make this behave as a soft affinity\n  weigher.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "soft_anti_affinity_weight_multiplier",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "track_instance_changes": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_tracks_instance_changes"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "track_instance_changes",
+          "help": "\nEnable querying of individual hosts for instance information.\n\nThe scheduler may need information about the instances on a host in order to\nevaluate its filters and weighers. The most common need for this information is\nfor the (anti-)affinity filters, which need to choose a host based on the\ninstances already running on a host.\n\nIf the configured filters and weighers do not need this information, disabling\nthis option will improve performance. It may also be disabled when the tracking\noverhead proves too heavy, although this will cause classes requiring host\nusage data to query the database on each request instead.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "track_instance_changes",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "use_baremetal_filters": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_use_baremetal_filters"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "use_baremetal_filters",
+          "help": "\nEnable baremetal filters.\n\nSet this to True to tell the nova scheduler that it should use the filters\nspecified in the 'baremetal_scheduler_enabled_filters' option. If you are not\nscheduling baremetal nodes, leave this at the default setting of False.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nRelated options:\n\n* If this option is set to True, then the filters specified in the\n  'baremetal_scheduler_enabled_filters' are used instead of the filters\n  specified in 'scheduler_enabled_filters'.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "use_baremetal_filters",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "weight_classes": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [
+            "nova.scheduler.weights.all_weighers"
+          ],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_weight_classes"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "weight_classes",
+          "help": "\nWeighers that the scheduler will use.\n\nOnly hosts which pass the filters are weighed. The weight for any host starts\nat 0, and the weighers order these hosts by adding to or subtracting from the\nweight assigned by the previous weigher. Weights may become negative. An\ninstance will be scheduled to one of the N most-weighted hosts, where N is\n'scheduler_host_subset_size'.\n\nBy default, this is set to all weighers that are included with Nova.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* A list of zero or more strings, where each string corresponds to the name of\n  a weigher that will be used for selecting a host\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "weight_classes",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        }
+      },
+      "metrics": {
+        "required": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "required",
+          "help": "\nThis setting determines how any unavailable metrics are treated. If this option\nis set to True, any hosts for which a metric is unavailable will raise an\nexception, so it is recommended to also use the MetricFilter to filter out\nthose hosts before weighing.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* True or False, where False ensures any metric being unavailable for a host\n  will set the host weight to 'weight_of_unavailable'.\n\nRelated options:\n\n* weight_of_unavailable\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "required",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "weight_multiplier": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 1.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "weight_multiplier",
+          "help": "\nWhen using metrics to weight the suitability of a host, you can use this option\nto change how the calculated weight influences the weight assigned to a host as\nfollows:\n\n* >1.0: increases the effect of the metric on overall weight\n* 1.0: no change to the calculated weight\n* >0.0,<1.0: reduces the effect of the metric on overall weight\n* 0.0: the metric value is ignored, and the value of the\n  'weight_of_unavailable' option is returned instead\n* >-1.0,<0.0: the effect is reduced and reversed\n* -1.0: the effect is reversed\n* <-1.0: the effect is increased proportionally and reversed\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* An integer or float value, where the value corresponds to the multipler\n  ratio for this weigher.\n\nRelated options:\n\n* weight_of_unavailable\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "weight_multiplier",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "weight_of_unavailable": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": -10000.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "weight_of_unavailable",
+          "help": "\nWhen any of the following conditions are met, this value will be used in place\nof any actual metric value:\n\n* One of the metrics named in 'weight_setting' is not available for a host,\n  and the value of 'required' is False\n* The ratio specified for a metric in 'weight_setting' is 0\n* The 'weight_multiplier' option is set to 0\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* An integer or float value, where the value corresponds to the multipler\n  ratio for this weigher.\n\nRelated options:\n\n* weight_setting\n* required\n* weight_multiplier\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "weight_of_unavailable",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "weight_setting": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "weight_setting",
+          "help": "\nThis setting specifies the metrics to be weighed and the relative ratios for\neach metric. This should be a single string value, consisting of a series of\none or more 'name=ratio' pairs, separated by commas, where 'name' is the name\nof the metric to be weighed, and 'ratio' is the relative weight for that\nmetric.\n\nNote that if the ratio is set to 0, the metric value is ignored, and instead\nthe weight will be set to the value of the 'weight_of_unavailable' option.\n\nAs an example, let's consider the case where this option is set to:\n\n    ``name1=1.0, name2=-1.3``\n\nThe final weight will be:\n\n    ``(name1.value * 1.0) + (name2.value * -1.3)``\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect.\n\nPossible values:\n\n* A list of zero or more key/value pairs separated by commas, where the key is\n  a string representing the name of a metric and the value is a numeric weight\n  for that metric. If any value is set to 0, the value is ignored and the\n  weight will be set to the value of the 'weight_of_unavailable' option.\n\nRelated options:\n\n* weight_of_unavailable\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "weight_setting",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        }
+      },
+      "scheduler": {
+        "driver": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "filter_scheduler",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_driver"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "driver",
+          "help": "\nThe class of the driver used by the scheduler.\n\nThe options are chosen from the entry points under the namespace\n'nova.scheduler.driver' in 'setup.cfg'.\n\nPossible values:\n\n* A string, where the string corresponds to the class name of a scheduler\n  driver. There are a number of options available:\n** 'caching_scheduler', which aggressively caches the system state for better\n   individual scheduler performance at the risk of more retries when running\n   multiple schedulers\n** 'chance_scheduler', which simply picks a host at random\n** 'fake_scheduler', which is used for testing\n** A custom scheduler driver. In this case, you will be responsible for\n   creating and maintaining the entry point in your 'setup.cfg' file\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "driver",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "filter_scheduler",
+              "caching_scheduler",
+              "chance_scheduler",
+              "fake_scheduler"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "host_manager": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "host_manager",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_host_manager"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "host_manager",
+          "help": "\nThe scheduler host manager to use.\n\nThe host manager manages the in-memory picture of the hosts that the scheduler\nuses. The options values are chosen from the entry points under the namespace\n'nova.scheduler.host_manager' in 'setup.cfg'.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "host_manager",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "host_manager",
+              "ironic_host_manager"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "max_attempts": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 3,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_max_attempts"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "max_attempts",
+          "help": "\nMaximum number of schedule attempts for a chosen host.\n\nThis is the maximum number of attempts that will be made to schedule an\ninstance before it is assumed that the failures aren't due to normal occasional\nrace conflicts, but rather some other problem. When this is reached a\nMaxRetriesExceeded exception is raised, and the instance is set to an error\nstate.\n\nPossible values:\n\n* A positive integer, where the integer corresponds to the max number of\n  attempts that can be made when scheduling an instance.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "max_attempts",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "periodic_task_interval": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "scheduler_driver_task_period"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "periodic_task_interval",
+          "help": "\nPeriodic task interval.\n\nThis value controls how often (in seconds) to run periodic tasks in the\nscheduler. The specific tasks that are run for each period are determined by\nthe particular scheduler being used.\n\nIf this is larger than the nova-service 'service_down_time' setting, Nova may\nreport the scheduler service as down. This is because the scheduler driver is\nresponsible for sending a heartbeat and it will only do that as often as this\noption allows. As each scheduler can work a little differently than the others,\nbe sure to test this with your selected scheduler.\n\nPossible values:\n\n* An integer, where the integer corresponds to periodic task interval in\n  seconds. 0 uses the default interval (60 seconds). A negative value disables\n  periodic tasks.\n\nRelated options:\n\n* ``nova-service service_down_time``\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "periodic_task_interval",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      },
+      "trusted_computing": {
+        "attestation_api_url": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "/OpenAttestationWebServices/V1.0",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "attestation_api_url",
+          "help": "\nThe URL on the attestation server to use. See the `attestation_server` help\ntext for more information about host verification.\n\nThis value must be just that path portion of the full URL, as it will be joined\nto the host specified in the attestation_server option.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'TrustedFilter' filter is enabled.\n\nPossible values:\n\n* A valid URL string of the attestation server, or an empty string.\n\nRelated options:\n\n* attestation_server\n* attestation_server_ca_file\n* attestation_port\n* attestation_auth_blob\n* attestation_auth_timeout\n* attestation_insecure_ssl\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "attestation_api_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "attestation_auth_blob": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "attestation_auth_blob",
+          "help": "\nAttestation servers require a specific blob that is used to authenticate. The\ncontent and format of the blob are determined by the particular attestation\nserver being used. There is no default value; you must supply the value as\nspecified by your attestation service. See the `attestation_server` help text\nfor more information about host verification.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'TrustedFilter' filter is enabled.\n\nPossible values:\n\n* A string containing the specific blob required by the attestation server, or\n  an empty string.\n\nRelated options:\n\n* attestation_server\n* attestation_server_ca_file\n* attestation_port\n* attestation_api_url\n* attestation_auth_timeout\n* attestation_insecure_ssl\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "attestation_auth_blob",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": true,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "attestation_auth_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "attestation_auth_timeout",
+          "help": "\nThis value controls how long a successful attestation is cached. Once this\nperiod has elapsed, a new attestation request will be made. See the\n`attestation_server` help text for more information about host verification.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'TrustedFilter' filter is enabled.\n\nPossible values:\n\n* A integer value, corresponding to the timeout interval for attestations in\n  seconds. Any integer is valid, although setting this to zero or negative\n  values can greatly impact performance when using an attestation service.\n\nRelated options:\n\n* attestation_server\n* attestation_server_ca_file\n* attestation_port\n* attestation_api_url\n* attestation_auth_blob\n* attestation_insecure_ssl\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "attestation_auth_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "attestation_insecure_ssl": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "attestation_insecure_ssl",
+          "help": "\nWhen set to True, the SSL certificate verification is skipped for the\nattestation service. See the `attestation_server` help text for more\ninformation about host verification.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'TrustedFilter' filter is enabled.\n\nRelated options:\n\n* attestation_server\n* attestation_server_ca_file\n* attestation_port\n* attestation_api_url\n* attestation_auth_blob\n* attestation_auth_timeout\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "attestation_insecure_ssl",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "attestation_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 8443,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "attestation_port",
+          "help": "\nThe port to use when connecting to the attestation server. See the\n`attestation_server` help text for more information about host verification.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'TrustedFilter' filter is enabled.\n\nRelated options:\n\n* attestation_server\n* attestation_server_ca_file\n* attestation_api_url\n* attestation_auth_blob\n* attestation_auth_timeout\n* attestation_insecure_ssl\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "attestation_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "attestation_server": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "attestation_server",
+          "help": "\nThe host to use as the attestation server.\n\nCloud computing pools can involve thousands of compute nodes located at\ndifferent geographical locations, making it difficult for cloud providers to\nidentify a node's trustworthiness. When using the Trusted filter, users can\nrequest that their VMs only be placed on nodes that have been verified by the\nattestation server specified in this option.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'TrustedFilter' filter is enabled.\n\nPossible values:\n\n* A string representing the host name or IP address of the attestation server,\n  or an empty string.\n\nRelated options:\n\n* attestation_server_ca_file\n* attestation_port\n* attestation_api_url\n* attestation_auth_blob\n* attestation_auth_timeout\n* attestation_insecure_ssl\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "attestation_server",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "attestation_server_ca_file": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "attestation_server_ca_file",
+          "help": "\nThe absolute path to the certificate to use for authentication when connecting\nto the attestation server. See the `attestation_server` help text for more\ninformation about host verification.\n\nThis option is only used by the FilterScheduler and its subclasses; if you use\na different scheduler, this option has no effect. Also note that this setting\nonly affects scheduling if the 'TrustedFilter' filter is enabled.\n\nPossible values:\n\n* A string representing the path to the authentication certificate for the\n  attestation server, or an empty string.\n\nRelated options:\n\n* attestation_server\n* attestation_port\n* attestation_api_url\n* attestation_auth_blob\n* attestation_auth_timeout\n* attestation_insecure_ssl\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "attestation_server_ca_file",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

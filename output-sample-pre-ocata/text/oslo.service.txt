@@ -1,0 +1,168 @@
+[DEFAULT]
+
+api_paste_config = api-paste.ini
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# File name for the paste.deploy config for api service
+
+backdoor_port = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable eventlet backdoor.  Acceptable values are 0, <port>, and <start>:<end>, where 0 results in listening on a random tcp port number; <port> results in listening on the specified port number (and not enabling backdoor if that port is in use); and <start>:<end> results in listening on the smallest unused port number within the specified range of port numbers.  The chosen port is displayed in the service's log file.
+
+backdoor_socket = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable eventlet backdoor, using the provided path as a unix socket that can receive connections. This option is mutually exclusive with 'backdoor_port' in that only one should be provided. If both are provided then the existence of this option overrides the usage of that option.
+
+client_socket_timeout = 900
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout for client connections' socket operations. If an incoming connection is idle for this number of seconds it will be closed. A value of '0' means wait forever.
+
+graceful_shutdown_timeout = 60
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Specify a timeout after which a gracefully shutdown server will exit. Zero value means endless wait.
+
+log_options = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables logging values of all registered options when starting a service (at DEBUG level).
+
+max_header_line = 16384
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum line size of message headers to be accepted. max_header_line may need to be increased when using large tokens (typically those generated when keystone is configured to use PKI tokens with big service catalogs).
+
+run_external_periodic_tasks = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Some periodic tasks can be run in a separate process. Should we run them here?
+
+tcp_keepidle = 600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Sets the value of TCP_KEEPIDLE in seconds for each server socket. Not supported on OS X.
+
+wsgi_default_pool_size = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Size of the pool of greenthreads used by wsgi
+
+wsgi_keep_alive = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If False, closes the client socket connection explicitly.
+
+wsgi_log_format = %(client_ip)s "%(request_line)s" status: %(status_code)s  len: %(body_length)s time: %(wall_seconds).7f
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A python format string that is used as the template to generate log lines. The following values can beformatted into it: client_ip, date_time, request_line, status_code, body_length, wall_seconds.
+
+
+
+[oslo_concurrency]
+# oslo_concurrency options
+# None
+
+disable_process_locking = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables inter-process locks.
+
+lock_path = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+
+
+
+[ssl]
+# ssl options
+# None
+
+ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# CA certificate file to use to verify connecting clients.
+
+cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Certificate file to use when starting the server securely.
+
+ciphers = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Sets the list of available ciphers. value should be a string in the OpenSSL cipher list format.
+
+key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Private key file to use when starting the server securely.
+
+version = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# SSL version to use (valid only if SSL enabled). Valid values are TLSv1 and SSLv23. SSLv2, SSLv3, TLSv1_1, and TLSv1_2 may be available on some distributions.
+
+
+

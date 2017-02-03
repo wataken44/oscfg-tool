@@ -1,0 +1,49 @@
+{
+  "In": "nova/nova/conf/flavors.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "default_flavor": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "m1.small",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "The EC2 API is deprecated.",
+          "deprecated_since": "14.0.0",
+          "dest": "default_flavor",
+          "help": "\nDefault flavor to use for the EC2 API only.\nThe Nova API does not support a default flavor.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default_flavor",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

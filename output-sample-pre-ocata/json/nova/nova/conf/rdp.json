@@ -1,0 +1,97 @@
+{
+  "In": "nova/nova/conf/rdp.py",
+  "Out": {
+    "groups": {
+      "rdp": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nOptions under this group enable and configure Remote Desktop Protocol (\nRDP) related features.\n\nThis group is only relevant to Hyper-V users.\n",
+        "name": "rdp",
+        "title": "RDP options"
+      }
+    },
+    "options": {
+      "rdp": {
+        "enabled": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enabled",
+          "help": "\nEnable Remote Desktop Protocol (RDP) related features.\n\nHyper-V, unlike the majority of the hypervisors employed on Nova compute\nnodes, uses RDP instead of VNC and SPICE as a desktop sharing protocol to\nprovide instance console access. This option enables RDP for graphical\nconsole access for virtual machines created by Hyper-V.\n\n**Note:** RDP should only be enabled on compute nodes that support the Hyper-V\nvirtualization platform.\n\nRelated options:\n\n* ``compute_driver``: Must be hyperv.\n\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enabled",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "html5_proxy_base_url": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "http://127.0.0.1:6083/",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "html5_proxy_base_url",
+          "help": "\nThe URL an end user would use to connect to the RDP HTML5 console proxy.\nThe console proxy service is called with this token-embedded URL and\nestablishes the connection to the proper instance.\n\nAn RDP HTML5 console proxy service will need to be configured to listen on the\naddress configured here. Typically the console proxy service would be run on a\ncontroller node. The localhost address used as default would only work in a\nsingle node environment i.e. devstack.\n\nAn RDP HTML5 proxy allows a user to access via the web the text or graphical\nconsole of any Windows server or workstation using RDP. RDP HTML5 console\nproxy services include FreeRDP, wsgate.\nSee https://github.com/FreeRDP/FreeRDP-WebConnect\n\nPossible values:\n\n* <scheme>://<ip-address>:<port-number>/\n\n  The scheme must be identical to the scheme configured for the RDP HTML5\n  console proxy service.\n\n  The IP address must be identical to the address on which the RDP HTML5\n  console proxy service is listening.\n\n  The port must be identical to the port on which the RDP HTML5 console proxy\n  service is listening.\n\nRelated options:\n\n* ``rdp.enabled``: Must be set to ``True`` for ``html5_proxy_base_url`` to be\n  effective.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "html5_proxy_base_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

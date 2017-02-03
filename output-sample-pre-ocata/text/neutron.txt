@@ -1,0 +1,3337 @@
+[AGENT]
+# AGENT options
+# None
+
+agent_type = Open vSwitch agent
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Selects the Agent Type reported
+
+arp_responder = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable local ARP responder if it is supported. Requires OVS 2.1 and ML2 l2population driver. Allows the switch (when supporting an overlay) to respond to an ARP request locally without performing a costly ARP broadcast into the overlay.
+
+availability_zone = nova
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Availability zone of this node
+
+check_child_processes_action = respawn
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Action to be executed when a child process dies
+
+check_child_processes_interval = 60
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between checks of child process liveness (seconds), use 0 to disable
+
+comment_iptables_rules = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Add comments to iptables rules. Set to false to disallow the addition of comments to generated iptables rules that describe each rule's purpose. System must support the iptables comments module for addition of comments.
+
+debug_iptables_rules = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Duplicate every iptables difference calculation to ensure the format being generated matches the format of iptables-save. This option should not be turned on for production systems because it imposes a performance penalty.
+
+dont_fragment = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set or un-set the don't fragment (DF) bit on outgoing IP packet carrying GRE/VXLAN tunnel.
+
+drop_flows_on_start = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Reset flow table on start. Setting this to True will cause brief traffic interruption.
+
+enable_distributed_routing = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Make the l2 agent run in DVR mode.
+
+l2_population = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Use ML2 l2population mechanism driver to learn remote MAC and IPs and improve tunnel scalability.
+
+log_agent_heartbeats = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Log agent heartbeats
+
+minimize_polling = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimize polling by monitoring ovsdb for interface changes.
+
+ovsdb_monitor_respawn_interval = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The number of seconds to wait before respawning the ovsdb monitor after losing communication with it.
+
+polling_interval = 2
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The number of seconds the agent will wait between polling for local device changes.
+
+prevent_arp_spoofing = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Enable suppression of ARP responses that don't match an IP address that belongs to the port from which they originate. Note: This prevents the VMs attached to this agent from spoofing, it doesn't protect them from other devices which have the capability to spoof (e.g. bare metal or VMs attached to agents without this flag set to True). Spoofing rules will not be added to any ports that have port security disabled. For LinuxBridge, this requires ebtables. For OVS, it requires a version that supports matching ARP headers. This option will be removed in Ocata so the only way to disable protection will be via the port security extension.
+
+quitting_rpc_timeout = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set new timeout in seconds for new rpc calls after agent receives SIGTERM. If value is set to 0, rpc timeout won't be changed
+
+report_interval = 30
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between nodes reporting state to server; should be less than agent_down_time, best if it is half or less than agent_down_time.
+
+root_helper = sudo
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Root helper application. Use 'sudo neutron-rootwrap /etc/neutron/rootwrap.conf' to use the real root filter facility. Change to 'sudo' to skip the filtering and just run the command directly.
+
+root_helper_daemon = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Root helper daemon application to use when possible. For the agent which needs to execute commands in Dom0 in the hypervisor of XenServer, this item should be set to 'xenapi_root_helper', so that it will keep a XenAPI session to pass commands to Dom0.
+
+tunnel_csum = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set or un-set the tunnel header checksum  on outgoing IP packet carrying GRE/VXLAN tunnel.
+
+tunnel_types = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Network types supported by the agent (gre and/or vxlan).
+
+use_helper_for_ns_read = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Use the root helper when listing the namespaces on a system. This may not be required depending on the security configuration. If the root helper is not required, set this to False for a performance improvement.
+
+veth_mtu = 9000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# MTU size of veth interfaces
+
+vxlan_udp_port = 4789
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The UDP port to use for VXLAN tunnels.
+
+
+
+[DEFAULT]
+
+agent_down_time = 75
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds to regard the agent is down; should be at least twice report_interval, to be sure the agent is down for good.
+
+agent_mode = legacy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The working mode for the agent. Allowed modes are: 'legacy' - this preserves the existing behavior where the L3 agent is deployed on a centralized networking node to provide L3 services like DNAT, and SNAT. Use this mode if you do not want to adopt DVR. 'dvr' - this mode enables DVR functionality and must be used for an L3 agent that runs on a compute host. 'dvr_snat' - this enables centralized SNAT support in conjunction with DVR.  This mode must be used for an L3 agent running on a centralized node (or in single-host deployments, e.g. devstack)
+
+allow_automatic_dhcp_failover = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Automatically remove networks from offline DHCP agents.
+
+allow_automatic_l3agent_failover = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Automatically reschedule routers from offline L3 agents to online L3 agents.
+
+allow_bulk = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow the usage of the bulk API
+
+allow_overlapping_ips = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow overlapping IP support in Neutron. Attention: the following parameter MUST be set to False if Neutron is being used in conjunction with Nova security groups.
+
+api_extensions_path = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The path for API extensions. Note that this can be a colon-separated list of paths. For example: api_extensions_path = extensions:/path/to/more/exts:/even/more/exts. The __path__ of neutron.extensions is appended to this, so if your extensions are in there you don't need to specify them here.
+
+api_paste_config = api-paste.ini
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# File name for the paste.deploy config for api service
+
+api_workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of separate API worker processes for service. If not specified, the default is equal to the number of CPUs available for best performance.
+
+arp_header_match = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for ARP header match support
+
+arp_responder = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for ARP responder support
+
+auth_ca_cert = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Certificate Authority public key (CA cert) file for ssl
+
+auth_strategy = keystone
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The type of authentication to use
+
+backlog = 4096
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of backlog requests to configure the socket with
+
+base_mac = fa:16:3e:00:00:00
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The base MAC address Neutron will use for VIFs. The first 3 octets will remain unchanged. If the 4th octet is not 00, it will also be used. The others will be randomly generated.
+
+bind_host = 0.0.0.0
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The host IP to bind to
+
+bind_port = 9696
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The port to bind to
+
+bridge_firewalling = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check bridge firewalling
+
+cache_url = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# URL to connect to the cache back end. This option is deprecated in the Newton release and will be removed. Please add a [cache] group for oslo.cache in your neutron.conf and add "enable" and "backend" options in this section.
+
+client_socket_timeout = 900
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout for client connections' socket operations. If an incoming connection is idle for this number of seconds it will be closed. A value of '0' means wait forever.
+
+conf_dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path to the router directory
+
+core_plugin = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The core plugin Neutron will use
+
+daemonize = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Run as daemon.
+
+debug = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set to true, the logging level will be set to DEBUG instead of the default INFO level.
+
+default_availability_zones = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default value of availability zone hints. The availability zone aware schedulers use this when the resources availability_zone_hints is empty. Multiple availability zones can be specified by a comma separated string. This value can be empty. In this case, even if availability_zone_hints for a resource is empty, availability zone is considered for high availability while scheduling the resource.
+
+default_log_levels = ['amqp=WARN', 'amqplib=WARN', 'boto=WARN', 'qpid=WARN', 'sqlalchemy=WARN', 'suds=INFO', 'oslo.messaging=INFO', 'iso8601=WARN', 'requests.packages.urllib3.connectionpool=WARN', 'urllib3.connectionpool=WARN', 'websocket=WARN', 'requests.packages.urllib3.util.retry=WARN', 'urllib3.util.retry=WARN', 'keystonemiddleware=WARN', 'routes.middleware=WARN', 'stevedore=WARN', 'taskflow=WARN', 'keystoneauth=WARN', 'oslo.cache=INFO', 'dogpile.core.dogpile=INFO']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of package logging levels in logger=LEVEL pairs. This option is ignored if log_config_append is set.
+
+dhcp_agent_notification = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow sending resource operation notification to DHCP agent
+
+dhcp_agents_per_network = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of DHCP agents scheduled to host a tenant network. If this number is greater than 1, the scheduler automatically assigns multiple DHCP agents for a given tenant network, providing high availability for DHCP service.
+
+dhcp_broadcast_reply = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Use broadcast in DHCP replies.
+
+dhcp_confs = $state_path/dhcp
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location to store DHCP server config files.
+
+dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The driver used to manage the DHCP server.
+
+dhcp_lease_duration = 86400
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# DHCP lease duration (in seconds). Use -1 to tell dnsmasq to use infinite lease times.
+
+dhcp_load_type = networks
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Representing the resource type whose load is being reported by the agent. This can be "networks", "subnets" or "ports". When specified (Default is networks), the server will extract particular load sent as part of its agent configuration object from the agent report state, which is the number of resources being consumed, at every report_interval.dhcp_load_type can be used in combination with network_scheduler_driver = neutron.scheduler.dhcp_agent_scheduler.WeightScheduler When the network_scheduler_driver is WeightScheduler, dhcp_load_type can be configured to represent the choice for the resource being balanced. Example: dhcp_load_type=networks
+
+dhcp_release6 = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check dhcp_release6 installation
+
+dibbler_version = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check minimal dibbler version
+
+dns_domain = openstacklocal
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Domain to use for building the hostnames
+
+dnsmasq_base_log_dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Base log dir for dnsmasq logging. The log contains DHCP and DNS log information and is useful for debugging issues with either DHCP or DNS. If this section is null, disable dnsmasq log.
+
+dnsmasq_config_file = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Override the default dnsmasq settings with this file.
+
+dnsmasq_dns_servers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of the DNS servers which will be used as forwarders.
+
+dnsmasq_lease_max = 16777216
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Limit number of leases to prevent a denial-of-service.
+
+dnsmasq_local_resolv = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables the dnsmasq service to provide name resolution for instances via DNS resolvers on the host running the DHCP agent. Effectively removes the '--no-resolv' option from the dnsmasq process arguments. Adding custom DNS resolvers to the 'dnsmasq_dns_servers' option disables this feature.
+
+dnsmasq_version = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check minimal dnsmasq version
+
+driver = neutron.services.metering.drivers.noop.noop_driver.NoopMeteringDriver
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Metering driver
+
+dvr_base_mac = fa:16:3f:00:00:00
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The base mac address used for unique DVR instances by Neutron. The first 3 octets will remain unchanged. If the 4th octet is not 00, it will also be used. The others will be randomly generated. The 'dvr_base_mac' *must* be different from 'base_mac' to avoid mixing them up with MAC's allocated for tenant ports. A 4 octet example would be dvr_base_mac = fa:16:3f:4f:00:00. The default is 3 octet
+
+ebtables_installed = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check ebtables installation
+
+enable_isolated_metadata = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The DHCP server can assist with providing metadata support on isolated networks. Setting this value to True will cause the DHCP server to append specific host routes to the DHCP request. The metadata service will only be activated when the subnet does not contain any router port. The guest instance must be configured to request host routes via DHCP (Option 121). This option doesn't have any effect when force_metadata is set to True.
+
+enable_metadata_network = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allows for serving metadata requests coming from a dedicated metadata access network whose CIDR is 169.254.169.254/16 (or larger prefix), and is connected to a Neutron router from which the VMs send metadata:1 request. In this case DHCP Option 121 will not be injected in VMs, as they will be able to reach 169.254.169.254 through a router. This option requires enable_isolated_metadata = True.
+
+enable_metadata_proxy = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow running metadata proxy.
+
+enable_new_agents = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Agent starts with admin_state_up=False when enable_new_agents=False. In the case, user's resources will not be scheduled automatically to the agent until admin changes admin_state_up to True.
+
+enable_services_on_agents_with_admin_state_down = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable services on an agent with admin_state_up False. If this option is False, when admin_state_up of an agent is turned False, services on it will be disabled. Agents with admin_state_up False are not selected for automatic scheduling regardless of this option. But manual scheduling to such agents is available if this option is True.
+
+enable_snat_by_default = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Define the default value of enable_snat if not provided in external_gateway_info.
+
+external_dns_driver = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Driver for external DNS integration.
+
+external_ingress_mark = 0x2
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Iptables mangle mark used to mark ingress from external network. This mark will be masked with 0xffff so that only the lower 16 bits will be used.
+
+external_network_bridge = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Name of bridge used for external network traffic. When this parameter is set, the L3 agent will plug an interface directly into an external bridge which will not allow any wiring by the L2 agent. Using this will result in incorrect port statuses. This option is deprecated and will be removed in Ocata.
+
+external_pids = $state_path/external/pids
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location to store child pid files
+
+force_metadata = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# In some cases the Neutron router is not present to provide the metadata IP but the DHCP server can be used to provide this info. Setting this value will force the DHCP server to append specific host routes to the DHCP request. If this option is set, then the metadata service will be activated for all the networks.
+
+gateway_external_network_id = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# When external_network_bridge is set, each L3 agent can be associated with no more than one external network. This value should be set to the UUID of that external network. To allow L3 agent support multiple external networks, both the external_network_bridge and gateway_external_network_id must be left empty.
+
+global_physnet_mtu = 1500
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# MTU of the underlying physical network. Neutron uses this value to calculate MTU for all virtual network components. For flat and VLAN networks, neutron uses this value without modification. For overlay networks such as VXLAN, neutron automatically subtracts the overlay protocol overhead from this value. Defaults to 1500, the standard value for Ethernet.
+
+group = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Group (gid or name) running this process after its initialization
+
+ha_confs_path = $state_path/ha_confs
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location to store keepalived/conntrackd config files
+
+ha_keepalived_state_change_server_threads = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of concurrent threads for keepalived server connection requests. More threads create a higher CPU load on the agent node.
+
+ha_vrrp_advert_int = 2
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The advertisement interval in seconds
+
+ha_vrrp_auth_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# VRRP authentication password
+
+ha_vrrp_auth_type = PASS
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# VRRP authentication type
+
+handle_internal_only_routers = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicates that this L3 agent should also handle routers that do not have an external network gateway configured. This option should be True only for a single agent in a Neutron deployment, and may be False for all agents if all routers must have an external network gateway.
+
+host = deploy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Hostname to be used by the Neutron server, agents and services running on this machine. All the agents and services running on this machine must use the same host value.
+
+icmpv6_header_match = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for ICMPv6 header match support
+
+instance_format = [instance: %(uuid)s] 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The format for an instance that is passed with the log message.
+
+instance_uuid_format = [instance: %(uuid)s] 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The format for an instance UUID that is passed with the log message.
+
+interface_driver = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The driver used to manage the virtual interface.
+
+ip6tables_installed = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check ip6tables installation
+
+ip_lib_force_root = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Force ip_lib calls to use the root helper
+
+ip_nonlocal_bind = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check ip_nonlocal_bind kernel option works with network namespaces.
+
+ipam_driver = internal
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Neutron IPAM (IP address management) driver to use. By default, the reference implementation of the Neutron IPAM driver is used.
+
+iproute2_vxlan = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for iproute2 vxlan support
+
+ipset_installed = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check ipset installation
+
+ipv6_gateway = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# With IPv6, the network used for the external gateway does not need to have an associated subnet, since the automatically assigned link-local address (LLA) can be used. However, an IPv6 gateway address is needed for use as the next-hop for the default route. If no IPv6 gateway address is configured here, (and only then) the neutron router will be configured to get its default route from router advertisements (RAs) from the upstream router; in which case the upstream router must also be configured to send these RAs. The ipv6_gateway, when configured, should be the LLA of the interface on the upstream router. If a next-hop using a global unique address (GUA) is desired, it needs to be done via a subnet allocated to the network and not through this parameter.
+
+ipv6_pd_enabled = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables IPv6 Prefix Delegation for automatic subnet CIDR allocation. Set to True to enable IPv6 Prefix Delegation for subnet allocation in a PD-capable environment. Users making subnet creation requests for IPv6 subnets without providing a CIDR or subnetpool ID will be given a CIDR via the Prefix Delegation mechanism. Note that enabling PD will override the behavior of the default IPv6 subnetpool.
+
+keepalived_ipv6_support = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check keepalived IPv6 support
+
+l3_ha = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable HA mode for virtual routers.
+
+l3_ha_net_cidr = 169.254.192.0/18
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Subnet used for the l3 HA admin network.
+
+l3_ha_network_physical_name = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The physical network name with which the HA network can be created.
+
+l3_ha_network_type = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The network type to use when creating the HA network for an HA router. By default or if empty, the first 'tenant_network_types' is used. This is helpful when the VRRP traffic should use a specific network which is not the default one.
+
+log-config-append = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The name of a logging configuration file. This file is appended to any existing logging configuration files. For details about logging configuration files, see the Python logging module documentation. Note that when logging configuration files are used then all logging configuration is set in the configuration file and other logging configuration options are ignored (for example, logging_context_format_string).
+
+log-date-format = %Y-%m-%d %H:%M:%S
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Defines the format string for %%(asctime)s in log records. Default: %(default)s . This option is ignored if log_config_append is set.
+
+log-dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) The base directory used for relative log_file  paths. This option is ignored if log_config_append is set.
+
+log-file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Name of log file to send logging output to. If no default is set, logging will go to stderr as defined by use_stderr. This option is ignored if log_config_append is set.
+
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(user_identity)s] %(instance)s%(message)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Format string to use for log messages with context.
+
+logging_debug_format_suffix = %(funcName)s %(pathname)s:%(lineno)d
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Additional data to append to log message when logging level for the message is DEBUG.
+
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [-] %(instance)s%(message)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Format string to use for log messages when context is undefined.
+
+logging_exception_prefix = %(asctime)s.%(msecs)03d %(process)d ERROR %(name)s %(instance)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Prefix each line of exception output with this format.
+
+logging_user_identity_format = %(user)s %(tenant)s %(domain)s %(user_domain)s %(project_domain)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Defines the format string for %(user_identity)s that is used in logging_context_format_string.
+
+max_allowed_address_pair = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of allowed address pairs
+
+max_dns_nameservers = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of DNS nameservers per subnet
+
+max_fixed_ips_per_port = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Maximum number of fixed ips per port. This option is deprecated and will be removed in the Ocata release.
+
+max_header_line = 16384
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum line size of message headers to be accepted. max_header_line may need to be increased when using large tokens (typically those generated when keystone is configured to use PKI tokens with big service catalogs).
+
+max_l3_agents_per_router = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of L3 agents which a HA router will be scheduled on. If it is set to 0 then the router will be scheduled on every agent.
+
+max_routes = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of routes per router
+
+max_rtr_adv_interval = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# MaxRtrAdvInterval setting for radvd.conf
+
+max_subnet_host_routes = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of host routes per subnet
+
+measure_interval = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between two metering measures
+
+metadata_access_mark = 0x1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Iptables mangle mark used to mark metadata valid requests. This mark will be masked with 0xffff so that only the lower 16 bits will be used.
+
+metadata_backlog = 4096
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of backlog requests to configure the metadata server socket with
+
+metadata_port = 9697
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# TCP Port to listen for metadata serverrequests.
+
+metadata_port = 9697
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# TCP Port used by Neutron metadata namespace proxy.
+
+metadata_proxy_group = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Group (gid or name) running metadata proxy after its initialization
+
+metadata_proxy_group = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Group (gid or name) running metadata proxy after its initialization (if empty: agent effective group).
+
+metadata_proxy_shared_secret = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# When proxying metadata requests, Neutron signs the Instance-ID header with a shared secret to prevent spoofing. You may select any string for a secret, but it must match here and in the configuration used by the Nova Metadata Server. NOTE: Nova uses the same config key, but in [neutron] section.
+
+metadata_proxy_socket = $state_path/metadata_proxy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location of Metadata Proxy UNIX domain socket
+
+metadata_proxy_socket = $state_path/metadata_proxy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location for Metadata Proxy UNIX domain socket.
+
+metadata_proxy_socket_mode = deduce
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Metadata Proxy UNIX domain socket mode, 4 values allowed: 'deduce': deduce mode from metadata_proxy_user/group values, 'user': set metadata proxy socket mode to 0o644, to use when metadata_proxy_user is agent effective user or root, 'group': set metadata proxy socket mode to 0o664, to use when metadata_proxy_group is agent effective group or root, 'all': set metadata proxy socket mode to 0o666, to use otherwise.
+
+metadata_proxy_user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User (uid or name) running metadata proxy after its initialization
+
+metadata_proxy_user = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User (uid or name) running metadata proxy after its initialization (if empty: agent effective user).
+
+metadata_proxy_watch_log = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Watch file log. Log watch should be disabled when metadata_proxy_user/group has no read/write permissions on metadata proxy log file.
+
+metadata_proxy_watch_log = None
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable/Disable log watch by metadata proxy. It should be disabled when metadata_proxy_user/group is not allowed to read/write its log file and copytruncate logrotate option must be used if logrotate is enabled on metadata proxy log files. Option default value is deduced from metadata_proxy_user: watch log is enabled if metadata_proxy_user is agent effective user id/name.
+
+metadata_workers = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of separate worker processes for metadata server (defaults to half of the number of CPUs)
+
+min_rtr_adv_interval = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# MinRtrAdvInterval setting for radvd.conf
+
+monitor_cidr = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# CIDR to monitor
+
+monitor_interface = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interface to monitor
+
+namespace = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Namespace of the router
+
+network_auto_schedule = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow auto scheduling networks to DHCP agent.
+
+network_id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Network that will have instance metadata proxied.
+
+network_scheduler_driver = neutron.scheduler.dhcp_agent_scheduler.WeightScheduler
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Driver to use for scheduling network to DHCP agent
+
+notify_nova_on_port_data_changes = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Send notification to nova when port data (fixed_ips/floatingip) changes so nova can update its cache.
+
+notify_nova_on_port_status_changes = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Send notification to nova when port status changes
+
+nova_client_cert = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Client certificate for nova metadata api server.
+
+nova_client_priv_key = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Private key of client certificate.
+
+nova_metadata_insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow to perform insecure SSL (https) requests to nova metadata
+
+nova_metadata_ip = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# IP address used by Nova metadata server.
+
+nova_metadata_port = 8775
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# TCP Port used by Nova metadata server.
+
+nova_metadata_protocol = http
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Protocol to access nova metadata, http or https
+
+nova_notify = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for nova notification support
+
+num_sync_threads = 4
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of threads to use during sync process. Should not exceed connection pool size configured on server.
+
+ovs_conntrack = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check ovs conntrack support
+
+ovs_geneve = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for OVS Geneve support
+
+ovs_integration_bridge = br-int
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of Open vSwitch bridge to use
+
+ovs_patch = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for patch port support
+
+ovs_use_veth = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Uses veth for an OVS interface or not. Support kernels with limited namespace support (e.g. RHEL 6.5) so long as ovs_use_veth is set to True.
+
+ovs_vsctl_timeout = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout in seconds for ovs-vsctl commands. If the timeout expires, ovs commands will fail with ALARMCLOCK error.
+
+ovs_vxlan = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for OVS vxlan support
+
+ovsdb_connection = tcp:127.0.0.1:6640
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The connection string for the OVSDB backend. Will be used by ovsdb-client when monitoring and used for the all ovsdb commands when native ovsdb_interface is enabled
+
+ovsdb_interface = native
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The interface for interacting with the OVSDB
+
+ovsdb_native = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check ovsdb native interface support
+
+pagination_max_limit = -1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The maximum number of items returned in a single response, value was 'infinite' or negative integer means no limit
+
+pd_confs = $state_path/pd
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location to store IPv6 PD files.
+
+pd_dhcp_driver = dibbler
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Service to handle DHCPv6 Prefix delegation.
+
+periodic_fuzzy_delay = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Range of seconds to randomly delay when starting the periodic task scheduler to reduce stampeding. (Disable by setting to 0)
+
+periodic_interval = 40
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between running periodic tasks.
+
+pid_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location of pid file of this process.
+
+pid_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path to PID file for this process
+
+prefix_delegation_driver = dibbler
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Driver used for ipv6 prefix delegation. This needs to be an entry point defined in the neutron.agent.linux.pd_drivers namespace. See setup.cfg for entry points included with the neutron source.
+
+publish_errors = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables publication of error events.
+
+ra_confs = $state_path/ra
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location to store IPv6 RA config files
+
+rate_limit_burst = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of logged messages per rate_limit_interval.
+
+rate_limit_except_level = CRITICAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Log level name used by rate limiting: CRITICAL, ERROR, INFO, WARNING, DEBUG or empty string. Logs with level greater or equal to rate_limit_except_level are not filtered. An empty string means that all levels are filtered.
+
+rate_limit_interval = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval, number of seconds, of log rate limiting.
+
+read_netns = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check netns permission settings
+
+report_interval = 300
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between two metering reports
+
+resync_interval = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The DHCP agent will resync its state with Neutron to recover from any transient notification or RPC errors. The interval is number of seconds between attempts.
+
+retry_until_window = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of seconds to keep retrying to listen
+
+router_auto_schedule = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow auto scheduling of routers to L3 agent.
+
+router_distributed = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# System-wide flag to determine the type of router that tenants can create. Only admin can override.
+
+router_id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Router that will have connected instances' metadata proxied.
+
+router_id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# ID of the router
+
+router_scheduler_driver = neutron.scheduler.l3_agent_scheduler.LeastRoutersScheduler
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Driver to use for scheduling router to a default L3 agent
+
+rpc_state_report_workers = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of RPC worker processes dedicated to state reports queue.
+
+rpc_workers = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of RPC worker processes for service.
+
+send_arp_for_ha = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Send this many gratuitous ARPs for HA setup, if less than or equal to 0, the feature is disabled
+
+send_events_interval = 2
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of seconds between sending events to nova if there are any events to send.
+
+service_plugins = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The service plugins Neutron will use
+
+state_path = /var/lib/neutron
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Where to store Neutron state files. This directory must be writable by the agent.
+
+syslog-log-facility = LOG_USER
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Syslog facility to receive log lines. This option is ignored if log_config_append is set.
+
+tcp_keepidle = 600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Sets the value of TCP_KEEPIDLE in seconds for each server socket. Not supported on OS X.
+
+use-syslog = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Use syslog for logging. Existing syslog format is DEPRECATED and will be changed later to honor RFC5424. This option is ignored if log_config_append is set.
+
+use_ssl = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable SSL on the API server
+
+use_stderr = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Log output to standard error. This option is ignored if log_config_append is set.
+
+user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User (uid or name) running this process after its initialization
+
+vendor_pen = 8888
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A decimal value as Vendor's Registered Private Enterprise Number as required by RFC3315 DUID-EN.
+
+verbose = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# If set to false, the logging level will be set to WARNING instead of the default INFO level.
+
+vf_extended_management = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for VF extended management support
+
+vf_management = False
+# class:      <class 'dummy_module.BoolOptCallback'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check for VF management support
+
+vlan_transparent = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, then allow plugins that support it to create VLAN transparent networks.
+
+watch-log-file = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Uses logging handler designed to watch file system. When log file is moved or removed this handler will open a new log file with specified path instantaneously. It makes sense only if log_file option is specified and Linux platform is used. This option is ignored if log_config_append is set.
+
+web_framework = legacy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This will choose the web framework in which to run the Neutron API server. 'pecan' is a new experimental rewrite of the API server.
+
+wsgi_default_pool_size = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Size of the pool of greenthreads used by wsgi
+
+wsgi_keep_alive = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If False, closes the client socket connection explicitly.
+
+wsgi_log_format = %(client_ip)s "%(request_line)s" status: %(status_code)s  len: %(body_length)s time: %(wall_seconds).7f
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A python format string that is used as the template to generate log lines. The following values can beformatted into it: client_ip, date_time, request_line, status_code, body_length, wall_seconds.
+
+
+
+[FDB]
+# FDB options
+# None
+
+shared_physical_device_mappings = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <physical_network>:<network_device> tuples mapping physical network names to the agent's node-specific shared physical network device between SR-IOV and OVS or SR-IOV and linux bridge
+
+
+
+[LINUX_BRIDGE]
+# LINUX_BRIDGE options
+# None
+
+bridge_mappings = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of <physical_network>:<physical_bridge>
+
+physical_interface_mappings = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <physical_network>:<physical_interface> tuples mapping physical network names to the agent's node-specific physical network interfaces to be used for flat and VLAN networks. All physical networks listed in network_vlan_ranges on the server should have mappings to appropriate interfaces on each agent.
+
+
+
+[OVS]
+# OVS options
+# None
+
+bridge_mappings = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <physical_network>:<bridge> tuples mapping physical network names to the agent's node-specific Open vSwitch bridge names to be used for flat and VLAN networks. The length of bridge names should be no more than 11. Each bridge must exist, and should have a physical network interface configured as a port. All physical networks configured on the server should have mappings to appropriate bridges on each agent. Note: If you remove a bridge from this mapping, make sure to disconnect it from the integration bridge as it won't be managed by the agent anymore.
+
+datapath_type = system
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# OVS datapath to use. 'system' is the default value and corresponds to the kernel datapath. To enable the userspace datapath set this value to 'netdev'.
+
+int_peer_patch_port = patch-tun
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Peer patch port in integration bridge for tunnel bridge.
+
+integration_bridge = br-int
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Integration bridge to use. Do not change this parameter unless you have a good reason to. This is the name of the OVS integration bridge. There is one per hypervisor. The integration bridge acts as a virtual 'patch bay'. All VM VIFs are attached to this bridge and then 'patched' according to their network connectivity.
+
+local_ip = None
+# class:      <class 'oslo_config.cfg.IPOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# IP address of local overlay (tunnel) network endpoint. Use either an IPv4 or IPv6 address that resides on one of the host network interfaces. The IP version of this value must match the value of the 'overlay_ip_version' option in the ML2 plug-in configuration file on the neutron server node(s).
+
+of_connect_timeout = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout in seconds to wait for the local switch connecting the controller. Used only for 'native' driver.
+
+of_interface = native
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# OpenFlow interface to use.
+
+of_listen_address = 127.0.0.1
+# class:      <class 'oslo_config.cfg.IPOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Address to listen on for OpenFlow connections. Used only for 'native' driver.
+
+of_listen_port = 6633
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Port to listen on for OpenFlow connections. Used only for 'native' driver.
+
+of_request_timeout = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout in seconds to wait for a single OpenFlow request. Used only for 'native' driver.
+
+ovsdb_connection = tcp:127.0.0.1:6640
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The connection string for the OVSDB backend. Will be used by ovsdb-client when monitoring and used for the all ovsdb commands when native ovsdb_interface is enabled
+
+ovsdb_interface = native
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The interface for interacting with the OVSDB
+
+tun_peer_patch_port = patch-int
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Peer patch port in tunnel bridge for integration bridge.
+
+tunnel_bridge = br-tun
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Tunnel bridge to use.
+
+use_veth_interconnection = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Use veths instead of patch ports to interconnect the integration bridge to physical networks. Support kernel without Open vSwitch patch port support so long as it is set to True.
+
+vhostuser_socket_dir = /var/run/openvswitch
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# OVS vhost-user socket directory.
+
+
+
+[QUOTAS]
+# QUOTAS options
+# None
+
+default_quota = -1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default number of resource allowed per tenant. A negative value means unlimited.
+
+quota_driver = neutron.db.quota.driver.DbQuotaDriver
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default driver to use for quota checks.
+
+quota_floatingip = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of floating IPs allowed per tenant. A negative value means unlimited.
+
+quota_network = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of networks allowed per tenant. A negative value means unlimited.
+
+quota_port = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of ports allowed per tenant. A negative value means unlimited.
+
+quota_rbac_policy = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default number of RBAC entries allowed per tenant. A negative value means unlimited.
+
+quota_router = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of routers allowed per tenant. A negative value means unlimited.
+
+quota_security_group = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of security groups allowed per tenant. A negative value means unlimited.
+
+quota_security_group_rule = 100
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of security rules allowed per tenant. A negative value means unlimited.
+
+quota_subnet = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of subnets allowed per tenant, A negative value means unlimited.
+
+track_quota_usage = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Keep in track in the database of current resource quota usage. Plugins which do not leverage the neutron database should set this flag to False.
+
+
+
+[SECURITYGROUP]
+# SECURITYGROUP options
+# None
+
+enable_ipset = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Use ipset to speed-up the iptables based security groups. Enabling ipset support requires that ipset is installed on L2 agent node.
+
+enable_security_group = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Controls whether the neutron security group API is enabled in the server. It should be false when using no security groups or using the nova security group API.
+
+firewall_driver = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Driver for security groups firewall in the L2 agent
+
+
+
+[SRIOV_NIC]
+# SRIOV_NIC options
+# None
+
+exclude_devices = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <network_device>:<vfs_to_exclude> tuples, mapping network_device to the agent's node-specific list of virtual functions that should not be used for virtual networking. vfs_to_exclude is a semicolon-separated list of virtual functions to exclude from network_device. The network_device in the mapping should appear in the physical_device_mappings list.
+
+physical_device_mappings = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <physical_network>:<network_device> tuples mapping physical network names to the agent's node-specific physical network device interfaces of SR-IOV physical function to be used for VLAN networks. All physical networks listed in network_vlan_ranges on the server should have mappings to appropriate interfaces on each agent.
+
+
+
+[VXLAN]
+# VXLAN options
+# None
+
+arp_responder = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable local ARP responder which provides local responses instead of performing ARP broadcast into the overlay. Enabling local ARP responder is not fully compatible with the allowed-address-pairs extension.
+
+enable_vxlan = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable VXLAN on the agent. Can be enabled when agent is managed by ml2 plugin using linuxbridge mechanism driver
+
+l2_population = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Extension to use alongside ml2 plugin's l2population mechanism driver. It enables the plugin to populate VXLAN forwarding table.
+
+local_ip = None
+# class:      <class 'oslo_config.cfg.IPOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# IP address of local overlay (tunnel) network endpoint. Use either an IPv4 or IPv6 address that resides on one of the host network interfaces. The IP version of this value must match the value of the 'overlay_ip_version' option in the ML2 plug-in configuration file on the neutron server node(s).
+
+tos = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# TOS for vxlan interface protocol packets.
+
+ttl = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# TTL for vxlan interface protocol packets.
+
+vxlan_group = 224.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Multicast group(s) for vxlan interface. A range of group addresses may be specified by using CIDR notation. Specifying a range allows different VNIs to use different group addresses, reducing or eliminating spurious broadcast traffic to the tunnel endpoints. To reserve a unique group for each possible (24-bit) VNI, use a /8 such as 239.0.0.0/8. This setting must be the same on all the agents.
+
+
+
+[agent]
+# agent options
+# None
+
+extensions = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Extensions list to use
+
+
+
+[database]
+# database options
+# None
+
+backend = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The back end to use for the database.
+
+connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the database.
+
+connection_debug = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verbosity of SQL debugging information: 0=None, 100=Everything.
+
+connection_trace = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Add Python stack traces to SQL as comment strings.
+
+db_inc_retry_interval = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, increases the interval between retries of a database operation up to db_max_retry_interval.
+
+db_max_retries = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum retries in case of connection error or deadlock error before error is raised. Set to -1 to specify an infinite retry count.
+
+db_max_retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If db_inc_retry_interval is set, the maximum seconds between retries of a database operation.
+
+db_retry_interval = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between retries of a database transaction.
+
+idle_timeout = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout before idle SQL connections are reaped.
+
+max_overflow = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for max_overflow with SQLAlchemy.
+
+max_pool_size = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of SQL connections to keep open in a pool. Setting a value of 0 indicates no limit.
+
+max_retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of database connection retries during startup. Set to -1 to specify an infinite retry count.
+
+min_pool_size = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimum number of SQL connections to keep open in a pool.
+
+mysql_sql_mode = TRADITIONAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQL mode to be used for MySQL sessions. This option, including the default, overrides any server-set SQL mode. To use whatever SQL mode is set by the server configuration, set this to no value. Example: mysql_sql_mode=
+
+pool_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for pool_timeout with SQLAlchemy.
+
+retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between retries of opening a SQL connection.
+
+slave_connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the slave database.
+
+sqlite_db = oslo.sqlite
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The file name to use with SQLite.
+
+sqlite_synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, SQLite uses synchronous mode.
+
+use_db_reconnect = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable the experimental use of database reconnect on connection lost.
+
+
+
+[designate]
+# designate options
+# None
+
+admin_auth_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Authorization URL for connecting to designate in admin context
+
+admin_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Password for connecting to designate in admin context
+
+admin_tenant_id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Tenant id for connecting to designate in admin context
+
+admin_tenant_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Tenant name for connecting to designate in admin context
+
+admin_username = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Username for connecting to designate in admin context
+
+allow_reverse_dns_lookup = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow the creation of PTR records
+
+auth_section = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Config Section from which to load plugin specific options
+
+auth_type = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Authentication type to load
+
+cafile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded Certificate Authority to use when verifying HTTPs connections.
+
+certfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded client certificate cert file
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verify HTTPS connections.
+
+ipv4_ptr_zone_prefix_size = 24
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of bits in an ipv4 PTR zone that will be considered network prefix. It has to align to byte boundary. Minimum value is 8. Maximum value is 24. As a consequence, range of values is 8, 16 and 24
+
+ipv6_ptr_zone_prefix_size = 120
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of bits in an ipv6 PTR zone that will be considered network prefix. It has to align to nyble boundary. Minimum value is 4. Maximum value is 124. As a consequence, range of values is 4, 8, 12, 16,..., 124
+
+keyfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded client certificate key file
+
+ptr_zone_email = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The email address to be used when creating PTR zones. If not specified, the email address will be admin@<dns_domain>
+
+timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout value for http requests
+
+url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# URL for connecting to designate
+
+
+
+[keystone_authtoken]
+# keystone_authtoken options
+# None
+
+admin_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Service user password.
+
+admin_tenant_name = admin
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Service tenant name.
+
+admin_token = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This option is deprecated and may be removed in a future release. Single shared secret with the Keystone configuration used for bootstrapping a Keystone installation, or otherwise bypassing the normal authentication process. This option should not be used, use `admin_user` and `admin_password` instead.
+
+admin_user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Service username.
+
+auth_admin_prefix = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Prefix to prepend at the beginning of the path. Deprecated, use identity_uri.
+
+auth_host = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Host providing the admin Identity API endpoint. Deprecated, use identity_uri.
+
+auth_port = 35357
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Port of the admin Identity API endpoint. Deprecated, use identity_uri.
+
+auth_protocol = https
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Protocol of the admin Identity API endpoint. Deprecated, use identity_uri.
+
+auth_section = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Config Section from which to load plugin specific options
+
+auth_type = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Authentication type to load
+
+auth_uri = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Complete "public" Identity API endpoint. This endpoint should not be an "admin" endpoint, as it should be accessible by all end users. Unauthenticated clients are redirected to this endpoint to authenticate. Although this endpoint should  ideally be unversioned, client support in the wild varies.  If you're using a versioned v2 endpoint here, then this  should *not* be the same endpoint the service user utilizes  for validating tokens, because normal end users may not be  able to reach that endpoint.
+
+auth_version = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# API version of the admin Identity API endpoint.
+
+cache = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Request environment key where the Swift cache object is stored. When auth_token middleware is deployed with a Swift cache, use this option to have the middleware share a caching backend with swift. Otherwise, use the ``memcached_servers`` option instead.
+
+cafile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A PEM encoded Certificate Authority to use when verifying HTTPs connections. Defaults to system CAs.
+
+certfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Required if identity server requires client certificate
+
+check_revocations_for_cached = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# If true, the revocation list will be checked for cached tokens. This requires that PKI tokens are configured on the identity server.
+
+delay_auth_decision = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Do not handle authorization requests within the middleware, but delegate the authorization decision to downstream WSGI components.
+
+enforce_token_bind = permissive
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Used to control the use and type of token binding. Can be set to: "disabled" to not check token binding. "permissive" (default) to validate binding information if the bind type is of a form known to the server and ignore it if not. "strict" like "permissive" but if the bind type is unknown the token will be rejected. "required" any form of token binding is needed to be allowed. Finally the name of a binding method that must be present in tokens.
+
+hash_algorithms = ['md5']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Hash algorithms to use for hashing PKI tokens. This may be a single algorithm or multiple. The algorithms are those supported by Python standard hashlib.new(). The hashes will be tried in the order given, so put the preferred one first for performance. The result of the first hash will be stored in the cache. This will typically be set to multiple values only while migrating from a less secure algorithm to a more secure one. Once all the old tokens are expired this option should be set to a single value for better performance.
+
+http_connect_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Request timeout value for communicating with Identity API server.
+
+http_request_max_retries = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# How many times are we trying to reconnect when communicating with Identity API Server.
+
+identity_uri = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Complete admin Identity API endpoint. This should specify the unversioned root endpoint e.g. https://localhost:35357/
+
+include_service_catalog = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Indicate whether to set the X-Service-Catalog header. If False, middleware will not ask for service catalog on token validation and will not set the X-Service-Catalog header.
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verify HTTPS connections.
+
+keyfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Required if identity server requires client certificate
+
+memcache_pool_conn_get_timeout = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Number of seconds that an operation will wait to get a memcached client connection from the pool.
+
+memcache_pool_dead_retry = 300
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Number of seconds memcached server is considered dead before it is tried again.
+
+memcache_pool_maxsize = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Maximum total number of open connections to every memcached server.
+
+memcache_pool_socket_timeout = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Socket timeout in seconds for communicating with a memcached server.
+
+memcache_pool_unused_timeout = 60
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Number of seconds a connection to memcached is held unused in the pool before it is closed.
+
+memcache_secret_key = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional, mandatory if memcache_security_strategy is defined) This string is used for key derivation.
+
+memcache_security_strategy = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) If defined, indicate whether token data should be authenticated or authenticated and encrypted. If MAC, token data is authenticated (with HMAC) in the cache. If ENCRYPT, token data is encrypted and authenticated in the cache. If the value is not one of these options or empty, auth_token will raise an exception on initialization.
+
+memcache_use_advanced_pool = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Use the advanced (eventlet safe) memcached client pool. The advanced pool will only work under python 2.x.
+
+memcached_servers = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optionally specify a list of memcached server(s) to use for caching. If left undefined, tokens will instead be cached in-process.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The region in which the identity server can be found.
+
+revocation_cache_time = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Determines the frequency at which the list of revoked tokens is retrieved from the Identity service (in seconds). A high number of revocation events combined with a low cache duration may significantly reduce performance. Only valid for PKI tokens. This option has been deprecated in the Ocata release and will be removed in the P release.
+
+service_token_roles = ['service']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A choice of roles that must be present in a service token. Service tokens are allowed to request that an expired token can be used and so this check should tightly control that only actual services should be sending this token. Roles here are applied as an ANY check so any role in this list must be present. For backwards compatibility reasons this currently only affects the allow_expired check.
+
+service_token_roles_required = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# For backwards compatibility reasons we must let valid service tokens pass that don't pass the service_token_roles check as valid. Setting this true will become the default in a future release and should be enabled if possible.
+
+signing_dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Directory used to cache files related to PKI tokens. This option has been deprecated in the Ocata release and will be removed in the P release.
+
+token_cache_time = 300
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# In order to prevent excessive effort spent validating tokens, the middleware caches previously-seen tokens for a configurable duration (in seconds). Set to -1 to disable caching completely.
+
+
+
+[l2pop]
+# l2pop options
+# None
+
+agent_boot_time = 180
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Delay within which agent is expected to update existing ports whent it restarts
+
+
+
+[macvtap]
+# macvtap options
+# None
+
+physical_interface_mappings = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <physical_network>:<physical_interface> tuples mapping physical network names to the agent's node-specific physical network interfaces to be used for flat and VLAN networks. All physical networks listed in network_vlan_ranges on the server should have mappings to appropriate interfaces on each agent.
+
+
+
+[ml2]
+# ml2 options
+# None
+
+extension_drivers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# An ordered list of extension driver entrypoints to be loaded from the neutron.ml2.extension_drivers namespace. For example: extension_drivers = port_security,qos
+
+external_network_type = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default network type for external networks when no provider attributes are specified. By default it is None, which means that if provider attributes are not specified while creating external networks then they will have the same type as tenant networks. Allowed values for external_network_type config option depend on the network type values configured in type_drivers config option.
+
+mechanism_drivers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# An ordered list of networking mechanism driver entrypoints to be loaded from the neutron.ml2.mechanism_drivers namespace.
+
+overlay_ip_version = 4
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# IP version of all overlay (tunnel) network endpoints. Use a value of 4 for IPv4 or 6 for IPv6.
+
+path_mtu = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum size of an IP packet (MTU) that can traverse the underlying physical network infrastructure without fragmentation when using an overlay/tunnel protocol. This option allows specifying a physical network MTU value that differs from the default global_physnet_mtu value.
+
+physical_network_mtus = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A list of mappings of physical networks to MTU values. The format of the mapping is <physnet>:<mtu val>. This mapping allows specifying a physical network MTU value that differs from the default global_physnet_mtu value.
+
+tenant_network_types = ['local']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Ordered list of network_types to allocate as tenant networks. The default value 'local' is useful for single-box testing but provides no connectivity between hosts.
+
+type_drivers = ['local', 'flat', 'vlan', 'gre', 'vxlan', 'geneve']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of network type driver entrypoints to be loaded from the neutron.ml2.type_drivers namespace.
+
+
+
+[ml2_type_flat]
+# ml2_type_flat options
+# None
+
+flat_networks = *
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of physical_network names with which flat networks can be created. Use default '*' to allow flat networks with arbitrary physical_network names. Use an empty list to disable flat networks.
+
+
+
+[ml2_type_geneve]
+# ml2_type_geneve options
+# None
+
+max_header_size = 30
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Geneve encapsulation header size is dynamic, this value is used to calculate the maximum MTU for the driver. This is the sum of the sizes of the outer ETH + IP + UDP + GENEVE header sizes. The default size for this field is 50, which is the size of the Geneve header without any additional option headers.
+
+vni_ranges = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <vni_min>:<vni_max> tuples enumerating ranges of Geneve VNI IDs that are available for tenant network allocation
+
+
+
+[ml2_type_gre]
+# ml2_type_gre options
+# None
+
+tunnel_id_ranges = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <tun_min>:<tun_max> tuples enumerating ranges of GRE tunnel IDs that are available for tenant network allocation
+
+
+
+[ml2_type_vlan]
+# ml2_type_vlan options
+# None
+
+network_vlan_ranges = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of <physical_network>:<vlan_min>:<vlan_max> or <physical_network> specifying physical_network names usable for VLAN provider and tenant networks, as well as ranges of VLAN tags on each available for allocation to tenant networks.
+
+
+
+[ml2_type_vxlan]
+# ml2_type_vxlan options
+# None
+
+vni_ranges = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Comma-separated list of <vni_min>:<vni_max> tuples enumerating ranges of VXLAN VNI IDs that are available for tenant network allocation
+
+vxlan_group = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Multicast group for VXLAN. When configured, will enable sending all broadcast traffic to this multicast group. When left unconfigured, will disable multicast VXLAN mode.
+
+
+
+[nova]
+# nova options
+# None
+
+auth_section = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Config Section from which to load plugin specific options
+
+auth_type = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Authentication type to load
+
+cafile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded Certificate Authority to use when verifying HTTPs connections.
+
+certfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded client certificate cert file
+
+endpoint_type = public
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of the nova endpoint to use.  This endpoint will be looked up in the keystone catalog and should be one of public, internal or admin.
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verify HTTPS connections.
+
+keyfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded client certificate key file
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of nova region to use. Useful if keystone manages more than one region.
+
+timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout value for http requests
+
+
+
+[oslo_concurrency]
+# oslo_concurrency options
+# None
+
+disable_process_locking = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables inter-process locks.
+
+lock_path = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+
+
+
+[oslo_versionedobjects]
+# oslo_versionedobjects options
+# None
+
+fatal_exception_format_errors = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Make exception message format errors fatal
+
+
+
+[placement]
+# placement options
+# None
+
+auth_section = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Config Section from which to load plugin specific options
+
+auth_type = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Authentication type to load
+
+endpoint_type = public
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of the placement endpoint to use.  This endpoint will be looked up in the keystone catalog and should be one of public, internal or admin.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of placement region to use. Useful if keystone manages more than one region.
+
+
+
+[privsep]
+# privsep options
+# None
+
+capabilities = []
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of Linux capabilities retained by the privsep daemon.
+
+group = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Group that the privsep daemon should run as.
+
+helper_command = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Command to invoke to start the privsep daemon if not using the "fork" method. If not specified, a default is generated using "sudo privsep-helper" and arguments designed to recreate the current configuration. This command must accept suitable --privsep_context and --privsep_sock_path arguments.
+
+user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User that the privsep daemon should run as.
+
+
+
+[profiler]
+# OpenStack cross-service profiling
+# OSprofiler library allows to trace requests going through various OpenStack
+# services and create the accumulated report of what time was spent on each
+# request processing step.
+
+connection_string = messaging://
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Connection string for a notifier backend. Default value is messaging:// which
+# sets the notifier to oslo_messaging.
+# 
+# Examples of possible values:
+# 
+# * messaging://: use oslo_messaging driver for sending notifications.
+# * mongodb://127.0.0.1:27017 : use mongodb driver for sending notifications.
+# * elasticsearch://127.0.0.1:9200 : use elasticsearch driver for sending
+# notifications.
+
+enabled = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables the profiling for all services on this node. Default value is False
+# (fully disable the profiling feature).
+# 
+# Possible values:
+# 
+# * True: Enables the feature
+# * False: Disables the feature. The profiling cannot be started via this project
+# operations. If the profiling is triggered by another project, this project part
+# will be empty.
+
+es_doc_type = notification
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Document type for notification indexing in elasticsearch.
+
+es_scroll_size = 10000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Elasticsearch splits large requests in batches. This parameter defines
+# maximum size of each batch (for example: es_scroll_size=10000).
+
+es_scroll_time = 2m
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This parameter is a time value parameter (for example: es_scroll_time=2m),
+# indicating for how long the nodes that participate in the search will maintain
+# relevant resources in order to continue and support it.
+
+hmac_keys = SECRET_KEY
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Secret key(s) to use for encrypting context data for performance profiling.
+# This string value should have the following format: <key1>[,<key2>,...<keyn>],
+# where each key is some random string. A user who triggers the profiling via
+# the REST API has to set one of these keys in the headers of the REST API call
+# to include profiling results of this node for this particular project.
+# 
+# Both "enabled" flag and "hmac_keys" config options should be set to enable
+# profiling. Also, to generate correct profiling information across all services
+# at least one key needs to be consistent between OpenStack projects. This
+# ensures it can be used from client side to generate the trace, containing
+# information from all possible resources.
+
+sentinel_service_name = mymaster
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Redissentinel uses a service name to identify a master redis service.
+# This parameter defines the name (for example:
+# sentinal_service_name=mymaster).
+
+socket_timeout = 0.1
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Redissentinel provides a timeout option on the connections.
+# This parameter defines that timeout (for example: socket_timeout=0.1).
+
+trace_sqlalchemy = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables SQL requests profiling in services. Default value is False (SQL
+# requests won't be traced).
+# 
+# Possible values:
+# 
+# * True: Enables SQL requests profiling. Each SQL query will be part of the
+# trace and can the be analyzed by how much time was spent for that.
+# * False: Disables SQL requests profiling. The spent time is only shown on a
+# higher level of operations. Single SQL queries cannot be analyzed this
+# way.
+
+
+
+[qos]
+# qos options
+# None
+
+notification_drivers = ['message_queue']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Drivers list to use to send the update notification. This option will be unused in Pike.
+
+
+
+[quotas]
+
+default_quota = -1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default number of resource allowed per tenant. A negative value means unlimited.
+
+quota_driver = neutron.db.quota.driver.DbQuotaDriver
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default driver to use for quota checks.
+
+quota_network = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of networks allowed per tenant. A negative value means unlimited.
+
+quota_port = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of ports allowed per tenant. A negative value means unlimited.
+
+quota_subnet = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of subnets allowed per tenant, A negative value means unlimited.
+
+track_quota_usage = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Keep in track in the database of current resource quota usage. Plugins which do not leverage the neutron database should set this flag to False.
+
+
+
+[service_providers]
+# service_providers options
+# None
+
+service_provider = []
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# Defines providers for advanced services using the format: <service_type>:<name>:<driver>[:default]
+
+
+
+[xenapi]
+# xenapi options
+# None
+
+connection_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Password for connection to XenServer/Xen Cloud Platform.
+
+connection_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# URL for connection to XenServer/Xen Cloud Platform.
+
+connection_username = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Username for connection to XenServer/Xen Cloud Platform.
+
+
+

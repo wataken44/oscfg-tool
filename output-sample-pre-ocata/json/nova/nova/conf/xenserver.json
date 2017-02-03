@@ -1,0 +1,1776 @@
+{
+  "In": "nova/nova/conf/xenserver.py",
+  "Out": {
+    "groups": {
+      "xenserver": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nXenServer options are used when the compute_driver is set to use\nXenServer (compute_driver=xenapi.XenAPIDriver).\n\nMust specify connection_url, connection_password and ovs_integration_bridge to\nuse compute_driver=xenapi.XenAPIDriver.\n",
+        "name": "xenserver",
+        "title": "Xenserver Options"
+      }
+    },
+    "options": {
+      "xenserver": {
+        "agent_path": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "usr/sbin/xe-update-networking",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "agent_path",
+          "help": "\nPath to locate guest agent on the server.\n\nSpecifies the path in which the XenAPI guest agent should be located. If the\nagent is present, network configuration is not injected into the image.\n\nRelated options:\n\nFor this option to have an effect:\n* ``flat_injected`` should be set to ``True``\n* ``compute_driver`` should be set to ``xenapi.XenAPIDriver``\n\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "agent_path",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "agent_resetnetwork_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "agent_resetnetwork_timeout",
+          "help": "\nNumber of seconds to wait for agent's reply to resetnetwork\nrequest.\n\nThis indicates the amount of time xapi 'agent' plugin waits for the agent to\nrespond to the 'resetnetwork' request specifically. The generic timeout for\nagent communication ``agent_timeout`` is ignored in this case.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "agent_resetnetwork_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "agent_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 30,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "agent_timeout",
+          "help": "\nNumber of seconds to wait for agent's reply to a request.\n\nNova configures/performs certain administrative actions on a server with the\nhelp of an agent that's installed on the server. The communication between\nNova and the agent is achieved via sharing messages, called records, over\nxenstore, a shared storage across all the domains on a Xenserver host.\nOperations performed by the agent on behalf of nova are: 'version',' key_init',\n'password','resetnetwork','inject_file', and 'agentupdate'.\n\nTo perform one of the above operations, the xapi 'agent' plugin writes the\ncommand and its associated parameters to a certain location known to the domain\nand awaits response. On being notified of the message, the agent performs\nappropriate actions on the server and writes the result back to xenstore. This\nresult is then read by the xapi 'agent' plugin to determine the success/failure\nof the operation.\n\nThis config option determines how long the xapi 'agent' plugin shall wait to\nread the response off of xenstore for a given request/command. If the agent on\nthe instance fails to write the result in this time period, the operation is\nconsidered to have timed out.\n\nRelated options:\n\n* ``agent_version_timeout``\n* ``agent_resetnetwork_timeout``\n\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "agent_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "agent_version_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 300,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "agent_version_timeout",
+          "help": "\nNumber of seconds to wait for agent't reply to version request.\n\nThis indicates the amount of time xapi 'agent' plugin waits for the agent to\nrespond to the 'version' request specifically. The generic timeout for agent\ncommunication ``agent_timeout`` is ignored in this case.\n\nDuring the build process the 'version' request is used to determine if the\nagent is available/operational to perform other requests such as\n'resetnetwork', 'password', 'key_init' and 'inject_file'. If the 'version' call\nfails, the other configuration is skipped. So, this configuration option can\nalso be interpreted as time in which agent is expected to be fully operational.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "agent_version_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "block_device_creation_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "block_device_creation_timeout",
+          "help": "Time in secs to wait for a block device to be created",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "block_device_creation_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "cache_images": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "all",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "cache_images",
+          "help": "\nCache glance images locally.\n\nThe value for this option must be chosen from the choices listed\nhere. Configuring a value other than these will default to 'all'.\n\nNote: There is nothing that deletes these images.\n\nPossible values:\n\n* `all`: will cache all images.\n* `some`: will only cache images that have the\n  image_property `cache_in_nova=True`.\n* `none`: turns off caching entirely.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "cache_images",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "all",
+              "some",
+              "none"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "check_host": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "check_host",
+          "help": "\nEnsure compute service is running on host XenAPI connects to.\nThis option must be set to false if the 'independent_compute'\noption is set to true.\n\nPossible values:\n\n* Setting this option to true will make sure that compute service\n  is running on the same host that is specified by connection_url.\n* Setting this option to false, doesn't perform the check.\n\nRelated options:\n\n* `independent_compute`\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "check_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "connection_concurrent": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 5,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "connection_concurrent",
+          "help": "\nMaximum number of concurrent XenAPI connections.\n\nIn nova, multiple XenAPI requests can happen at a time.\nConfiguring this option will parallelize access to the XenAPI\nsession, which allows you to make concurrent XenAPI connections.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "connection_concurrent",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "connection_password": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "connection_password",
+          "help": "Password for connection to XenServer/Xen Cloud Platform",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "connection_password",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": true,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "connection_url": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "connection_url",
+          "help": "\nURL for connection to XenServer/Xen Cloud Platform. A special value\nof unix://local can be used to connect to the local unix socket.\n\nPossible values:\n\n* Any string that represents a URL. The connection_url is\n  generally the management network IP address of the XenServer.\n* This option must be set if you chose the XenServer driver.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "connection_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "connection_username": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "root",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "connection_username",
+          "help": "Username for connection to XenServer/Xen Cloud Platform",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "connection_username",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "console_public_hostname": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "deploy",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "console_public_hostname",
+          "help": "\nPublicly visible name for this console host.\n\nPossible values:\n\n* A string representing a valid hostname\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "console_public_hostname",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "default_os_type": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "linux",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_os_type",
+          "help": "Default OS type used when uploading an image to glance",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default_os_type",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "disable_agent": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "disable_agent",
+          "help": "\nDisables the use of XenAPI agent.\n\nThis configuration option suggests whether the use of agent should be enabled\nor not regardless of what image properties are present. Image properties have\nan effect only when this is set to ``True``. Read description of config option\n``use_agent_default`` for more information.\n\nRelated options:\n\n* ``use_agent_default``\n\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "disable_agent",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "image_compression_level": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "image_compression_level",
+          "help": "\nCompression level for images.\n\nBy setting this option we can configure the gzip compression level.\nThis option sets GZIP environment variable before spawning tar -cz\nto force the compression level. It defaults to none, which means the\nGZIP environment variable is not set and the default (usually -6)\nis used.\n\nPossible values:\n\n* Range is 1-9, e.g., 9 for gzip -9, 9 being most\n  compressed but most CPU intensive on dom0.\n* Any values out of this range will default to None.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "image_compression_level",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 9,
+            "min": 1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "image_upload_handler": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.virt.xenapi.image.glance.GlanceStore",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "image_upload_handler",
+          "help": "\nDom0 plugin driver used to handle image uploads.\n\nProvide a string value representing a plugin driver required to\nhandle the image uploading to GlanceStore.\n\nImages, and snapshots from XenServer need to be uploaded to the data\nstore for use. image_upload_handler takes in a value for the Dom0\nplugin driver. This driver is then called to uplaod images to the\nGlanceStore.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "image_upload_handler",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "independent_compute": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "independent_compute",
+          "help": "\nUsed to prevent attempts to attach VBDs locally, so Nova can\nbe run in a VM on a different host.\n\nRelated options:\n\n* ``CONF.flat_injected`` (Must be False)\n* ``CONF.xenserver.check_host`` (Must be False)\n* ``CONF.default_ephemeral_format`` (Must be unset or 'ext3')\n* Joining host aggregates (will error if attempted)\n* Swap disks for Windows VMs (will error if attempted)\n* Nova-based auto_configure_disk (will error if attempted)\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "independent_compute",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "introduce_vdi_retry_wait": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 20,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "introduce_vdi_retry_wait",
+          "help": "\nNumber of seconds to wait for SR to settle if the VDI\ndoes not exist when first introduced.\n\nSome SRs, particularly iSCSI connections are slow to see the VDIs\nright after they got introduced. Setting this option to a\ntime interval will make the SR to wait for that time period\nbefore raising VDI not found exception.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "introduce_vdi_retry_wait",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "ipxe_boot_menu_url": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ipxe_boot_menu_url",
+          "help": "\nURL to the iPXE boot menu.\n\nAn iPXE ISO is a specially crafted ISO which supports iPXE booting.\nThis feature gives a means to roll your own image.\n\nBy default this option is not set. Enable this option to\nboot an iPXE ISO.\n\nRelated Options:\n\n* `ipxe_network_name`\n* `ipxe_mkisofs_cmd`\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ipxe_boot_menu_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "ipxe_mkisofs_cmd": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "mkisofs",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ipxe_mkisofs_cmd",
+          "help": "\nName and optionally path of the tool used for ISO image creation.\n\nAn iPXE ISO is a specially crafted ISO which supports iPXE booting.\nThis feature gives a means to roll your own image.\n\nNote: By default `mkisofs` is not present in the Dom0, so the\npackage can either be manually added to Dom0 or include the\n`mkisofs` binary in the image itself.\n\nRelated Options:\n\n* `ipxe_network_name`\n* `ipxe_boot_menu_url`\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ipxe_mkisofs_cmd",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "ipxe_network_name": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ipxe_network_name",
+          "help": "\nName of network to use for booting iPXE ISOs.\n\nAn iPXE ISO is a specially crafted ISO which supports iPXE booting.\nThis feature gives a means to roll your own image.\n\nBy default this option is not set. Enable this option to\nboot an iPXE ISO.\n\nRelated Options:\n\n* `ipxe_boot_menu_url`\n* `ipxe_mkisofs_cmd`\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ipxe_network_name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "login_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "login_timeout",
+          "help": "Timeout in seconds for XenAPI login.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "login_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "max_kernel_ramdisk_size": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 16777216,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "max_kernel_ramdisk_size",
+          "help": "\nMaximum size in bytes of kernel or ramdisk images.\n\nSpecifying the maximum size of kernel or ramdisk will avoid copying\nlarge files to dom0 and fill up /boot/guest.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "max_kernel_ramdisk_size",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "num_vbd_unplug_retries": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "num_vbd_unplug_retries",
+          "help": "\nMaximum number of retries to unplug VBD.\nIf set to 0, should try once, no retries.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "num_vbd_unplug_retries",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "ovs_integration_bridge": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ovs_integration_bridge",
+          "help": "\nThe name of the integration Bridge that is used with xenapi\nwhen connecting with Open vSwitch.\n\nNote: The value of this config option is dependent on the\nenvironment, therefore this configuration value must be set\naccordingly if you are using XenAPI.\n\nPossible values:\n\n* Any string that represents a bridge name.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ovs_integration_bridge",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "remap_vbd_dev": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThis option provided a workaround for issues in Ubuntu Maverick, which\nwas released in April 2010 and was dropped from support in April 2012.\nThere's no reason to continue supporting this option.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "remap_vbd_dev",
+          "help": "\nUsed to enable the remapping of VBD dev.\n(Works around an issue in Ubuntu Maverick)\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "remap_vbd_dev",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "remap_vbd_dev_prefix": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "sd",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "remap_vbd_dev_prefix",
+          "help": "\nSpecify prefix to remap VBD dev to (ex. /dev/xvdb -> /dev/sdb).\n\nRelated options:\n\n* If `remap_vbd_dev` is set to False this option has no impact.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "remap_vbd_dev_prefix",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "running_timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "running_timeout",
+          "help": "\nWait time for instances to go to running state.\n\nProvide an integer value representing time in seconds to set the\nwait time for an instance to go to running state.\n\nWhen a request to create an instance is received by nova-api and\ncommunicated to nova-compute, the creation of the instance occurs\nthrough interaction with Xen via XenAPI in the compute node. Once\nthe node on which the instance(s) are to be launched is decided by\nnova-schedule and the launch is triggered, a certain amount of wait\ntime is involved until the instance(s) can become available and\n'running'. This wait time is defined by running_timeout. If the\ninstances do not go to running state within this specified wait\ntime, the launch expires and the instance(s) are set to 'error'\nstate.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "running_timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "sparse_copy": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "sparse_copy",
+          "help": "\nWhether to use sparse_copy for copying data on a resize down.\n(False will use standard dd). This speeds up resizes down\nconsiderably since large runs of zeros won't have to be rsynced.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "sparse_copy",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "sr_base_path": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "/var/run/sr-mount",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "sr_base_path",
+          "help": "Base path to the storage repository on the XenServer host.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "sr_base_path",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "sr_matching_filter": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "default-sr:true",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "sr_matching_filter",
+          "help": "\nFilter for finding the SR to be used to install guest instances on.\n\nPossible values:\n\n* To use the Local Storage in default XenServer/XCP installations\n  set this flag to other-config:i18n-key=local-storage.\n* To select an SR with a different matching criteria, you could\n  set it to other-config:my_favorite_sr=true.\n* To fall back on the Default SR, as displayed by XenCenter,\n  set this flag to: default-sr:true.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "sr_matching_filter",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "target_host": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "target_host",
+          "help": "\nThe iSCSI Target Host.\n\nThis option represents the hostname or ip of the iSCSI Target.\nIf the target host is not present in the connection information from\nthe volume provider then the value from this option is taken.\n\nPossible values:\n\n* Any string that represents hostname/ip of Target.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "target_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "target_port": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 3260,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "target_port",
+          "help": "\nThe iSCSI Target Port.\n\nThis option represents the port of the iSCSI Target. If the\ntarget port is not present in the connection information from the\nvolume provider then the value from this option is taken.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "target_port",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "torrent_base_url": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_base_url",
+          "help": "\nBase URL for torrent files; must contain a slash character (see RFC 1808,\nstep 6).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_base_url",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "torrent_download_stall_cutoff": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 600,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_download_stall_cutoff",
+          "help": "\nNumber of seconds a download can remain at the same progress percentage w/o\nbeing considered a stall.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_download_stall_cutoff",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "torrent_images": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "none",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "torrent_images",
+          "help": "\nWhether or not to download images via Bit Torrent.\n\nThe value for this option must be chosen from the choices listed\nhere. Configuring a value other than these will default to 'none'.\n\nPossible values:\n\n* `all`: will download all images.\n* `some`: will only download images that have the image_property\n          `bittorrent=true'.\n* `none`: will turnoff downloading images via Bit Torrent.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_images",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "all",
+              "some",
+              "none"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "torrent_listen_port_end": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 6891,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_listen_port_end",
+          "help": "End of port range to listen on",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_listen_port_end",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "torrent_listen_port_start": {
+          "__class__": "<class 'oslo_config.cfg.PortOpt'>",
+          "advanced": false,
+          "default": 6881,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_listen_port_start",
+          "help": "Beginning of port range to listen on",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_listen_port_start",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "PORT_MAX": 65535,
+            "PORT_MIN": 0,
+            "__class__": "<class 'oslo_config.types.Port'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": 65535,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "port value"
+          }
+        },
+        "torrent_max_last_accessed": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 86400,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_max_last_accessed",
+          "help": "\nCached torrent files not accessed within this number of seconds can be reaped.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_max_last_accessed",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "torrent_max_seeder_processes_per_host": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 1,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_max_seeder_processes_per_host",
+          "help": "\nMaximum number of seeder processes to run concurrently within a given dom0\n(-1 = no limit).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_max_seeder_processes_per_host",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "torrent_seed_chance": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 1.0,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_seed_chance",
+          "help": "Probability that peer will become a seeder (1.0 = 100%)",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_seed_chance",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "torrent_seed_duration": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 3600,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThe torrent feature has not been tested nor maintained, and as such is being\nremoved.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "torrent_seed_duration",
+          "help": "\nNumber of seconds after downloading an image via BitTorrent that it should\nbe seeded for other peers.'\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "torrent_seed_duration",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "use_agent_default": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "use_agent_default",
+          "help": "\nWhether or not to use the agent by default when its usage is enabled but not\nindicated by the image.\n\nThe use of XenAPI agent can be disabled altogether using the configuration\noption ``disable_agent``. However, if it is not disabled, the use of an agent\ncan still be controlled by the image in use through one of its properties,\n``xenapi_use_agent``. If this property is either not present or specified\nincorrectly on the image, the use of agent is determined by this configuration\noption.\n\nNote that if this configuration is set to ``True`` when the agent is not\npresent, the boot times will increase significantly.\n\nRelated options:\n\n* ``disable_agent``\n\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "use_agent_default",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "use_join_force": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "use_join_force",
+          "help": "\nWhen adding new host to a pool, this will append a --force flag to the\ncommand, forcing hosts to join a pool, even if they have different CPUs.\n\nSince XenServer version 5.6 it is possible to create a pool of hosts that have\ndifferent CPU capabilities. To accommodate CPU differences, XenServer limited\nfeatures it uses to determine CPU compatibility to only the ones that are\nexposed by CPU and support for CPU masking was added.\nDespite this effort to level differences between CPUs, it is still possible\nthat adding new host will fail, thus option to force join was introduced.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "use_join_force",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "vhd_coalesce_max_attempts": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 20,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vhd_coalesce_max_attempts",
+          "help": "\nMax number of times to poll for VHD to coalesce.\n\nThis option determines the maximum number of attempts that can be\nmade for coalescing the VHD before giving up.\n\nRelated opitons:\n\n* `vhd_coalesce_poll_interval`\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vhd_coalesce_max_attempts",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "vhd_coalesce_poll_interval": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 5.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vhd_coalesce_poll_interval",
+          "help": "\nThe interval used for polling of coalescing vhds.\n\nThis is the interval after which the task of coalesce VHD is\nperformed, until it reaches the max attempts that is set by\nvhd_coalesce_max_attempts.\n\nRelated options:\n\n* `vhd_coalesce_max_attempts`\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vhd_coalesce_poll_interval",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "vif_driver": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.virt.xenapi.vif.XenAPIBridgeDriver",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vif_driver",
+          "help": "\nThe XenAPI VIF driver using XenServer Network APIs.\n\nProvide a string value representing the VIF XenAPI bridge driver to\nuse for bridging.\n\nXen configuration uses bridging within the backend domain to allow\nall VMs to appear on the network as individual hosts. Bridge\ninterfaces are used to create a XenServer VLAN network in which\nthe VIFs for the VM instances are plugged. If no VIF bridge driver\nis plugged, the bridge is not made available. This configuration\noption takes in a value for the VIF driver.\n\nNOTE:\nThe XenAPIBridgeDriver should be used for running OVS or Bridge in\nXenServer.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vif_driver",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

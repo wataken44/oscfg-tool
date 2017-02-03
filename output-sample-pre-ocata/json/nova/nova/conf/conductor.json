@@ -1,0 +1,127 @@
+{
+  "In": "nova/nova/conf/conductor.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT",
+      "conductor": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nOptions under this group are used to define Conductor's communication,\nwhich manager should be act as a proxy between computes and database,\nand finally, how many worker processes will be used.\n",
+        "name": "conductor",
+        "title": "Conductor Options"
+      }
+    },
+    "options": {
+      "DEFAULT": {
+        "migrate_max_retries": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": -1,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "migrate_max_retries",
+          "help": "\nNumber of times to retry live-migration before failing.\n\nPossible values:\n\n* If == -1, try until out of hosts (default)\n* If == 0, only try once, no retries\n* Integer greater than 0\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "migrate_max_retries",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": -1,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      },
+      "conductor": {
+        "topic": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "conductor",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThere is no need to let users choose the RPC topic for all services - there\nis little gain from this. Furthermore, it makes it really easy to break Nova\nby using this option.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "topic",
+          "help": "\nTopic exchange name on which conductor nodes listen.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "topic",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "workers": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "workers",
+          "help": "\nNumber of workers for OpenStack Conductor service. The default will be the\nnumber of CPUs available.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "workers",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      }
+    }
+  }
+}

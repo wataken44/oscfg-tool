@@ -1,0 +1,2470 @@
+[DEFAULT]
+
+admin_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The administrators password. If "use_user_token" is not in effect, then admin credentials can be specified.
+
+admin_role = admin
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Role used to identify an authenticated user as administrator.
+# 
+# Provide a string value representing a Keystone role to identify an
+# administrative user. Users with this role will be granted
+# administrative privileges. The default value for this option is
+# 'admin'.
+# 
+# Possible values:
+#     * A string value which is a valid Keystone role
+# 
+# Related options:
+#     * None
+
+admin_tenant_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The tenant name of the administrative user. If "use_user_token" is not in effect, then admin tenant name can be specified.
+
+admin_user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The administrators user name. If "use_user_token" is not in effect, then admin credentials can be specified.
+
+allow_additional_image_properties = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow users to add additional/custom properties to images.
+# 
+# Glance defines a standard set of properties (in its schema) that
+# appear on every image. These properties are also known as
+# ``base properties``. In addition to these properties, Glance
+# allows users to add custom properties to images. These are known
+# as ``additional properties``.
+# 
+# By default, this configuration option is set to ``True`` and users
+# are allowed to add additional properties. The number of additional
+# properties that can be added to an image can be controlled via
+# ``image_property_quota`` configuration option.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * image_property_quota
+
+allow_anonymous_access = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allow limited access to unauthenticated users.
+# 
+# Assign a boolean to determine API access for unathenticated
+# users. When set to False, the API cannot be accessed by
+# unauthenticated users. When set to True, unauthenticated users can
+# access the API with read-only privileges. This however only applies
+# when using ContextMiddleware.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * None
+
+allowed_rpc_exception_modules = ['glance.common.exception', 'builtins', 'exceptions']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of allowed exception modules to handle RPC exceptions.
+# 
+# Provide a comma separated list of modules whose exceptions are
+# permitted to be recreated upon receiving exception data via an RPC
+# call made to Glance. The default list includes
+# ``glance.common.exception``, ``builtins``, and ``exceptions``.
+# 
+# The RPC protocol permits interaction with Glance via calls across a
+# network or within the same system. Including a list of exception
+# namespaces with this option enables RPC to propagate the exceptions
+# back to the users.
+# 
+# Possible values:
+#     * A comma separated list of valid exception modules
+# 
+# Related options:
+#     * None
+
+api_limit_max = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of results that could be returned by a request.
+# 
+# As described in the help text of ``limit_param_default``, some
+# requests may return multiple results. The number of results to be
+# returned are governed either by the ``limit`` parameter in the
+# request or the ``limit_param_default`` configuration option.
+# The value in either case, can't be greater than the absolute maximum
+# defined by this configuration option. Anything greater than this
+# value is trimmed down to the maximum value defined here.
+# 
+# NOTE: Setting this to a very large value may slow down database
+#       queries and increase response times. Setting this to a
+#       very low value may result in poor user experience.
+# 
+# Possible values:
+#     * Any positive integer
+# 
+# Related options:
+#     * limit_param_default
+
+args = None
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# Arguments for the command
+
+auth_region = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The region for the authentication service. If "use_user_token" is not in effect and using keystone auth, then region name can be specified.
+
+auth_strategy = noauth
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The strategy to use for authentication. If "use_user_token" is not in effect, then auth strategy can be specified.
+
+auth_url = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The URL to the keystone service. If "use_user_token" is not in effect and using keystone auth, then URL of keystone can be specified.
+
+available_plugins = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A list of artifacts that are allowed in the format name or name-version. Empty list means that any artifact can be loaded.
+
+backlog = 4096
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set the number of incoming connection requests.
+# 
+# Provide a positive integer value to limit the number of requests in
+# the backlog queue. The default queue size is 4096.
+# 
+# An incoming connection to a TCP listener socket is queued before a
+# connection can be established with the server. Setting the backlog
+# for a TCP socket ensures a limited queue size for incoming traffic.
+# 
+# Possible values:
+#     * Positive integer
+# 
+# Related options:
+#     * None
+
+bind_host = 0.0.0.0
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# IP address to bind the glance servers to.
+# 
+# Provide an IP address to bind the glance server to. The default
+# value is ``0.0.0.0``.
+# 
+# Edit this option to enable the server to listen on one particular
+# IP address on the network card. This facilitates selection of a
+# particular network interface for the server.
+# 
+# Possible values:
+#     * A valid IPv4 address
+#     * A valid IPv6 address
+# 
+# Related options:
+#     * None
+
+bind_port = None
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Port number on which the server will listen.
+# 
+# Provide a valid port number to bind the server's socket to. This
+# port is then set to identify processes and forward network messages
+# that arrive at the server. The default bind_port value for the API
+# server is 9292 and for the registry server is 9191.
+# 
+# Possible values:
+#     * A valid port number (0 to 65535)
+# 
+# Related options:
+#     * None
+
+ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to the CA file.
+# 
+# Provide a string value representing a valid absolute path to
+# the Certificate Authority file to use for client authentication.
+# 
+# A CA file typically contains necessary trusted certificates to
+# use for the client authentication. This is essential to ensure
+# that a secure connection is established to the server via the
+# internet.
+# 
+# Possible values:
+#     * Valid absolute path to the CA file
+# 
+# Related options:
+#     * None
+
+cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to the certificate file.
+# 
+# Provide a string value representing a valid absolute path to the
+# certificate file which is required to start the API service
+# securely.
+# 
+# A certificate file typically is a public key container and includes
+# the server's public key, server name, server information and the
+# signature which was a result of the verification process using the
+# CA certificate. This is required for a secure connection
+# establishment.
+# 
+# Possible values:
+#     * Valid absolute path to the certificate file
+# 
+# Related options:
+#     * None
+
+chunksize = 65536
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Amount of data to transfer per HTTP write.
+
+client_socket_timeout = 900
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout for client connections' socket operations.
+# 
+# Provide a valid integer value representing time in seconds to set
+# the period of wait before an incoming connection can be closed. The
+# default value is 900 seconds.
+# 
+# The value zero implies wait forever.
+# 
+# Possible values:
+#     * Zero
+#     * Positive integer
+# 
+# Related options:
+#     * None
+
+command = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Command to be given to replicator
+
+data_api = glance.db.sqlalchemy.api
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Python module path of data access API.
+# 
+# Specifies the path to the API to use for accessing the data model.
+# This option determines how the image catalog data will be accessed.
+# 
+# Possible values:
+#     * glance.db.sqlalchemy.api
+#     * glance.db.registry.api
+#     * glance.db.simple.api
+# 
+# If this option is set to ``glance.db.sqlalchemy.api`` then the image
+# catalog data is stored in and read from the database via the
+# SQLAlchemy Core and ORM APIs.
+# 
+# Setting this option to ``glance.db.registry.api`` will force all
+# database access requests to be routed through the Registry service.
+# This avoids data access from the Glance API nodes for an added layer
+# of security, scalability and manageability.
+# 
+# NOTE: In v2 OpenStack Images API, the registry service is optional.
+# In order to use the Registry API in v2, the option
+# ``enable_v2_registry`` must be set to ``True``.
+# 
+# Finally, when this configuration option is set to
+# ``glance.db.simple.api``, image catalog data is stored in and read
+# from an in-memory data structure. This is primarily used for testing.
+# 
+# Related options:
+#     * enable_v2_api
+#     * enable_v2_registry
+
+debug = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set to true, the logging level will be set to DEBUG instead of the default INFO level.
+
+default_log_levels = ['amqp=WARN', 'amqplib=WARN', 'boto=WARN', 'qpid=WARN', 'sqlalchemy=WARN', 'suds=INFO', 'oslo.messaging=INFO', 'iso8601=WARN', 'requests.packages.urllib3.connectionpool=WARN', 'urllib3.connectionpool=WARN', 'websocket=WARN', 'requests.packages.urllib3.util.retry=WARN', 'urllib3.util.retry=WARN', 'keystonemiddleware=WARN', 'routes.middleware=WARN', 'stevedore=WARN', 'taskflow=WARN', 'keystoneauth=WARN', 'oslo.cache=INFO', 'dogpile.core.dogpile=INFO']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of package logging levels in logger=LEVEL pairs. This option is ignored if log_config_append is set.
+
+default_publisher_id = image.localhost
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default publisher_id for outgoing Glance notifications.
+# 
+# This is the value that the notification driver will use to identify
+# messages for events originating from the Glance service. Typically,
+# this is the hostname of the instance that generated the message.
+# 
+# Possible values:
+#     * Any reasonable instance identifier, for example: image.host1
+# 
+# Related options:
+#     * None
+
+default_swift_reference = ref1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Reference to default Swift account/backing store parameters.
+# 
+# Provide a string value representing a reference to the default set
+# of parameters required for using swift account/backing store for
+# image storage. The default reference value for this configuration
+# option is 'ref1'. This configuration option dereferences the
+# parameters and facilitates image storage in Swift storage backend
+# every time a new image is added.
+# 
+# Possible values:
+#     * A valid string value
+# 
+# Related options:
+#     * None
+
+delayed_delete = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Turn on/off delayed delete.
+# 
+# Typically when an image is deleted, the ``glance-api`` service puts the image
+# into ``deleted`` state and deletes its data at the same time. Delayed delete
+# is a feature in Glance that delays the actual deletion of image data until a
+# later point in time (as determined by the configuration option ``scrub_time``).
+# When delayed delete is turned on, the ``glance-api`` service puts the image
+# into ``pending_delete`` state upon deletion and leaves the image data in the
+# storage backend for the image scrubber to delete at a later time. The image
+# scrubber will move the image into ``deleted`` state upon successful deletion
+# of image data.
+# 
+# NOTE: When delayed delete is turned on, image scrubber MUST be running as a
+# periodic task to prevent the backend storage from filling up with undesired
+# usage.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * ``scrub_time``
+#     * ``wakeup_time``
+#     * ``scrub_pool_size``
+
+digest_algorithm = sha256
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Digest algorithm to use for digital signature.
+# 
+# Provide a string value representing the digest algorithm to
+# use for generating digital signatures. By default, ``sha256``
+# is used.
+# 
+# To get a list of the available algorithms supported by the version
+# of OpenSSL on your platform, run the command:
+# ``openssl list-message-digest-algorithms``.
+# Examples are 'sha1', 'sha256', and 'sha512'.
+# 
+# NOTE: ``digest_algorithm`` is not related to Glance's image signing
+# and verification. It is only used to sign the universally unique
+# identifier (UUID) as a part of the certificate file and key file
+# validation.
+# 
+# Possible values:
+#     * An OpenSSL message digest algorithm identifier
+# 
+# Relation options:
+#     * None
+
+disabled_notifications = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of notifications to be disabled.
+# 
+# Specify a list of notifications that should not be emitted.
+# A notification can be given either as a notification type to
+# disable a single event notification, or as a notification group
+# prefix to disable all event notifications within a group.
+# 
+# Possible values:
+#     A comma-separated list of individual notification types or
+#     notification groups to be disabled. Currently supported groups:
+#         * image
+#         * image.member
+#         * task
+#         * metadef_namespace
+#         * metadef_object
+#         * metadef_property
+#         * metadef_resource_type
+#         * metadef_tag
+#     For a complete listing and description of each event refer to:
+#     http://docs.openstack.org/developer/glance/notifications.html
+# 
+#     The values must be specified as: <group_name>.<event_name>
+#     For example: image.create,task.success,metadef_tag
+# 
+# Related options:
+#     * None
+
+dontreplicate = created_at date deleted_at location updated_at
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of fields to not replicate.
+
+enable_v1_api = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Deploy the v1 OpenStack Images API.
+# 
+# When this option is set to ``True``, Glance service will respond to
+# requests on registered endpoints conforming to the v1 OpenStack
+# Images API.
+# 
+# NOTES:
+#     * If this option is enabled, then ``enable_v1_registry`` must
+#       also be set to ``True`` to enable mandatory usage of Registry
+#       service with v1 API.
+# 
+#     * If this option is disabled, then the ``enable_v1_registry``
+#       option, which is enabled by default, is also recommended
+#       to be disabled.
+# 
+#     * This option is separate from ``enable_v2_api``, both v1 and v2
+#       OpenStack Images API can be deployed independent of each
+#       other.
+# 
+#     * If deploying only the v2 Images API, this option, which is
+#       enabled by default, should be disabled.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * enable_v1_registry
+#     * enable_v2_api
+
+enable_v1_registry = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Deploy the v1 API Registry service.
+# 
+# When this option is set to ``True``, the Registry service
+# will be enabled in Glance for v1 API requests.
+# 
+# NOTES:
+#     * Use of Registry is mandatory in v1 API, so this option must
+#       be set to ``True`` if the ``enable_v1_api`` option is enabled.
+# 
+#     * If deploying only the v2 OpenStack Images API, this option,
+#       which is enabled by default, should be disabled.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * enable_v1_api
+
+enable_v2_api = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Deploy the v2 OpenStack Images API.
+# 
+# When this option is set to ``True``, Glance service will respond
+# to requests on registered endpoints conforming to the v2 OpenStack
+# Images API.
+# 
+# NOTES:
+#     * If this option is disabled, then the ``enable_v2_registry``
+#       option, which is enabled by default, is also recommended
+#       to be disabled.
+# 
+#     * This option is separate from ``enable_v1_api``, both v1 and v2
+#       OpenStack Images API can be deployed independent of each
+#       other.
+# 
+#     * If deploying only the v1 Images API, this option, which is
+#       enabled by default, should be disabled.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * enable_v2_registry
+#     * enable_v1_api
+
+enable_v2_registry = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Deploy the v2 API Registry service.
+# 
+# When this option is set to ``True``, the Registry service
+# will be enabled in Glance for v2 API requests.
+# 
+# NOTES:
+#     * Use of Registry is optional in v2 API, so this option
+#       must only be enabled if both ``enable_v2_api`` is set to
+#       ``True`` and the ``data_api`` option is set to
+#       ``glance.db.registry.api``.
+# 
+#     * If deploying only the v1 OpenStack Images API, this option,
+#       which is enabled by default, should be disabled.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * enable_v2_api
+#     * data_api
+
+http_keepalive = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set keep alive option for HTTP over TCP.
+# 
+# Provide a boolean value to determine sending of keep alive packets.
+# If set to ``False``, the server returns the header
+# "Connection: close". If set to ``True``, the server returns a
+# "Connection: Keep-Alive" in its responses. This enables retention of
+# the same TCP connection for HTTP conversations instead of opening a
+# new one with each new request.
+# 
+# This option must be set to ``False`` if the client socket connection
+# needs to be closed explicitly after the response is received and
+# read successfully by the client.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * None
+
+image_cache_dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Base directory for image cache.
+# 
+# This is the location where image data is cached and served out of. All cached
+# images are stored directly under this directory. This directory also contains
+# three subdirectories, namely, ``incomplete``, ``invalid`` and ``queue``.
+# 
+# The ``incomplete`` subdirectory is the staging area for downloading images. An
+# image is first downloaded to this directory. When the image download is
+# successful it is moved to the base directory. However, if the download fails,
+# the partially downloaded image file is moved to the ``invalid`` subdirectory.
+# 
+# The ``queue``subdirectory is used for queuing images for download. This is
+# used primarily by the cache-prefetcher, which can be scheduled as a periodic
+# task like cache-pruner and cache-cleaner, to cache images ahead of their usage.
+# Upon receiving the request to cache an image, Glance touches a file in the
+# ``queue`` directory with the image id as the file name. The cache-prefetcher,
+# when running, polls for the files in ``queue`` directory and starts
+# downloading them in the order they were created. When the download is
+# successful, the zero-sized file is deleted from the ``queue`` directory.
+# If the download fails, the zero-sized file remains and it'll be retried the
+# next time cache-prefetcher runs.
+# 
+# Possible values:
+#     * A valid path
+# 
+# Related options:
+#     * ``image_cache_sqlite_db``
+
+image_cache_driver = sqlite
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The driver to use for image cache management.
+# 
+# This configuration option provides the flexibility to choose between the
+# different image-cache drivers available. An image-cache driver is responsible
+# for providing the essential functions of image-cache like write images to/read
+# images from cache, track age and usage of cached images, provide a list of
+# cached images, fetch size of the cache, queue images for caching and clean up
+# the cache, etc.
+# 
+# The essential functions of a driver are defined in the base class
+# ``glance.image_cache.drivers.base.Driver``. All image-cache drivers (existing
+# and prospective) must implement this interface. Currently available drivers
+# are ``sqlite`` and ``xattr``. These drivers primarily differ in the way they
+# store the information about cached images:
+#     * The ``sqlite`` driver uses a sqlite database (which sits on every glance
+#     node locally) to track the usage of cached images.
+#     * The ``xattr`` driver uses the extended attributes of files to store this
+#     information. It also requires a filesystem that sets ``atime`` on the files
+#     when accessed.
+# 
+# Possible values:
+#     * sqlite
+#     * xattr
+# 
+# Related options:
+#     * None
+
+image_cache_max_size = 10737418240
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The upper limit on cache size, in bytes, after which the cache-pruner cleans
+# up the image cache.
+# 
+# NOTE: This is just a threshold for cache-pruner to act upon. It is NOT a
+# hard limit beyond which the image cache would never grow. In fact, depending
+# on how often the cache-pruner runs and how quickly the cache fills, the image
+# cache can far exceed the size specified here very easily. Hence, care must be
+# taken to appropriately schedule the cache-pruner and in setting this limit.
+# 
+# Glance caches an image when it is downloaded. Consequently, the size of the
+# image cache grows over time as the number of downloads increases. To keep the
+# cache size from becoming unmanageable, it is recommended to run the
+# cache-pruner as a periodic task. When the cache pruner is kicked off, it
+# compares the current size of image cache and triggers a cleanup if the image
+# cache grew beyond the size specified here. After the cleanup, the size of
+# cache is less than or equal to size specified here.
+# 
+# Possible values:
+#     * Any non-negative integer
+# 
+# Related options:
+#     * None
+
+image_cache_sqlite_db = cache.db
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The relative path to sqlite file database that will be used for image cache
+# management.
+# 
+# This is a relative path to the sqlite file database that tracks the age and
+# usage statistics of image cache. The path is relative to image cache base
+# directory, specified by the configuration option ``image_cache_dir``.
+# 
+# This is a lightweight database with just one table.
+# 
+# Possible values:
+#     * A valid relative path to sqlite file database
+# 
+# Related options:
+#     * ``image_cache_dir``
+
+image_cache_stall_time = 86400
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The amount of time, in seconds, an incomplete image remains in the cache.
+# 
+# Incomplete images are images for which download is in progress. Please see the
+# description of configuration option ``image_cache_dir`` for more detail.
+# Sometimes, due to various reasons, it is possible the download may hang and
+# the incompletely downloaded image remains in the ``incomplete`` directory.
+# This configuration option sets a time limit on how long the incomplete images
+# should remain in the ``incomplete`` directory before they are cleaned up.
+# Once an incomplete image spends more time than is specified here, it'll be
+# removed by cache-cleaner on its next run.
+# 
+# It is recommended to run cache-cleaner as a periodic task on the Glance API
+# nodes to keep the incomplete images from occupying disk space.
+# 
+# Possible values:
+#     * Any non-negative integer
+# 
+# Related options:
+#     * None
+
+image_location_quota = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of locations allowed on an image.
+# 
+# Any negative value is interpreted as unlimited.
+# 
+# Related options:
+#     * None
+
+image_member_quota = 128
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of image members per image.
+# 
+# This limits the maximum of users an image can be shared with. Any negative
+# value is interpreted as unlimited.
+# 
+# Related options:
+#     * None
+
+image_property_quota = 128
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of properties allowed on an image.
+# 
+# This enforces an upper limit on the number of additional properties an image
+# can have. Any negative value is interpreted as unlimited.
+# 
+# NOTE: This won't have any impact if additional properties are disabled. Please
+# refer to ``allow_additional_image_properties``.
+# 
+# Related options:
+#     * ``allow_additional_image_properties``
+
+image_size_cap = 1099511627776
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum size of image a user can upload in bytes.
+# 
+# An image upload greater than the size mentioned here would result
+# in an image creation failure. This configuration option defaults to
+# 1099511627776 bytes (1 TiB).
+# 
+# NOTES:
+#     * This value should only be increased after careful
+#       consideration and must be set less than or equal to
+#       8 EiB (9223372036854775808).
+#     * This value must be set with careful consideration of the
+#       backend storage capacity. Setting this to a very low value
+#       may result in a large number of image failures. And, setting
+#       this to a very large value may result in faster consumption
+#       of storage. Hence, this must be set according to the nature of
+#       images created and storage capacity available.
+# 
+# Possible values:
+#     * Any positive number less than or equal to 9223372036854775808
+
+image_tag_quota = 128
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of tags allowed on an image.
+# 
+# Any negative value is interpreted as unlimited.
+# 
+# Related options:
+#     * None
+
+instance_format = [instance: %(uuid)s] 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The format for an instance that is passed with the log message.
+
+instance_uuid_format = [instance: %(uuid)s] 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The format for an instance UUID that is passed with the log message.
+
+key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to a private key file.
+# 
+# Provide a string value representing a valid absolute path to a
+# private key file which is required to establish the client-server
+# connection.
+# 
+# Possible values:
+#     * Absolute path to the private key file
+# 
+# Related options:
+#     * None
+
+limit_param_default = 25
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The default number of results to return for a request.
+# 
+# Responses to certain API requests, like list images, may return
+# multiple items. The number of results returned can be explicitly
+# controlled by specifying the ``limit`` parameter in the API request.
+# However, if a ``limit`` parameter is not specified, this
+# configuration value will be used as the default number of results to
+# be returned for any API request.
+# 
+# NOTES:
+#     * The value of this configuration option may not be greater than
+#       the value specified by ``api_limit_max``.
+#     * Setting this to a very large value may slow down database
+#       queries and increase response times. Setting this to a
+#       very low value may result in poor user experience.
+# 
+# Possible values:
+#     * Any positive integer
+# 
+# Related options:
+#     * api_limit_max
+
+load_enabled = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# When false, no artifacts can be loaded regardless of available_plugins. When true, artifacts can be loaded.
+
+location_strategy = location_order
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Strategy to determine the preference order of image locations.
+# 
+# This configuration option indicates the strategy to determine
+# the order in which an image's locations must be accessed to
+# serve the image's data. Glance then retrieves the image data
+# from the first responsive active location it finds in this list.
+# 
+# This option takes one of two possible values ``location_order``
+# and ``store_type``. The default value is ``location_order``,
+# which suggests that image data be served by using locations in
+# the order they are stored in Glance. The ``store_type`` value
+# sets the image location preference based on the order in which
+# the storage backends are listed as a comma separated list for
+# the configuration option ``store_type_preference``.
+# 
+# Possible values:
+#     * location_order
+#     * store_type
+# 
+# Related options:
+#     * store_type_preference
+
+log-config-append = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The name of a logging configuration file. This file is appended to any existing logging configuration files. For details about logging configuration files, see the Python logging module documentation. Note that when logging configuration files are used then all logging configuration is set in the configuration file and other logging configuration options are ignored (for example, logging_context_format_string).
+
+log-date-format = %Y-%m-%d %H:%M:%S
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Defines the format string for %%(asctime)s in log records. Default: %(default)s . This option is ignored if log_config_append is set.
+
+log-dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) The base directory used for relative log_file  paths. This option is ignored if log_config_append is set.
+
+log-file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Name of log file to send logging output to. If no default is set, logging will go to stderr as defined by use_stderr. This option is ignored if log_config_append is set.
+
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(user_identity)s] %(instance)s%(message)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Format string to use for log messages with context.
+
+logging_debug_format_suffix = %(funcName)s %(pathname)s:%(lineno)d
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Additional data to append to log message when logging level for the message is DEBUG.
+
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [-] %(instance)s%(message)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Format string to use for log messages when context is undefined.
+
+logging_exception_prefix = %(asctime)s.%(msecs)03d %(process)d ERROR %(name)s %(instance)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Prefix each line of exception output with this format.
+
+logging_user_identity_format = %(user)s %(tenant)s %(domain)s %(user_domain)s %(project_domain)s
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Defines the format string for %(user_identity)s that is used in logging_context_format_string.
+
+mastertoken = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Pass in your authentication token if you have one. This is the token used for the master.
+
+max_header_line = 16384
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum line size of message headers.
+# 
+# Provide an integer value representing a length to limit the size of
+# message headers. The default value is 16384.
+# 
+# NOTE: ``max_header_line`` may need to be increased when using large
+# tokens (typically those generated by the Keystone v3 API with big
+# service catalogs). However, it is to be kept in mind that larger
+# values for ``max_header_line`` would flood the logs.
+# 
+# Setting ``max_header_line`` to 0 sets no limit for the line size of
+# message headers.
+# 
+# Possible values:
+#     * 0
+#     * Positive integer
+# 
+# Related options:
+#     * None
+
+max_request_id_length = 64
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Limit the request ID length.
+# 
+# Provide  an integer value to limit the length of the request ID to
+# the specified length. The default value is 64. Users can change this
+# to any ineteger value between 0 and 16384 however keeping in mind that
+# a larger value may flood the logs.
+# 
+# Possible values:
+#     * Integer value between 0 and 16384
+# 
+# Related options:
+#     * None
+
+metadata_encryption_key = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# AES key for encrypting store location metadata.
+# 
+# Provide a string value representing the AES cipher to use for
+# encrypting Glance store metadata.
+# 
+# NOTE: The AES key to use must be set to a random string of length
+# 16, 24 or 32 bytes.
+# 
+# Possible values:
+#     * String value representing a valid AES key
+# 
+# Related options:
+#     * None
+
+metadata_source_path = /etc/glance/metadefs/
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to the directory where JSON metadefs files are stored.
+# 
+# Glance Metadata Definitions ("metadefs") are served from the database,
+# but are stored in files in the JSON format.  The files in this
+# directory are used to initialize the metadefs in the database.
+# Additionally, when metadefs are exported from the database, the files
+# are written to this directory.
+# 
+# NOTE: If you plan to export metadefs, make sure that this directory
+# has write permissions set for the user being used to run the
+# glance-api service.
+# 
+# Possible values:
+#     * String value representing a valid absolute pathname
+# 
+# Related options:
+#     * None
+
+metaonly = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Only replicate metadata, not images.
+
+owner_is_tenant = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set the image owner to tenant or the authenticated user.
+# 
+# Assign a boolean value to determine the owner of an image. When set to
+# True, the owner of the image is the tenant. When set to False, the
+# owner of the image will be the authenticated user issuing the request.
+# Setting it to False makes the image private to the associated user and
+# sharing with other users within the same tenant (or "project")
+# requires explicit image sharing via image membership.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * None
+
+property_protection_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The location of the property protection file.
+# 
+# Provide a valid path to the property protection file which contains
+# the rules for property protections and the roles/policies associated
+# with them.
+# 
+# A property protection file, when set, restricts the Glance image
+# properties to be created, read, updated and/or deleted by a specific
+# set of users that are identified by either roles or policies.
+# If this configuration option is not set, by default, property
+# protections won't be enforced. If a value is specified and the file
+# is not found, the glance-api service will fail to start.
+# More information on property protections can be found at:
+# http://docs.openstack.org/developer/glance/property-protections.html
+# 
+# Possible values:
+#     * Empty string
+#     * Valid path to the property protection configuration file
+# 
+# Related options:
+#     * property_protection_rule_format
+
+property_protection_rule_format = roles
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Rule format for property protection.
+# 
+# Provide the desired way to set property protection on Glance
+# image properties. The two permissible values are ``roles``
+# and ``policies``. The default value is ``roles``.
+# 
+# If the value is ``roles``, the property protection file must
+# contain a comma separated list of user roles indicating
+# permissions for each of the CRUD operations on each property
+# being protected. If set to ``policies``, a policy defined in
+# policy.json is used to express property protections for each
+# of the CRUD operations. Examples of how property protections
+# are enforced based on ``roles`` or ``policies`` can be found at:
+# http://docs.openstack.org/developer/glance/property-protections.html#examples
+# 
+# Possible values:
+#     * roles
+#     * policies
+# 
+# Related options:
+#     * property_protection_file
+
+public_endpoint = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Public url endpoint to use for Glance/Glare versions response.
+# 
+# This is the public url endpoint that will appear in the Glance/Glare
+# "versions" response. If no value is specified, the endpoint that is
+# displayed in the version's response is that of the host running the
+# API service. Change the endpoint to represent the proxy URL if the
+# API service is running behind a proxy. If the service is running
+# behind a load balancer, add the load balancer's URL for this value.
+# 
+# Possible values:
+#     * None
+#     * Proxy URL
+#     * Load balancer URL
+# 
+# Related options:
+#     * None
+
+publish_errors = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables publication of error events.
+
+pydev_worker_debug_host = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Host address of the pydev server.
+# 
+# Provide a string value representing the hostname or IP of the
+# pydev server to use for debugging. The pydev server listens for
+# debug connections on this address, facilitating remote debugging
+# in Glance.
+# 
+# Possible values:
+#     * Valid hostname
+#     * Valid IP address
+# 
+# Related options:
+#     * None
+
+pydev_worker_debug_port = 5678
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Port number that the pydev server will listen on.
+# 
+# Provide a port number to bind the pydev server to. The pydev
+# process accepts debug connections on this port and facilitates
+# remote debugging in Glance.
+# 
+# Possible values:
+#     * A valid port number
+# 
+# Related options:
+#     * None
+
+rate_limit_burst = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of logged messages per rate_limit_interval.
+
+rate_limit_except_level = CRITICAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Log level name used by rate limiting: CRITICAL, ERROR, INFO, WARNING, DEBUG or empty string. Logs with level greater or equal to rate_limit_except_level are not filtered. An empty string means that all levels are filtered.
+
+rate_limit_interval = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval, number of seconds, of log rate limiting.
+
+registry_client_ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to the Certificate Authority file.
+# 
+# Provide a string value representing a valid absolute path to the
+# certificate authority file to use for establishing a secure
+# connection to the registry server.
+# 
+# NOTE: This option must be set if ``registry_client_protocol`` is
+# set to ``https``. Alternatively, the GLANCE_CLIENT_CA_FILE
+# environment variable may be set to a filepath of the CA file.
+# This option is ignored if the ``registry_client_insecure`` option
+# is set to ``True``.
+# 
+# Possible values:
+#     * String value representing a valid absolute path to the CA
+#       file.
+# 
+# Related options:
+#     * registry_client_protocol
+#     * registry_client_insecure
+
+registry_client_cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to the certificate file.
+# 
+# Provide a string value representing a valid absolute path to the
+# certificate file to use for establishing a secure connection to
+# the registry server.
+# 
+# NOTE: This option must be set if ``registry_client_protocol`` is
+# set to ``https``. Alternatively, the GLANCE_CLIENT_CERT_FILE
+# environment variable may be set to a filepath of the certificate
+# file.
+# 
+# Possible values:
+#     * String value representing a valid absolute path to the
+#       certificate file.
+# 
+# Related options:
+#     * registry_client_protocol
+
+registry_client_insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set verification of the registry server certificate.
+# 
+# Provide a boolean value to determine whether or not to validate
+# SSL connections to the registry server. By default, this option
+# is set to ``False`` and the SSL connections are validated.
+# 
+# If set to ``True``, the connection to the registry server is not
+# validated via a certifying authority and the
+# ``registry_client_ca_file`` option is ignored. This is the
+# registry's equivalent of specifying --insecure on the command line
+# using glanceclient for the API.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * registry_client_protocol
+#     * registry_client_ca_file
+
+registry_client_key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to the private key file.
+# 
+# Provide a string value representing a valid absolute path to the
+# private key file to use for establishing a secure connection to
+# the registry server.
+# 
+# NOTE: This option must be set if ``registry_client_protocol`` is
+# set to ``https``. Alternatively, the GLANCE_CLIENT_KEY_FILE
+# environment variable may be set to a filepath of the key file.
+# 
+# Possible values:
+#     * String value representing a valid absolute path to the key
+#       file.
+# 
+# Related options:
+#     * registry_client_protocol
+
+registry_client_protocol = http
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Protocol to use for communication with the registry server.
+# 
+# Provide a string value representing the protocol to use for
+# communication with the registry server. By default, this option is
+# set to ``http`` and the connection is not secure.
+# 
+# This option can be set to ``https`` to establish a secure connection
+# to the registry server. In this case, provide a key to use for the
+# SSL connection using the ``registry_client_key_file`` option. Also
+# include the CA file and cert file using the options
+# ``registry_client_ca_file`` and ``registry_client_cert_file``
+# respectively.
+# 
+# Possible values:
+#     * http
+#     * https
+# 
+# Related options:
+#     * registry_client_key_file
+#     * registry_client_cert_file
+#     * registry_client_ca_file
+
+registry_client_timeout = 600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout value for registry requests.
+# 
+# Provide an integer value representing the period of time in seconds
+# that the API server will wait for a registry request to complete.
+# The default value is 600 seconds.
+# 
+# A value of 0 implies that a request will never timeout.
+# 
+# Possible values:
+#     * Zero
+#     * Positive integer
+# 
+# Related options:
+#     * None
+
+registry_host = 0.0.0.0
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Address the registry server is hosted on.
+# 
+# Possible values:
+#     * A valid IP or hostname
+# 
+# Related options:
+#     * None
+
+registry_port = 9191
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Port the registry server is listening on.
+# 
+# Possible values:
+#     * A valid port number
+# 
+# Related options:
+#     * None
+
+scrub_pool_size = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The size of thread pool to be used for scrubbing images.
+# 
+# When there are a large number of images to scrub, it is beneficial to scrub
+# images in parallel so that the scrub queue stays in control and the backend
+# storage is reclaimed in a timely fashion. This configuration option denotes
+# the maximum number of images to be scrubbed in parallel. The default value is
+# one, which signifies serial scrubbing. Any value above one indicates parallel
+# scrubbing.
+# 
+# Possible values:
+#     * Any non-zero positive integer
+# 
+# Related options:
+#     * ``delayed_delete``
+
+scrub_time = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The amount of time, in seconds, to delay image scrubbing.
+# 
+# When delayed delete is turned on, an image is put into ``pending_delete``
+# state upon deletion until the scrubber deletes its image data. Typically, soon
+# after the image is put into ``pending_delete`` state, it is available for
+# scrubbing. However, scrubbing can be delayed until a later point using this
+# configuration option. This option denotes the time period an image spends in
+# ``pending_delete`` state before it is available for scrubbing.
+# 
+# It is important to realize that this has storage implications. The larger the
+# ``scrub_time``, the longer the time to reclaim backend storage from deleted
+# images.
+# 
+# Possible values:
+#     * Any non-negative integer
+# 
+# Related options:
+#     * ``delayed_delete``
+
+secure_proxy_ssl_header = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The HTTP header used to determine the scheme for the original request, even if it was removed by an SSL terminating proxy. Typical value is "HTTP_X_FORWARDED_PROTO".
+
+send_identity_headers = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Send headers received from identity when making requests to
+# registry.
+# 
+# Typically, Glance registry can be deployed in multiple flavors,
+# which may or may not include authentication. For example,
+# ``trusted-auth`` is a flavor that does not require the registry
+# service to authenticate the requests it receives. However, the
+# registry service may still need a user context to be populated to
+# serve the requests. This can be achieved by the caller
+# (the Glance API usually) passing through the headers it received
+# from authenticating with identity for the same request. The typical
+# headers sent are ``X-User-Id``, ``X-Tenant-Id``, ``X-Roles``,
+# ``X-Identity-Status`` and ``X-Service-Catalog``.
+# 
+# Provide a boolean value to determine whether to send the identity
+# headers to provide tenant and user information along with the
+# requests to registry service. By default, this option is set to
+# ``False``, which means that user and tenant information is not
+# available readily. It must be obtained by authenticating. Hence, if
+# this is set to ``False``, ``flavor`` must be set to value that
+# either includes authentication or authenticated user context.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * flavor
+
+show_image_direct_url = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Show direct image location when returning an image.
+# 
+# This configuration option indicates whether to show the direct image
+# location when returning image details to the user. The direct image
+# location is where the image data is stored in backend storage. This
+# image location is shown under the image property ``direct_url``.
+# 
+# When multiple image locations exist for an image, the best location
+# is displayed based on the location strategy indicated by the
+# configuration option ``location_strategy``.
+# 
+# NOTES:
+#     * Revealing image locations can present a GRAVE SECURITY RISK as
+#       image locations can sometimes include credentials. Hence, this
+#       is set to ``False`` by default. Set this to ``True`` with
+#       EXTREME CAUTION and ONLY IF you know what you are doing!
+#     * If an operator wishes to avoid showing any image location(s)
+#       to the user, then both this option and
+#       ``show_multiple_locations`` MUST be set to ``False``.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * show_multiple_locations
+#     * location_strategy
+
+show_multiple_locations = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Show all image locations when returning an image.
+# 
+# This configuration option indicates whether to show all the image
+# locations when returning image details to the user. When multiple
+# image locations exist for an image, the locations are ordered based
+# on the location strategy indicated by the configuration opt
+# ``location_strategy``. The image locations are shown under the
+# image property ``locations``.
+# 
+# NOTES:
+#     * Revealing image locations can present a GRAVE SECURITY RISK as
+#       image locations can sometimes include credentials. Hence, this
+#       is set to ``False`` by default. Set this to ``True`` with
+#       EXTREME CAUTION and ONLY IF you know what you are doing!
+#     * If an operator wishes to avoid showing any image location(s)
+#       to the user, then both this option and
+#       ``show_image_direct_url`` MUST be set to ``False``.
+# 
+# Possible values:
+#     * True
+#     * False
+# 
+# Related options:
+#     * show_image_direct_url
+#     * location_strategy
+
+slavetoken = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Pass in your authentication token if you have one. This is the token used for the slave.
+
+swift_store_auth_address = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The address where the Swift authentication service is listening.
+
+swift_store_config_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# File containing the swift account(s) configurations.
+# 
+# Include a string value representing the path to a configuration
+# file that has references for each of the configured Swift
+# account(s)/backing stores. By default, no file path is specified
+# and customized Swift referencing is diabled. Configuring this option
+# is highly recommended while using Swift storage backend for image
+# storage as it helps avoid storage of credentials in the
+# database.
+# 
+# Possible values:
+#     * None
+#     * String value representing a vaid configuration file path
+# 
+# Related options:
+#     * None
+
+swift_store_key = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Auth key for the user authenticating against the Swift authentication service.
+
+swift_store_user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The user to authenticate against the Swift authentication service.
+
+syslog-log-facility = LOG_USER
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Syslog facility to receive log lines. This option is ignored if log_config_append is set.
+
+tcp_keepidle = 600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set the wait time before a connection recheck.
+# 
+# Provide a positive integer value representing time in seconds which
+# is set as the idle wait time before a TCP keep alive packet can be
+# sent to the host. The default value is 600 seconds.
+# 
+# Setting ``tcp_keepidle`` helps verify at regular intervals that a
+# connection is intact and prevents frequent TCP connection
+# reestablishment.
+# 
+# Possible values:
+#     * Positive integer value representing time in seconds
+# 
+# Related options:
+#     * None
+
+token = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Pass in your authentication token if you have one. If you use this option the same token is used for both the master and the slave.
+
+use-syslog = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Use syslog for logging. Existing syslog format is DEPRECATED and will be changed later to honor RFC5424. This option is ignored if log_config_append is set.
+
+use_stderr = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Log output to standard error. This option is ignored if log_config_append is set.
+
+use_user_token = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Whether to pass through the user token when making requests to the registry. To prevent failures with token expiration during big files upload, it is recommended to set this parameter to False.If "use_user_token" is not in effect, then admin credentials can be specified.
+
+user_storage_quota = 0
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum amount of image storage per tenant.
+# 
+# This enforces an upper limit on the cumulative storage consumed by all images
+# of a tenant across all stores. This is a per-tenant limit.
+# 
+# The default unit for this configuration option is Bytes. However, storage
+# units can be specified using case-sensitive literals ``B``, ``KB``, ``MB``,
+# ``GB`` and ``TB`` representing Bytes, KiloBytes, MegaBytes, GigaBytes and
+# TeraBytes respectively. Note that there should not be any space between the
+# value and unit. Value ``0`` signifies no quota enforcement. Negative values
+# are invalid and result in errors.
+# 
+# Possible values:
+#     * A string that is a valid concatenation of a non-negative integer
+#       representing the storage value and an optional string literal
+#       representing storage units as mentioned above.
+# 
+# Related options:
+#     * None
+
+verbose = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# If set to false, the logging level will be set to WARNING instead of the default INFO level.
+
+watch-log-file = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Uses logging handler designed to watch file system. When log file is moved or removed this handler will open a new log file with specified path instantaneously. It makes sense only if log_file option is specified and Linux platform is used. This option is ignored if log_config_append is set.
+
+workers = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of Glance worker processes to start.
+# 
+# Provide a non-negative integer value to set the number of child
+# process workers to service requests. By default, the number of CPUs
+# available is set as the value for ``workers``.
+# 
+# Each worker process is made to listen on the port set in the
+# configuration file and contains a greenthread pool of size 1000.
+# 
+# NOTE: Setting the number of workers to zero, triggers the creation
+# of a single API process with a greenthread pool of size 1000.
+# 
+# Possible values:
+#     * 0
+#     * Positive integer value (typically equal to the number of CPUs)
+# 
+# Related options:
+#     * None
+
+
+
+[database]
+# database options
+# None
+
+backend = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The back end to use for the database.
+
+connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the database.
+
+connection_debug = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verbosity of SQL debugging information: 0=None, 100=Everything.
+
+connection_trace = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Add Python stack traces to SQL as comment strings.
+
+db_inc_retry_interval = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, increases the interval between retries of a database operation up to db_max_retry_interval.
+
+db_max_retries = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum retries in case of connection error or deadlock error before error is raised. Set to -1 to specify an infinite retry count.
+
+db_max_retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If db_inc_retry_interval is set, the maximum seconds between retries of a database operation.
+
+db_retry_interval = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between retries of a database transaction.
+
+idle_timeout = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout before idle SQL connections are reaped.
+
+max_overflow = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for max_overflow with SQLAlchemy.
+
+max_pool_size = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of SQL connections to keep open in a pool. Setting a value of 0 indicates no limit.
+
+max_retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of database connection retries during startup. Set to -1 to specify an infinite retry count.
+
+min_pool_size = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimum number of SQL connections to keep open in a pool.
+
+mysql_sql_mode = TRADITIONAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQL mode to be used for MySQL sessions. This option, including the default, overrides any server-set SQL mode. To use whatever SQL mode is set by the server configuration, set this to no value. Example: mysql_sql_mode=
+
+pool_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for pool_timeout with SQLAlchemy.
+
+retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between retries of opening a SQL connection.
+
+slave_connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the slave database.
+
+sqlite_db = oslo.sqlite
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The file name to use with SQLite.
+
+sqlite_synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, SQLite uses synchronous mode.
+
+use_db_reconnect = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable the experimental use of database reconnect on connection lost.
+
+
+
+[image_format]
+# image_format options
+# None
+
+container_formats = ['ami', 'ari', 'aki', 'bare', 'ovf', 'ova', 'docker']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Supported values for the 'container_format' image attribute
+
+disk_formats = ['ami', 'ari', 'aki', 'vhd', 'vhdx', 'vmdk', 'raw', 'qcow2', 'vdi', 'iso', 'ploop']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Supported values for the 'disk_format' image attribute
+
+
+
+[oslo_concurrency]
+# oslo_concurrency options
+# None
+
+disable_process_locking = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables inter-process locks.
+
+lock_path = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+
+
+
+[oslo_policy]
+# oslo_policy options
+# None
+
+policy_default_rule = default
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default rule. Enforced when a requested rule is not found.
+
+policy_dirs = ['policy.d']
+# class:      <class 'oslo_config.cfg.MultiStrOpt'>
+# deprecated: False
+# multi:      True
+# required:   False
+# help:
+# Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched.  Missing or empty directories are ignored.
+
+policy_file = policy.json
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The file that defines policies.
+
+
+
+[paste_deploy]
+# paste_deploy options
+# None
+
+config_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of the paste configuration file.
+# 
+# Provide a string value representing the name of the paste
+# configuration file to use for configuring piplelines for
+# server application deployments.
+# 
+# NOTES:
+#     * Provide the name or the path relative to the glance directory
+#       for the paste configuration file and not the absolute path.
+#     * The sample paste configuration file shipped with Glance need
+#       not be edited in most cases as it comes with ready-made
+#       pipelines for all common deployment flavors.
+# 
+# If no value is specified for this option, the ``paste.ini`` file
+# with the prefix of the corresponding Glance service's configuration
+# file name will be searched for in the known configuration
+# directories. (For example, if this option is missing from or has no
+# value set in ``glance-api.conf``, the service will look for a file
+# named ``glance-api-paste.ini``.) If the paste configuration file is
+# not found, the service will not start.
+# 
+# Possible values:
+#     * A string value representing the name of the paste configuration
+#       file.
+# 
+# Related Options:
+#     * flavor
+
+flavor = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Deployment flavor to use in the server application pipeline.
+# 
+# Provide a string value representing the appropriate deployment
+# flavor used in the server application pipleline. This is typically
+# the partial name of a pipeline in the paste configuration file with
+# the service name removed.
+# 
+# For example, if your paste section name in the paste configuration
+# file is [pipeline:glance-api-keystone], set ``flavor`` to
+# ``keystone``.
+# 
+# Possible values:
+#     * String value representing a partial pipeline name.
+# 
+# Related Options:
+#     * config_file
+
+
+
+[profiler]
+# OpenStack cross-service profiling
+# OSprofiler library allows to trace requests going through various OpenStack
+# services and create the accumulated report of what time was spent on each
+# request processing step.
+
+connection_string = messaging://
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Connection string for a notifier backend. Default value is messaging:// which
+# sets the notifier to oslo_messaging.
+# 
+# Examples of possible values:
+# 
+# * messaging://: use oslo_messaging driver for sending notifications.
+# * mongodb://127.0.0.1:27017 : use mongodb driver for sending notifications.
+# * elasticsearch://127.0.0.1:9200 : use elasticsearch driver for sending
+# notifications.
+
+enabled = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables the profiling for all services on this node. Default value is False
+# (fully disable the profiling feature).
+# 
+# Possible values:
+# 
+# * True: Enables the feature
+# * False: Disables the feature. The profiling cannot be started via this project
+# operations. If the profiling is triggered by another project, this project part
+# will be empty.
+
+es_doc_type = notification
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Document type for notification indexing in elasticsearch.
+
+es_scroll_size = 10000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Elasticsearch splits large requests in batches. This parameter defines
+# maximum size of each batch (for example: es_scroll_size=10000).
+
+es_scroll_time = 2m
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This parameter is a time value parameter (for example: es_scroll_time=2m),
+# indicating for how long the nodes that participate in the search will maintain
+# relevant resources in order to continue and support it.
+
+hmac_keys = SECRET_KEY
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Secret key(s) to use for encrypting context data for performance profiling.
+# This string value should have the following format: <key1>[,<key2>,...<keyn>],
+# where each key is some random string. A user who triggers the profiling via
+# the REST API has to set one of these keys in the headers of the REST API call
+# to include profiling results of this node for this particular project.
+# 
+# Both "enabled" flag and "hmac_keys" config options should be set to enable
+# profiling. Also, to generate correct profiling information across all services
+# at least one key needs to be consistent between OpenStack projects. This
+# ensures it can be used from client side to generate the trace, containing
+# information from all possible resources.
+
+sentinel_service_name = mymaster
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Redissentinel uses a service name to identify a master redis service.
+# This parameter defines the name (for example:
+# sentinal_service_name=mymaster).
+
+socket_timeout = 0.1
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Redissentinel provides a timeout option on the connections.
+# This parameter defines that timeout (for example: socket_timeout=0.1).
+
+trace_sqlalchemy = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables SQL requests profiling in services. Default value is False (SQL
+# requests won't be traced).
+# 
+# Possible values:
+# 
+# * True: Enables SQL requests profiling. Each SQL query will be part of the
+# trace and can the be analyzed by how much time was spent for that.
+# * False: Disables SQL requests profiling. The spent time is only shown on a
+# higher level of operations. Single SQL queries cannot be analyzed this
+# way.
+
+
+
+[store_type_location_strategy]
+# store_type_location_strategy options
+# None
+
+store_type_preference = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Preference order of storage backends.
+# 
+# Provide a comma separated list of store names in the order in
+# which images should be retrieved from storage backends.
+# These store names must be registered with the ``stores``
+# configuration option.
+# 
+# NOTE: The ``store_type_preference`` configuration option is applied
+# only if ``store_type`` is chosen as a value for the
+# ``location_strategy`` configuration option. An empty list will not
+# change the location order.
+# 
+# Possible values:
+#     * Empty list
+#     * Comma separated list of registered store names. Legal values are:
+#         * file
+#         * http
+#         * rbd
+#         * swift
+#         * sheepdog
+#         * cinder
+#         * vmware
+# 
+# Related options:
+#     * location_strategy
+#     * stores
+
+
+
+[task]
+# task options
+# None
+
+task_executor = taskflow
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Task executor to be used to run task scripts.
+# 
+# Provide a string value representing the executor to use for task
+# executions. By default, ``TaskFlow`` executor is used.
+# 
+# ``TaskFlow`` helps make task executions easy, consistent, scalable
+# and reliable. It also enables creation of lightweight task objects
+# and/or functions that are combined together into flows in a
+# declarative manner.
+# 
+# Possible values:
+#     * taskflow
+# 
+# Related Options:
+#     * None
+
+task_time_to_live = 48
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Time in hours for which a task lives after, either succeeding or failing
+
+work_dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path to the work directory to use for asynchronous
+# task operations.
+# 
+# The directory set here will be used to operate over images -
+# normally before they are imported in the destination store.
+# 
+# NOTE: When providing a value for ``work_dir``, please make sure
+# that enough space is provided for concurrent tasks to run
+# efficiently without running out of space.
+# 
+# A rough estimation can be done by multiplying the number of
+# ``max_workers`` with an average image size (e.g 500MB). The image
+# size estimation should be done based on the average size in your
+# deployment. Note that depending on the tasks running you may need
+# to multiply this number by some factor depending on what the task
+# does. For example, you may want to double the available size if
+# image conversion is enabled. All this being said, remember these
+# are just estimations and you should do them based on the worst
+# case scenario and be prepared to act in case they were wrong.
+# 
+# Possible values:
+#     * String value representing the absolute path to the working
+#       directory
+# 
+# Related Options:
+#     * None
+
+
+
+[taskflow_executor]
+# taskflow_executor options
+# None
+
+conversion_format = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set the desired image conversion format.
+# 
+# Provide a valid image format to which you want images to be
+# converted before they are stored for consumption by Glance.
+# Appropriate image format conversions are desirable for specific
+# storage backends in order to facilitate efficient handling of
+# bandwidth and usage of the storage infrastructure.
+# 
+# By default, ``conversion_format`` is not set and must be set
+# explicitly in the configuration file.
+# 
+# The allowed values for this option are ``raw``, ``qcow2`` and
+# ``vmdk``. The  ``raw`` format is the unstructured disk format and
+# should be chosen when RBD or Ceph storage backends are used for
+# image storage. ``qcow2`` is supported by the QEMU emulator that
+# expands dynamically and supports Copy on Write. The ``vmdk`` is
+# another common disk format supported by many common virtual machine
+# monitors like VMWare Workstation.
+# 
+# Possible values:
+#     * qcow2
+#     * raw
+#     * vmdk
+# 
+# Related options:
+#     * disk_formats
+
+engine_mode = parallel
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set the taskflow engine mode.
+# 
+# Provide a string type value to set the mode in which the taskflow
+# engine would schedule tasks to the workers on the hosts. Based on
+# this mode, the engine executes tasks either in single or multiple
+# threads. The possible values for this configuration option are:
+# ``serial`` and ``parallel``. When set to ``serial``, the engine runs
+# all the tasks in a single thread which results in serial execution
+# of tasks. Setting this to ``parallel`` makes the engine run tasks in
+# multiple threads. This results in parallel execution of tasks.
+# 
+# Possible values:
+#     * serial
+#     * parallel
+# 
+# Related options:
+#     * max_workers
+
+max_workers = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Set the number of engine executable tasks.
+# 
+# Provide an integer value to limit the number of workers that can be
+# instantiated on the hosts. In other words, this number defines the
+# number of parallel tasks that can be executed at the same time by
+# the taskflow engine. This value can be greater than one when the
+# engine mode is set to parallel.
+# 
+# Possible values:
+#     * Integer value greater than or equal to 1
+# 
+# Related options:
+#     * engine_mode
+
+
+

@@ -1,0 +1,149 @@
+{
+  "In": "nova/nova/conf/console.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT",
+      "console": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nOptions under this group allow to tune the configuration of the console proxy\nservice.\n\nNote: in configuration of every compute is a ``console_host`` option,\nwhich allows to select the console proxy service to connect to.\n",
+        "name": "console",
+        "title": "Console Options"
+      }
+    },
+    "options": {
+      "DEFAULT": {
+        "console_driver": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "nova.console.xvp.XVPConsoleProxy",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThis option no longer does anything. Previously this option had only two valid,\nin-tree values: nova.console.xvp.XVPConsoleProxy and\nnova.console.fake.FakeConsoleProxy. The latter of these was only used in tests\nand has since been replaced.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "console_driver",
+          "help": "\nnova-console-proxy is used to set up multi-tenant VM console access.\nThis option allows pluggable driver program for the console session\nand represents driver to use for the console proxy.\n\nPossible values:\n\n* A string representing fully classified class name of console driver.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "console_driver",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "console_topic": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "console",
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nThere is no need to let users choose the RPC topic for all services - there\nis little gain from this. Furthermore, it makes it really easy to break Nova\nby using this option.\n",
+          "deprecated_since": "15.0.0",
+          "dest": "console_topic",
+          "help": "\nRepresents the message queue topic name used by nova-console\nservice when communicating via the AMQP server. The Nova API uses a message\nqueue to communicate with nova-console to retrieve a console URL for that\nhost.\n\nPossible values:\n\n* A string representing topic exchange name\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "console_topic",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      },
+      "console": {
+        "allowed_origins": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "default",
+              "name": "console_allowed_origins"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "allowed_origins",
+          "help": "\nAdds list of allowed origins to the console websocket proxy to allow\nconnections from other origin hostnames.\nWebsocket proxy matches the host header with the origin header to\nprevent cross-site requests. This list specifies if any there are\nvalues other than host are allowed in the origin header.\n\nPossible values:\n\n* A list where each element is an allowed origin hostnames, else an empty list\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "allowed_origins",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        }
+      }
+    }
+  }
+}

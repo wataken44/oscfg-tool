@@ -1,0 +1,715 @@
+{
+  "In": "nova/nova/conf/hyperv.py",
+  "Out": {
+    "groups": {
+      "hyperv": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nThe hyperv feature allows you to configure the Hyper-V hypervisor\ndriver to be used within an OpenStack deployment.\n",
+        "name": "hyperv",
+        "title": "The Hyper-V feature"
+      }
+    },
+    "options": {
+      "hyperv": {
+        "config_drive_cdrom": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "config_drive_cdrom",
+          "help": "\nConfiguration drive cdrom\n\nOpenStack can be configured to write instance metadata to\na configuration drive, which is then attached to the\ninstance before it boots. The configuration drive can be\nattached as a disk drive (default) or as a CD drive.\n\nPossible values:\n\n* True: Attach the configuration drive image as a CD drive.\n* False: Attach the configuration drive image as a disk drive (Default).\n\nRelated options:\n\n* This option is meaningful with force_config_drive option set to 'True'\n  or when the REST API call to create an instance will have\n  '--config-drive=True' flag.\n* config_drive_format option must be set to 'iso9660' in order to use\n  CD drive as the configuration drive image.\n* To use configuration drive with Hyper-V, you must set the\n  mkisofs_cmd value to the full path to an mkisofs.exe installation.\n  Additionally, you must set the qemu_img_cmd value to the full path\n  to an qemu-img command installation.\n* You can configure the Compute service to always create a configuration\n  drive by setting the force_config_drive option to 'True'.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "config_drive_cdrom",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "config_drive_inject_password": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "config_drive_inject_password",
+          "help": "\nConfiguration drive inject password\n\nEnables setting the admin password in the configuration drive image.\n\nRelated options:\n\n* This option is meaningful when used with other options that enable\n  configuration drive usage with Hyper-V, such as force_config_drive.\n* Currently, the only accepted config_drive_format is 'iso9660'.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "config_drive_inject_password",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "dynamic_memory_ratio": {
+          "__class__": "<class 'oslo_config.cfg.FloatOpt'>",
+          "advanced": false,
+          "default": 1.0,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "dynamic_memory_ratio",
+          "help": "\nDynamic memory ratio\n\nEnables dynamic memory allocation (ballooning) when set to a value\ngreater than 1. The value expresses the ratio between the total RAM\nassigned to an instance and its startup RAM amount. For example a\nratio of 2.0 for an instance with 1024MB of RAM implies 512MB of\nRAM allocated at startup.\n\nPossible values:\n\n* 1.0: Disables dynamic memory allocation (Default).\n* Float values greater than 1.0: Enables allocation of total implied\n  RAM divided by this value for startup.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "dynamic_memory_ratio",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Float'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'float'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "floating point value"
+          }
+        },
+        "enable_instance_metrics_collection": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enable_instance_metrics_collection",
+          "help": "\nEnable instance metrics collection\n\nEnables metrics collections for an instance by using Hyper-V's\nmetric APIs. Collected data can by retrieved by other apps and\nservices, e.g.: Ceilometer.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enable_instance_metrics_collection",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "enable_remotefx": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "enable_remotefx",
+          "help": "\nEnable RemoteFX feature\n\nThis requires at least one DirectX 11 capable graphics adapter for\nWindows / Hyper-V Server 2012 R2 or newer and RDS-Virtualization\nfeature has to be enabled.\n\nInstances with RemoteFX can be requested with the following flavor\nextra specs:\n\n**os:resolution**. Guest VM screen resolution size. Acceptable values::\n\n    1024x768, 1280x1024, 1600x1200, 1920x1200, 2560x1600, 3840x2160\n\n``3840x2160`` is only available on Windows / Hyper-V Server 2016.\n\n**os:monitors**. Guest VM number of monitors. Acceptable values::\n\n    [1, 4] - Windows / Hyper-V Server 2012 R2\n    [1, 8] - Windows / Hyper-V Server 2016\n\n**os:vram**. Guest VM VRAM amount. Only available on\nWindows / Hyper-V Server 2016. Acceptable values::\n\n    64, 128, 256, 512, 1024\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "enable_remotefx",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "instances_path_share": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "instances_path_share",
+          "help": "\nInstances path share\n\nThe name of a Windows share mapped to the \"instances_path\" dir\nand used by the resize feature to copy files to the target host.\nIf left blank, an administrative share (hidden network share) will\nbe used, looking for the same \"instances_path\" used locally.\n\nPossible values:\n\n* \"\": An administrative share will be used (Default).\n* Name of a Windows share.\n\nRelated options:\n\n* \"instances_path\": The directory which will be used if this option\n  here is left blank.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "instances_path_share",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "iscsi_initiator_list": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "iscsi_initiator_list",
+          "help": "\nList of iSCSI initiators that will be used for estabilishing iSCSI sessions.\n\nIf none are specified, the Microsoft iSCSI initiator service will choose the\ninitiator.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "iscsi_initiator_list",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "limit_cpu_features": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "limit_cpu_features",
+          "help": "\nLimit CPU features\n\nThis flag is needed to support live migration to hosts with\ndifferent CPU features and checked during instance creation\nin order to limit the CPU features used by the instance.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "limit_cpu_features",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "mounted_disk_query_retry_count": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "mounted_disk_query_retry_count",
+          "help": "\nMounted disk query retry count\n\nThe number of times to retry checking for a mounted disk.\nThe query runs until the device can be found or the retry\ncount is reached.\n\nPossible values:\n\n* Positive integer values. Values greater than 1 is recommended\n  (Default: 10).\n\nRelated options:\n\n* Time interval between disk mount retries is declared with\n  \"mounted_disk_query_retry_interval\" option.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "mounted_disk_query_retry_count",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "mounted_disk_query_retry_interval": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 5,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "mounted_disk_query_retry_interval",
+          "help": "\nMounted disk query retry interval\n\nInterval between checks for a mounted disk, in seconds.\n\nPossible values:\n\n* Time in seconds (Default: 5).\n\nRelated options:\n\n* This option is meaningful when the mounted_disk_query_retry_count\n  is greater than 1.\n* The retry loop runs with mounted_disk_query_retry_count and\n  mounted_disk_query_retry_interval configuration options.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "mounted_disk_query_retry_interval",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "power_state_check_timeframe": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "power_state_check_timeframe",
+          "help": "\nPower state check timeframe\n\nThe timeframe to be checked for instance power state changes.\nThis option is used to fetch the state of the instance from Hyper-V\nthrough the WMI interface, within the specified timeframe.\n\nPossible values:\n\n* Timeframe in seconds (Default: 60).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "power_state_check_timeframe",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "power_state_event_polling_interval": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 2,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "power_state_event_polling_interval",
+          "help": "\nPower state event polling interval\n\nInstance power state change event polling frequency. Sets the\nlistener interval for power state events to the given value.\nThis option enhances the internal lifecycle notifications of\ninstances that reboot themselves. It is unlikely that an operator\nhas to change this value.\n\nPossible values:\n\n* Time in seconds (Default: 2).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "power_state_event_polling_interval",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "qemu_img_cmd": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "qemu-img.exe",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "qemu_img_cmd",
+          "help": "\nqemu-img command\n\nqemu-img is required for some of the image related operations\nlike converting between different image types. You can get it\nfrom here: (http://qemu.weilnetz.de/) or you can install the\nCloudbase OpenStack Hyper-V Compute Driver\n(https://cloudbase.it/openstack-hyperv-driver/) which automatically\nsets the proper path for this config option. You can either give the\nfull path of qemu-img.exe or set its path in the PATH environment\nvariable and leave this option to the default value.\n\nPossible values:\n\n* Name of the qemu-img executable, in case it is in the same\n  directory as the nova-compute service or its path is in the\n  PATH environment variable (Default).\n* Path of qemu-img command (DRIVELETTER:\\PATH\\TO\\QEMU-IMG\\COMMAND).\n\nRelated options:\n\n* If the config_drive_cdrom option is False, qemu-img will be used to\n  convert the ISO to a VHD, otherwise the configuration drive will\n  remain an ISO. To use configuration drive with Hyper-V, you must\n  set the mkisofs_cmd value to the full path to an mkisofs.exe\n  installation.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "qemu_img_cmd",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "use_multipath_io": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "use_multipath_io",
+          "help": "\nUse multipath connections when attaching iSCSI or FC disks.\n\nThis requires the Multipath IO Windows feature to be enabled. MPIO must be\nconfigured to claim such devices.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "use_multipath_io",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "volume_attach_retry_count": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 10,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "volume_attach_retry_count",
+          "help": "\nVolume attach retry count\n\nThe number of times to retry attaching a volume. Volume attachment\nis retried until success or the given retry count is reached.\n\nPossible values:\n\n* Positive integer values (Default: 10).\n\nRelated options:\n\n* Time interval between attachment attempts is declared with\n  volume_attach_retry_interval option.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "volume_attach_retry_count",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "volume_attach_retry_interval": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 5,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "volume_attach_retry_interval",
+          "help": "\nVolume attach retry interval\n\nInterval between volume attachment attempts, in seconds.\n\nPossible values:\n\n* Time in seconds (Default: 5).\n\nRelated options:\n\n* This options is meaningful when volume_attach_retry_count\n  is greater than 1.\n* The retry loop runs with volume_attach_retry_count and\n  volume_attach_retry_interval configuration options.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "volume_attach_retry_interval",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "vswitch_name": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "vswitch_name",
+          "help": "\nExternal virtual switch name\n\nThe Hyper-V Virtual Switch is a software-based layer-2 Ethernet\nnetwork switch that is available with the installation of the\nHyper-V server role. The switch includes programmatically managed\nand extensible capabilities to connect virtual machines to both\nvirtual networks and the physical network. In addition, Hyper-V\nVirtual Switch provides policy enforcement for security, isolation,\nand service levels. The vSwitch represented by this config option\nmust be an external one (not internal or private).\n\nPossible values:\n\n* If not provided, the first of a list of available vswitches\n  is used. This list is queried using WQL.\n* Virtual switch name.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "vswitch_name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "wait_soft_reboot_seconds": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 60,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "wait_soft_reboot_seconds",
+          "help": "\nWait soft reboot seconds\n\nNumber of seconds to wait for instance to shut down after soft\nreboot request is made. We fall back to hard reboot if instance\ndoes not shutdown within this window.\n\nPossible values:\n\n* Time in seconds (Default: 60).\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "wait_soft_reboot_seconds",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      }
+    }
+  }
+}

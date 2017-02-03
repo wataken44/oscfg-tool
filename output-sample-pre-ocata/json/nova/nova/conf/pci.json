@@ -1,0 +1,107 @@
+{
+  "In": "nova/nova/conf/pci.py",
+  "Out": {
+    "groups": {
+      "pci": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "pci",
+        "title": "PCI passthrough options"
+      }
+    },
+    "options": {
+      "pci": {
+        "alias": {
+          "__class__": "<class 'oslo_config.cfg.MultiStrOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "pci_alias"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "alias",
+          "help": "\nAn alias for a PCI passthrough device requirement.\n\nThis allows users to specify the alias in the extra_spec for a flavor, without\nneeding to repeat all the PCI property requirements.\n\nPossible Values:\n\n* A list of JSON values which describe the aliases. For example:\n\n    alias = {\n      \"name\": \"QuickAssist\",\n      \"product_id\": \"0443\",\n      \"vendor_id\": \"8086\",\n      \"device_type\": \"type-PCI\"\n    }\n\n  defines an alias for the Intel QuickAssist card. (multi valued). Valid key\n  values are :\n\n  * \"name\": Name of the PCI alias.\n  * \"product_id\": Product ID of the device in hexadecimal.\n  * \"vendor_id\": Vendor ID of the device in hexadecimal.\n  * \"device_type\": Type of PCI device. Valid values are: \"type-PCI\",\n    \"type-PF\" and \"type-VF\".\n",
+          "metavar": null,
+          "multi": true,
+          "mutable": false,
+          "name": "alias",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": [
+              ""
+            ],
+            "__class__": "<class 'oslo_config.types.MultiString'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": false,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": false,
+            "regex": null,
+            "type_name": "multi valued"
+          }
+        },
+        "passthrough_whitelist": {
+          "__class__": "<class 'oslo_config.cfg.MultiStrOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": "pci_passthrough_whitelist"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "passthrough_whitelist",
+          "help": "\nWhite list of PCI devices available to VMs.\n\nPossible values:\n\n* A JSON dictionary which describe a whitelisted PCI device. It should take\n  the following format:\n\n    [\"vendor_id\": \"<id>\",] [\"product_id\": \"<id>\",]\n    [\"address\": \"[[[[<domain>]:]<bus>]:][<slot>][.[<function>]]\" |\n     \"devname\": \"<name>\",]\n    {\"<tag>\": \"<tag_value>\",}\n\n  Where '[' indicates zero or one occurrences, '{' indicates zero or multiple\n  occurrences, and '|' mutually exclusive options. Note that any missing\n  fields are automatically wildcarded.\n\n  Valid key values are :\n\n  * \"vendor_id\": Vendor ID of the device in hexadecimal.\n  * \"product_id\": Product ID of the device in hexadecimal.\n  * \"address\": PCI address of the device.\n  * \"devname\": Device name of the device (for e.g. interface name). Not all\n    PCI devices have a name.\n  * \"<tag>\": Additional <tag> and <tag_value> used for matching PCI devices.\n    Supported <tag>: \"physical_network\".\n\n  The address key supports traditional glob style and regular expression\n  syntax. Valid examples are:\n\n    passthrough_whitelist = {\"devname\":\"eth0\",\n                             \"physical_network\":\"physnet\"}\n    passthrough_whitelist = {\"address\":\"*:0a:00.*\"}\n    passthrough_whitelist = {\"address\":\":0a:00.\",\n                             \"physical_network\":\"physnet1\"}\n    passthrough_whitelist = {\"vendor_id\":\"1137\",\n                             \"product_id\":\"0071\"}\n    passthrough_whitelist = {\"vendor_id\":\"1137\",\n                             \"product_id\":\"0071\",\n                             \"address\": \"0000:0a:00.1\",\n                             \"physical_network\":\"physnet1\"}\n    passthrough_whitelist = {\"address\":{\"domain\": \".*\",\n                                        \"bus\": \"02\", \"slot\": \"01\",\n                                        \"function\": \"[2-7]\"},\n                             \"physical_network\":\"physnet1\"}\n    passthrough_whitelist = {\"address\":{\"domain\": \".*\",\n                                        \"bus\": \"02\", \"slot\": \"0[1-2]\",\n                                        \"function\": \".*\"},\n                             \"physical_network\":\"physnet1\"}\n\n  The following are invalid, as they specify mutually exclusive options:\n\n    passthrough_whitelist = {\"devname\":\"eth0\",\n                             \"physical_network\":\"physnet\",\n                             \"address\":\"*:0a:00.*\"}\n\n* A JSON list of JSON dictionaries corresponding to the above format. For\n  example:\n\n    passthrough_whitelist = [{\"product_id\":\"0001\", \"vendor_id\":\"8086\"},\n                             {\"product_id\":\"0002\", \"vendor_id\":\"8086\"}]\n",
+          "metavar": null,
+          "multi": true,
+          "mutable": false,
+          "name": "passthrough_whitelist",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": [
+              ""
+            ],
+            "__class__": "<class 'oslo_config.types.MultiString'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": false,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": false,
+            "regex": null,
+            "type_name": "multi valued"
+          }
+        }
+      }
+    }
+  }
+}

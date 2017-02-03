@@ -1,0 +1,1669 @@
+[DEFAULT]
+
+bindir = $pybasedir/bin
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory where magnum binaries are installed.
+
+host = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of this node. This can be an opaque identifier. It is not necessarily a hostname, FQDN, or IP address. However, the node name must be valid within an AMQP key, and if using ZeroMQ, a valid hostname, FQDN, or IP address.
+
+max_manifest_size = 524288
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum raw byte size of any manifest.
+
+password_symbols = ['23456789', 'ABCDEFGHJKLMNPQRSTUVWXYZ', 'abcdefghijkmnopqrstuvwxyz']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Symbols to use for passwords
+
+periodic_enable = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable periodic tasks.
+
+periodic_global_stack_list = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List Heat stacks globally when syncing clusters. Default is to do retrieve each cluster's stack  individually. Reduces number of requests against Heat API if enabled but requires changes to Heat's policy.json.
+
+periodic_interval_max = 60
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Max interval size between periodic tasks execution in seconds.
+
+pybasedir = /home/watanabe-k/oscfg-tool/lib/python3.4/site-packages/magnum
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory where the magnum python module is installed.
+
+rootwrap_config = /etc/magnum/rootwrap.conf
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Path to the rootwrap configuration file to use for running commands as root.
+
+service_down_time = 180
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Max interval size between periodic tasks execution in seconds.
+
+state_path = $pybasedir
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Top-level directory for maintaining magnum's state.
+
+tempdir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Explicitly specify the temporary working directory.
+
+
+
+[api]
+# Options for the magnum-api service
+# None
+
+api_paste_config = api-paste.ini
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Configuration file for WSGI definition of API.
+
+enabled_ssl = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable SSL Magnum API service
+
+host = 127.0.0.1
+# class:      <class 'oslo_config.cfg.IPOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The listen IP for the Magnum API server.
+
+max_limit = 1000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The maximum number of items returned in a single response from a collection resource.
+
+port = 9511
+# class:      <class 'oslo_config.cfg.PortOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The port for the Magnum API server.
+
+ssl_cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This option allows setting path to the SSL certificate of API server.
+
+ssl_key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This option specifies the path to the file where SSL private key of API server is stored when SSL is in effect.
+
+
+
+[audit]
+# audit options
+# None
+
+namespace = openstack
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# namespace prefix for generated id
+
+
+
+[barbican_client]
+# Options for the Barbican client
+# None
+
+endpoint_type = publicURL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of endpoint in Identity service catalog to use for communication with the OpenStack service.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region in Identity service catalog to use for communication with the OpenStack service.
+
+
+
+[certificates]
+# Certificate options for the cert manager.
+# None
+
+cert_manager_type = barbican
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Certificate Manager plugin. Defaults to barbican.
+
+storage_path = /var/lib/magnum/certificates/
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Absolute path of the certificate storage directory. Defaults to /var/lib/magnum/certificates/.
+
+
+
+[cinder_client]
+# Options for the Cinder client
+# None
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region in Identity service catalog to use for communication with the OpenStack service.
+
+
+
+[cluster]
+# Options for Cluster configuration
+# None
+
+enabled_definitions = ['magnum_vm_atomic_k8s', 'magnum_bm_fedora_k8s', 'magnum_vm_coreos_k8s', 'magnum_vm_atomic_swarm', 'magnum_vm_ubuntu_mesos']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Enabled cluster definition entry points.
+
+etcd_discovery_service_endpoint_format = https://discovery.etcd.io/new?size=%(size)d
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Url for etcd public discovery endpoint.
+
+
+
+[cluster_heat]
+# Heat options for Cluster configuration
+# None
+
+create_timeout = 60
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The length of time to let cluster creation continue. This interval is in minutes. The default is 60 minutes.
+
+max_attempts = 2000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of attempts to query the Heat stack for finding out the status of the created stack and getting template outputs.  This value is ignored during cluster creation if timeout is set as the poll will continue until cluster creation either ends or times out.
+
+wait_interval = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Sleep time interval between two attempts of querying the Heat stack.  This interval is in seconds.
+
+
+
+[cluster_template]
+# Options for cluster_template
+# None
+
+kubernetes_allowed_network_drivers = ['all']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allowed network drivers for kubernetes cluster-templates. Use 'all' keyword to allow all drivers supported for kubernetes cluster-templates. Supported network drivers include flannel.
+
+kubernetes_default_network_driver = flannel
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default network driver for kubernetes cluster-templates.
+
+mesos_allowed_network_drivers = ['all']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allowed network drivers for mesos cluster-templates. Use 'all' keyword to allow all drivers supported for mesos cluster-templates. Supported network drivers include docker.
+
+mesos_default_network_driver = docker
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default network driver for mesos cluster-templates.
+
+swarm_allowed_network_drivers = ['all']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Allowed network drivers for docker swarm cluster-templates. Use 'all' keyword to allow all drivers supported for swarm cluster-templates. Supported network drivers include docker and flannel.
+
+swarm_default_network_driver = docker
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default network driver for docker swarm cluster-templates.
+
+
+
+[conductor]
+# Options for the magnum-conductor service
+# None
+
+conductor_life_check_timeout = 4
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# RPC timeout for the conductor liveness check that is used for cluster locking.
+
+topic = magnum-conductor
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The queue to add conductor tasks to.
+
+
+
+[database]
+# Options for Magnum Database
+# None
+
+backend = sqlalchemy
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The back end to use for the database.
+
+connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the database.
+
+connection_debug = 0
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verbosity of SQL debugging information: 0=None, 100=Everything.
+
+connection_trace = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Add Python stack traces to SQL as comment strings.
+
+db_inc_retry_interval = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, increases the interval between retries of a database operation up to db_max_retry_interval.
+
+db_max_retries = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum retries in case of connection error or deadlock error before error is raised. Set to -1 to specify an infinite retry count.
+
+db_max_retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If db_inc_retry_interval is set, the maximum seconds between retries of a database operation.
+
+db_retry_interval = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Seconds between retries of a database transaction.
+
+idle_timeout = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout before idle SQL connections are reaped.
+
+max_overflow = 50
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for max_overflow with SQLAlchemy.
+
+max_pool_size = 5
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of SQL connections to keep open in a pool. Setting a value of 0 indicates no limit.
+
+max_retries = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum number of database connection retries during startup. Set to -1 to specify an infinite retry count.
+
+min_pool_size = 1
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Minimum number of SQL connections to keep open in a pool.
+
+mysql_engine = InnoDB
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# MySQL engine to use.
+
+mysql_sql_mode = TRADITIONAL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQL mode to be used for MySQL sessions. This option, including the default, overrides any server-set SQL mode. To use whatever SQL mode is set by the server configuration, set this to no value. Example: mysql_sql_mode=
+
+pool_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, use this value for pool_timeout with SQLAlchemy.
+
+retry_interval = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Interval between retries of opening a SQL connection.
+
+slave_connection = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The SQLAlchemy connection string to use to connect to the slave database.
+
+sqlite_db = oslo.sqlite
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The file name to use with SQLite.
+
+sqlite_synchronous = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If True, SQLite uses synchronous mode.
+
+use_db_reconnect = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enable the experimental use of database reconnect on connection lost.
+
+
+
+[docker]
+# Options for Docker engine
+# None
+
+api_insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, ignore any SSL validation issues
+
+ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location of CA certificates file for securing docker api requests (tlscacert).
+
+cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location of TLS certificate file for securing docker api requests (tlscert).
+
+default_timeout = 60
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Default timeout in seconds for docker client operations.
+
+docker_remote_api_version = 1.20
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Docker remote api version. Override it according to specific docker api version in your environment.
+
+key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Location of TLS private key file for securing docker api requests (tlskey).
+
+
+
+[docker_registry]
+# Options for Docker Registry
+# None
+
+swift_region = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region name of Swift
+
+swift_registry_container = docker_registry
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of the container in Swift which docker registry stores images in
+
+
+
+[glance_client]
+# Options for the Glance client
+# None
+
+api_version = 2
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Version of Glance API to use in glanceclient.
+
+ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional CA cert file to use in SSL connections.
+
+cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted certificate chain file.
+
+endpoint_type = publicURL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of endpoint in Identity service catalog to use for communication with the OpenStack service.
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, then the server's certificate will not be verified.
+
+key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted file that contains the private key.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region in Identity service catalog to use for communication with the OpenStack service.
+
+
+
+[heat_client]
+# Options for the Heat client
+# None
+
+api_version = 1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Version of Heat API to use in heatclient.
+
+ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional CA cert file to use in SSL connections.
+
+cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted certificate chain file.
+
+endpoint_type = publicURL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of endpoint in Identity service catalog to use for communication with the OpenStack service.
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, then the server's certificate will not be verified.
+
+key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted file that contains the private key.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region in Identity service catalog to use for communication with the OpenStack service.
+
+
+
+[keystone_auth]
+# keystone_auth options
+# None
+
+auth-url = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   True
+# help:
+# Authentication URL
+
+auth_section = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Config Section from which to load plugin specific options
+
+auth_type = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Authentication type to load
+
+cafile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded Certificate Authority to use when verifying HTTPs connections.
+
+certfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded client certificate cert file
+
+default-domain-id = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional domain ID to use with v3 and v2 parameters. It will be used for both the user and project domain in v3 and ignored in v2 authentication.
+
+default-domain-name = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional domain name to use with v3 API and v2 parameters. It will be used for both the user and project domain in v3 and ignored in v2 authentication.
+
+domain-id = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Domain ID to scope to
+
+domain-name = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Domain name to scope to
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verify HTTPS connections.
+
+keyfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# PEM encoded client certificate key file
+
+password = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User's password
+
+project-domain-id = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Domain ID containing project
+
+project-domain-name = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Domain name containing project
+
+project-id = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Project ID to scope to
+
+project-name = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Project name to scope to
+
+timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Timeout value for http requests
+
+trust-id = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Trust ID
+
+user-domain-id = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User's domain id
+
+user-domain-name = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User's domain name
+
+user-id = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User id
+
+username = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Username
+
+
+
+[keystone_authtoken]
+# keystone_authtoken options
+# None
+
+admin_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Service user password.
+
+admin_tenant_name = admin
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Service tenant name.
+
+admin_token = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This option is deprecated and may be removed in a future release. Single shared secret with the Keystone configuration used for bootstrapping a Keystone installation, or otherwise bypassing the normal authentication process. This option should not be used, use `admin_user` and `admin_password` instead.
+
+admin_user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Service username.
+
+auth_admin_prefix = 
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Prefix to prepend at the beginning of the path. Deprecated, use identity_uri.
+
+auth_host = 127.0.0.1
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Host providing the admin Identity API endpoint. Deprecated, use identity_uri.
+
+auth_port = 35357
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Port of the admin Identity API endpoint. Deprecated, use identity_uri.
+
+auth_protocol = https
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Protocol of the admin Identity API endpoint. Deprecated, use identity_uri.
+
+auth_section = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Config Section from which to load plugin specific options
+
+auth_type = None
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Authentication type to load
+
+auth_uri = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Complete "public" Identity API endpoint. This endpoint should not be an "admin" endpoint, as it should be accessible by all end users. Unauthenticated clients are redirected to this endpoint to authenticate. Although this endpoint should  ideally be unversioned, client support in the wild varies.  If you're using a versioned v2 endpoint here, then this  should *not* be the same endpoint the service user utilizes  for validating tokens, because normal end users may not be  able to reach that endpoint.
+
+auth_version = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# API version of the admin Identity API endpoint.
+
+cache = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Request environment key where the Swift cache object is stored. When auth_token middleware is deployed with a Swift cache, use this option to have the middleware share a caching backend with swift. Otherwise, use the ``memcached_servers`` option instead.
+
+cafile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A PEM encoded Certificate Authority to use when verifying HTTPs connections. Defaults to system CAs.
+
+certfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Required if identity server requires client certificate
+
+check_revocations_for_cached = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# If true, the revocation list will be checked for cached tokens. This requires that PKI tokens are configured on the identity server.
+
+delay_auth_decision = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Do not handle authorization requests within the middleware, but delegate the authorization decision to downstream WSGI components.
+
+enforce_token_bind = permissive
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Used to control the use and type of token binding. Can be set to: "disabled" to not check token binding. "permissive" (default) to validate binding information if the bind type is of a form known to the server and ignore it if not. "strict" like "permissive" but if the bind type is unknown the token will be rejected. "required" any form of token binding is needed to be allowed. Finally the name of a binding method that must be present in tokens.
+
+hash_algorithms = ['md5']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Hash algorithms to use for hashing PKI tokens. This may be a single algorithm or multiple. The algorithms are those supported by Python standard hashlib.new(). The hashes will be tried in the order given, so put the preferred one first for performance. The result of the first hash will be stored in the cache. This will typically be set to multiple values only while migrating from a less secure algorithm to a more secure one. Once all the old tokens are expired this option should be set to a single value for better performance.
+
+http_connect_timeout = None
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Request timeout value for communicating with Identity API server.
+
+http_request_max_retries = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# How many times are we trying to reconnect when communicating with Identity API Server.
+
+identity_uri = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Complete admin Identity API endpoint. This should specify the unversioned root endpoint e.g. https://localhost:35357/
+
+include_service_catalog = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Indicate whether to set the X-Service-Catalog header. If False, middleware will not ask for service catalog on token validation and will not set the X-Service-Catalog header.
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Verify HTTPS connections.
+
+keyfile = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Required if identity server requires client certificate
+
+memcache_pool_conn_get_timeout = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Number of seconds that an operation will wait to get a memcached client connection from the pool.
+
+memcache_pool_dead_retry = 300
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Number of seconds memcached server is considered dead before it is tried again.
+
+memcache_pool_maxsize = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Maximum total number of open connections to every memcached server.
+
+memcache_pool_socket_timeout = 3
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Socket timeout in seconds for communicating with a memcached server.
+
+memcache_pool_unused_timeout = 60
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Number of seconds a connection to memcached is held unused in the pool before it is closed.
+
+memcache_secret_key = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional, mandatory if memcache_security_strategy is defined) This string is used for key derivation.
+
+memcache_security_strategy = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) If defined, indicate whether token data should be authenticated or authenticated and encrypted. If MAC, token data is authenticated (with HMAC) in the cache. If ENCRYPT, token data is encrypted and authenticated in the cache. If the value is not one of these options or empty, auth_token will raise an exception on initialization.
+
+memcache_use_advanced_pool = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# (Optional) Use the advanced (eventlet safe) memcached client pool. The advanced pool will only work under python 2.x.
+
+memcached_servers = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optionally specify a list of memcached server(s) to use for caching. If left undefined, tokens will instead be cached in-process.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The region in which the identity server can be found.
+
+revocation_cache_time = 10
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Determines the frequency at which the list of revoked tokens is retrieved from the Identity service (in seconds). A high number of revocation events combined with a low cache duration may significantly reduce performance. Only valid for PKI tokens. This option has been deprecated in the Ocata release and will be removed in the P release.
+
+service_token_roles = ['service']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# A choice of roles that must be present in a service token. Service tokens are allowed to request that an expired token can be used and so this check should tightly control that only actual services should be sending this token. Roles here are applied as an ANY check so any role in this list must be present. For backwards compatibility reasons this currently only affects the allow_expired check.
+
+service_token_roles_required = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# For backwards compatibility reasons we must let valid service tokens pass that don't pass the service_token_roles check as valid. Setting this true will become the default in a future release and should be enabled if possible.
+
+signing_dir = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# Directory used to cache files related to PKI tokens. This option has been deprecated in the Ocata release and will be removed in the P release.
+
+token_cache_time = 300
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# In order to prevent excessive effort spent validating tokens, the middleware caches previously-seen tokens for a configurable duration (in seconds). Set to -1 to disable caching completely.
+
+
+
+[magnum_client]
+# Options for the Magnum client
+# None
+
+endpoint_type = publicURL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of endpoint in Identity service catalog to use for communication with the OpenStack service.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region in Identity service catalog to use for communication with the OpenStack service.
+
+
+
+[neutron_client]
+# Options for the neutron client
+# None
+
+ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional CA cert file to use in SSL connections.
+
+cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted certificate chain file.
+
+endpoint_type = publicURL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of endpoint in Identity service catalog to use for communication with the OpenStack service.
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, then the server's certificate will not be verified.
+
+key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted file that contains the private key.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region in Identity service catalog to use for communication with the OpenStack service.
+
+
+
+[nova_client]
+# Options for the nova client
+# None
+
+api_version = 2
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Version of Nova API to use in novaclient.
+
+ca_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional CA cert file to use in SSL connections.
+
+cert_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted certificate chain file.
+
+endpoint_type = publicURL
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Type of endpoint in Identity service catalog to use for communication with the OpenStack service.
+
+insecure = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# If set, then the server's certificate will not be verified.
+
+key_file = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Optional PEM-formatted file that contains the private key.
+
+region_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Region in Identity service catalog to use for communication with the OpenStack service.
+
+
+
+[oslo_concurrency]
+# oslo_concurrency options
+# None
+
+disable_process_locking = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables inter-process locks.
+
+lock_path = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+
+
+
+[oslo_versionedobjects]
+# oslo_versionedobjects options
+# None
+
+fatal_exception_format_errors = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Make exception message format errors fatal
+
+
+
+[profiler]
+# OpenStack cross-service profiling
+# OSprofiler library allows to trace requests going through various OpenStack
+# services and create the accumulated report of what time was spent on each
+# request processing step.
+
+connection_string = messaging://
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Connection string for a notifier backend. Default value is messaging:// which
+# sets the notifier to oslo_messaging.
+# 
+# Examples of possible values:
+# 
+# * messaging://: use oslo_messaging driver for sending notifications.
+# * mongodb://127.0.0.1:27017 : use mongodb driver for sending notifications.
+# * elasticsearch://127.0.0.1:9200 : use elasticsearch driver for sending
+# notifications.
+
+enabled = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables the profiling for all services on this node. Default value is False
+# (fully disable the profiling feature).
+# 
+# Possible values:
+# 
+# * True: Enables the feature
+# * False: Disables the feature. The profiling cannot be started via this project
+# operations. If the profiling is triggered by another project, this project part
+# will be empty.
+
+es_doc_type = notification
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Document type for notification indexing in elasticsearch.
+
+es_scroll_size = 10000
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Elasticsearch splits large requests in batches. This parameter defines
+# maximum size of each batch (for example: es_scroll_size=10000).
+
+es_scroll_time = 2m
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# This parameter is a time value parameter (for example: es_scroll_time=2m),
+# indicating for how long the nodes that participate in the search will maintain
+# relevant resources in order to continue and support it.
+
+hmac_keys = SECRET_KEY
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Secret key(s) to use for encrypting context data for performance profiling.
+# This string value should have the following format: <key1>[,<key2>,...<keyn>],
+# where each key is some random string. A user who triggers the profiling via
+# the REST API has to set one of these keys in the headers of the REST API call
+# to include profiling results of this node for this particular project.
+# 
+# Both "enabled" flag and "hmac_keys" config options should be set to enable
+# profiling. Also, to generate correct profiling information across all services
+# at least one key needs to be consistent between OpenStack projects. This
+# ensures it can be used from client side to generate the trace, containing
+# information from all possible resources.
+
+sentinel_service_name = mymaster
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Redissentinel uses a service name to identify a master redis service.
+# This parameter defines the name (for example:
+# sentinal_service_name=mymaster).
+
+socket_timeout = 0.1
+# class:      <class 'oslo_config.cfg.FloatOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Redissentinel provides a timeout option on the connections.
+# This parameter defines that timeout (for example: socket_timeout=0.1).
+
+trace_sqlalchemy = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables SQL requests profiling in services. Default value is False (SQL
+# requests won't be traced).
+# 
+# Possible values:
+# 
+# * True: Enables SQL requests profiling. Each SQL query will be part of the
+# trace and can the be analyzed by how much time was spent for that.
+# * False: Disables SQL requests profiling. The spent time is only shown on a
+# higher level of operations. Single SQL queries cannot be analyzed this
+# way.
+
+
+
+[quotas]
+# Options for quota configuration
+# None
+
+max_clusters_per_project = 20
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Max number of clusters allowed per project. Admin can override this default quota for a project by setting explicit limit in quotas DB table (using /quotas REST API endpoint).
+
+
+
+[trust]
+# Trustee options for the magnum services
+# None
+
+roles = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# The roles which are delegated to the trustee by the trustor
+
+trustee_domain_admin_domain_id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Id of the domain admin user's domain. trustee_domain_id is used by default
+
+trustee_domain_admin_domain_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of the domain admin user's domain. trustee_domain_name is used by default
+
+trustee_domain_admin_id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Id of the admin with roles sufficient to manage users in the trustee_domain
+
+trustee_domain_admin_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of the admin with roles sufficient to manage users in the trustee_domain
+
+trustee_domain_admin_password = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Password of trustee_domain_admin
+
+trustee_domain_id = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Id of the domain to create trustee for clusters
+
+trustee_domain_name = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Name of the domain to create trustee for s
+
+
+
+[x509]
+# Options for X509 in Magnum
+# None
+
+allow_ca = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Certificate can get the CA flag in x509 extensions.
+
+allowed_extensions = ['keyUsage', 'extendedKeyUsage', 'subjectAltName', 'basicConstraints', 'subjectKeyIdentifier']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of allowed x509 extensions. Available values: "authorityKeyIdentifier", "subjectKeyIdentifier", "authorityInfoAccess", "basicConstraints", "cRLDistributionPoints", "certificatePolicies", "extendedKeyUsage", "OCSPNoCheck", "inhibitAnyPolicy", "keyUsage", "nameConstraints", "subjectAltName", "issuerAltName"
+
+allowed_key_usage = ['Digital Signature', 'Key Encipherment', 'Non Repudiation']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of allowed x509 key usage. Available values: "Digital Signature", "Non Repudiation", "Key Encipherment", "Data Encipherment", "Key Agreement", "Certificate Sign", "CRL Sign", "Encipher Only", "Decipher Only"
+
+rsa_key_size = 2048
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Size of generated private key.
+
+term_of_validity = 1825
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Number of days for which a certificate is valid.
+
+
+

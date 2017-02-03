@@ -1,0 +1,52 @@
+{
+  "In": "nova/nova/conf/ipv6.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "ipv6_backend": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "rfc2462",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "ipv6_backend",
+          "help": "\nAbstracts out IPv6 address generation to pluggable backends.\n\nnova-network can be put into dual-stack mode, so that it uses\nboth IPv4 and IPv6 addresses. In dual-stack mode, by default, instances\nacquire IPv6 global unicast addresses with the help of stateless address\nauto-configuration mechanism.\n\nRelated options:\n\n* use_neutron: this option only works with nova-network.\n* use_ipv6: this option only works if ipv6 is enabled for nova-network.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "ipv6_backend",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "rfc2462",
+              "account_identifier"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

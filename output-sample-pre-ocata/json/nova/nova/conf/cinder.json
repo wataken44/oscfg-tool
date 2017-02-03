@@ -1,0 +1,528 @@
+{
+  "In": "nova/nova/conf/cinder.py",
+  "Out": {
+    "groups": {
+      "cinder": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "Configuration options for the block storage",
+        "name": "cinder",
+        "title": "Cinder Options"
+      },
+      "oslo_concurrency": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "oslo_concurrency",
+        "title": "oslo_concurrency options"
+      }
+    },
+    "options": {
+      "cinder": {
+        "cafile": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "cafile",
+          "help": "PEM encoded Certificate Authority to use when verifying HTTPs connections.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "cafile",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "catalog_info": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "volumev2:cinderv2:publicURL",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "catalog_info",
+          "help": "\nInfo to match when looking for cinder in the service catalog.\n\nPossible values:\n\n* Format is separated values of the form:\n  <service_type>:<service_name>:<endpoint_type>\n\nNote: Nova does not support the Cinder v1 API since the Nova 15.0.0 Ocata\nrelease.\n\nRelated options:\n\n* endpoint_template - Setting this option will override catalog_info\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "catalog_info",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": {
+              "__class__": "<class '_sre.SRE_Pattern'>",
+              "findall": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "finditer": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "flags": 32,
+              "fullmatch": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "groupindex": {},
+              "groups": 3,
+              "match": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "pattern": "(\\w+):(\\w+):(.*?)",
+              "scanner": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "search": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "split": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "sub": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              },
+              "subn": {
+                "__class__": "<class 'builtin_function_or_method'>"
+              }
+            },
+            "type_name": "string value"
+          }
+        },
+        "certfile": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "certfile",
+          "help": "PEM encoded client certificate cert file",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "certfile",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "cross_az_attach": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": true,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "cross_az_attach",
+          "help": "\nAllow attach between instance and volume in different availability zones.\n\nIf False, volumes attached to an instance must be in the same availability\nzone in Cinder as the instance availability zone in Nova.\nThis also means care should be taken when booting an instance from a volume\nwhere source is not \"volume\" because Nova will attempt to create a volume using\nthe same availability zone as what is assigned to the instance.\nIf that AZ is not in Cinder (or allow_availability_zone_fallback=False in\ncinder.conf), the volume create request will fail and the instance will fail\nthe build request.\nBy default there is no availability zone restriction on volume attach.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "cross_az_attach",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "endpoint_template": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "endpoint_template",
+          "help": "\nIf this option is set then it will override service catalog lookup with\nthis template for cinder endpoint\n\nPossible values:\n\n* URL for cinder endpoint API\n  e.g. http://localhost:8776/v2/%(project_id)s\n\nNote: Nova does not support the Cinder v1 API since the Nova 15.0.0 Ocata\nrelease.\n\nRelated options:\n\n* catalog_info - If endpoint_template is not set, catalog_info will be used.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "endpoint_template",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "http_retries": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": 3,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "http_retries",
+          "help": "\nNumber of times cinderclient should retry on any failed http call.\n0 means connection is attempted only once. Setting it to any positive integer\nmeans that on failure connection is retried that many times e.g. setting it\nto 3 means total attempts to connect will be 4.\n\nPossible values:\n\n* Any integer value. 0 means connection is attempted only once\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "http_retries",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": 0,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        },
+        "insecure": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "insecure",
+          "help": "Verify HTTPS connections.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "insecure",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "keyfile": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "keyfile",
+          "help": "PEM encoded client certificate key file",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "keyfile",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "os_region_name": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "os_region_name",
+          "help": "\nRegion name of this node. This is used when picking the URL in the service\ncatalog.\n\nPossible values:\n\n* Any string representing region name\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "os_region_name",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "timeout": {
+          "__class__": "<class 'oslo_config.cfg.IntOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "timeout",
+          "help": "Timeout value for http requests",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "timeout",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.Integer'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "max": null,
+            "min": null,
+            "num_type": "<class 'int'>",
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "integer value"
+          }
+        }
+      },
+      "oslo_concurrency": {
+        "disable_process_locking": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "disable_process_locking",
+          "help": "Enables or disables inter-process locks.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "disable_process_locking",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "lock_path": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "DEFAULT",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "lock_path",
+          "help": "Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "lock_path",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

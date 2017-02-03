@@ -1,0 +1,60 @@
+{
+  "In": "nova/nova/conf/guestfs.py",
+  "Out": {
+    "groups": {
+      "guestfs": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nlibguestfs is a set of tools for accessing and modifying virtual\nmachine (VM) disk images. You can use this for viewing and editing\nfiles inside guests, scripting changes to VMs, monitoring disk\nused/free statistics, creating guests, P2V, V2V, performing backups,\ncloning VMs, building VMs, formatting disks and resizing disks.\n",
+        "name": "guestfs",
+        "title": "Guestfs Options"
+      }
+    },
+    "options": {
+      "guestfs": {
+        "debug": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "debug",
+          "help": "\nEnable/disables guestfs logging.\n\nThis configures guestfs to debug messages and push them to Openstack\nlogging system. When set to True, it traces libguestfs API calls and\nenable verbose debug messages. In order to use the above feature,\n\"libguestfs\" package must be installed.\n\nRelated options:\nSince libguestfs access and modifies VM's managed by libvirt, below options\nshould be set to give access to those VM's.\n    * libvirt.inject_key\n    * libvirt.inject_partition\n    * libvirt.inject_password\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "debug",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        }
+      }
+    }
+  }
+}

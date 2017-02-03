@@ -1,0 +1,268 @@
+[DEFAULT]
+
+allow_credentials = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate that the actual request can include user credentials
+
+allow_headers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which header field names may be used during the actual request.
+
+allow_methods = ['OPTIONS', 'GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'TRACE', 'PATCH']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which methods can be used during the actual request.
+
+allowed_origin = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate whether this resource may be shared with the domain received in the requests "origin" header. Format: "<protocol>://<host>[:<port>]", no trailing slash. Example: https://horizon.example.com
+
+backends = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Additional backends that can perform health checks and report that information back as part of a request.
+
+detailed = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Show more detailed information as part of the response
+
+disable_by_file_path = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check the presence of a file to determine if an application is running on a port. Used by DisableByFileHealthcheck plugin.
+
+disable_by_file_paths = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check the presence of a file based on a port to determine if an application is running on a port. Expects a "port:path" list of strings. Used by DisableByFilesPortsHealthcheck plugin.
+
+enable_proxy_headers_parsing = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Whether the application is behind a proxy or not. This determines if the middleware should parse the headers or not.
+
+expose_headers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which headers are safe to expose to the API. Defaults to HTTP Simple Headers.
+
+max_age = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum cache age of CORS preflight requests.
+
+path = /healthcheck
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The path to respond to healtcheck requests on.
+
+secure_proxy_ssl_header = X-Forwarded-Proto
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by a SSL termination proxy.
+
+
+
+[cors]
+
+allow_credentials = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate that the actual request can include user credentials
+
+allow_headers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which header field names may be used during the actual request.
+
+allow_methods = ['OPTIONS', 'GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'TRACE', 'PATCH']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which methods can be used during the actual request.
+
+allowed_origin = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate whether this resource may be shared with the domain received in the requests "origin" header. Format: "<protocol>://<host>[:<port>]", no trailing slash. Example: https://horizon.example.com
+
+expose_headers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which headers are safe to expose to the API. Defaults to HTTP Simple Headers.
+
+max_age = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum cache age of CORS preflight requests.
+
+
+
+[cors.subdomain]
+
+allow_credentials = True
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate that the actual request can include user credentials
+
+allow_headers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which header field names may be used during the actual request.
+
+allow_methods = ['OPTIONS', 'GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'TRACE', 'PATCH']
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which methods can be used during the actual request.
+
+allowed_origin = None
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate whether this resource may be shared with the domain received in the requests "origin" header. Format: "<protocol>://<host>[:<port>]", no trailing slash. Example: https://horizon.example.com
+
+expose_headers = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Indicate which headers are safe to expose to the API. Defaults to HTTP Simple Headers.
+
+max_age = 3600
+# class:      <class 'oslo_config.cfg.IntOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Maximum cache age of CORS preflight requests.
+
+
+
+[healthcheck]
+
+backends = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Additional backends that can perform health checks and report that information back as part of a request.
+
+detailed = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Show more detailed information as part of the response
+
+disable_by_file_path = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check the presence of a file to determine if an application is running on a port. Used by DisableByFileHealthcheck plugin.
+
+disable_by_file_paths = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Check the presence of a file based on a port to determine if an application is running on a port. Expects a "port:path" list of strings. Used by DisableByFilesPortsHealthcheck plugin.
+
+path = /healthcheck
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# The path to respond to healtcheck requests on.
+
+
+
+[oslo_middleware]
+
+enable_proxy_headers_parsing = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Whether the application is behind a proxy or not. This determines if the middleware should parse the headers or not.
+
+
+

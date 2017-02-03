@@ -1,0 +1,252 @@
+{
+  "In": "nova/nova/conf/notifications.py",
+  "Out": {
+    "groups": {
+      "notifications": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": "\nMost of the actions in Nova which manipulate the system state generate\nnotifications which are posted to the messaging component (e.g. RabbitMQ) and\ncan be consumed by any service outside the Openstack. More technical details\nat http://docs.openstack.org/developer/nova/notifications.html\n",
+        "name": "notifications",
+        "title": "Notifications options"
+      }
+    },
+    "options": {
+      "notifications": {
+        "default_level": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "INFO",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "default",
+              "name": "default_notification_level"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_level",
+          "help": "Default notification level for outgoing notifications.",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default_level",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "CRITICAL"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "default_publisher_id": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "$my_ip",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "default",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "default_publisher_id",
+          "help": "\nDefault publisher_id for outgoing notifications. If you consider routing\nnotifications using different publisher, change this value accordingly.\n\nPossible values:\n\n* Defaults to the IPv4 address of this host, but it can be any valid\n  oslo.messaging publisher_id\n\nRelated options:\n\n*  my_ip - IP address of this host\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "default_publisher_id",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "notification_format": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "both",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "default",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "notification_format",
+          "help": "\nSpecifies which notification format shall be used by nova.\n\nThe default value is fine for most deployments and rarely needs to be changed.\nThis value can be set to 'versioned' once the infrastructure moves closer to\nconsuming the newer format of notifications. After this occurs, this option\nwill be removed (possibly in the \"P\" release).\n\nPossible values:\n* unversioned: Only the legacy unversioned notifications are emitted.\n* versioned: Only the new versioned notifications are emitted.\n* both: Both the legacy unversioned and the new versioned notifications are\n  emitted. (Default)\n\nThe list of versioned notifications is visible in\nhttp://docs.openstack.org/developer/nova/notifications.html\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "notification_format",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              "unversioned",
+              "versioned",
+              "both"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "notify_on_api_faults": {
+          "__class__": "<class 'oslo_config.cfg.BoolOpt'>",
+          "advanced": false,
+          "default": false,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "default",
+              "name": "notify_api_faults"
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "notify_on_api_faults",
+          "help": "\nIf enabled, send api.fault notifications on caught exceptions in the\nAPI service.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "notify_on_api_faults",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "FALSE_VALUES": [
+              "false",
+              "0",
+              "off",
+              "no"
+            ],
+            "NONE_DEFAULT": "<None>",
+            "TRUE_VALUES": [
+              "true",
+              "1",
+              "on",
+              "yes"
+            ],
+            "__class__": "<class 'oslo_config.types.Boolean'>",
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "boolean value"
+          }
+        },
+        "notify_on_state_change": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": false,
+          "deprecated_opts": [
+            {
+              "__class__": "<class 'oslo_config.cfg.DeprecatedOpt'>",
+              "group": "default",
+              "name": null
+            }
+          ],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "notify_on_state_change",
+          "help": "\nIf set, send compute.instance.update notifications on instance state\nchanges.\n\nPlease refer to https://wiki.openstack.org/wiki/SystemUsageData for\nadditional information on notifications.\n\nPossible values:\n\n* None - no notifications\n* \"vm_state\" - notifications on VM state changes\n* \"vm_and_task_state\" - notifications on VM and task state changes\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "notify_on_state_change",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": [
+              null,
+              "vm_state",
+              "vm_and_task_state"
+            ],
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

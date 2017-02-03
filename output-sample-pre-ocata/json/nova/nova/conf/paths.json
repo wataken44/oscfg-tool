@@ -1,0 +1,123 @@
+{
+  "In": "nova/nova/conf/paths.py",
+  "Out": {
+    "groups": {
+      "DEFAULT": "DEFAULT"
+    },
+    "options": {
+      "DEFAULT": {
+        "bindir": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "/home/watanabe-k/oscfg-tool/local/bin",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "bindir",
+          "help": "\nThe directory where the Nova binaries are installed.\n\nThis option is only relevant if the networking capabilities from Nova are\nused (see services below). Nova's networking capabilities are targeted to\nbe fully replaced by Neutron in the future. It is very unlikely that you need\nto change this option from its default value.\n\nPossible values:\n\n* The full path to a directory.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "bindir",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "pybasedir": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "/home/watanabe-k/oscfg-tool/openstack/nova",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "pybasedir",
+          "help": "\nThe directory where the Nova python modules are installed.\n\nThis directory is used to store template files for networking and remote\nconsole access. It is also the default path for other config options which\nneed to persist Nova internal data. It is very unlikely that you need to\nchange this option from its default value.\n\nPossible values:\n\n* The full path to a directory.\n\nRelated options:\n\n* ``state_path``\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "pybasedir",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        },
+        "state_path": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": "$pybasedir",
+          "deprecated_for_removal": false,
+          "deprecated_opts": [],
+          "deprecated_reason": null,
+          "deprecated_since": null,
+          "dest": "state_path",
+          "help": "\nThe top-level directory for maintaining Nova's state.\n\nThis directory is used to store Nova's internal state. It is used by a\nvariety of other config options which derive from this. In some scenarios\n(for example migrations) it makes sense to use a storage location which is\nshared between multiple compute hosts (for example via NFS). Unless the\noption ``instances_path`` gets overwritten, this directory can grow very\nlarge.\n\nPossible values:\n\n* The full path to a directory. Defaults to value provided in ``pybasedir``.\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "state_path",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}

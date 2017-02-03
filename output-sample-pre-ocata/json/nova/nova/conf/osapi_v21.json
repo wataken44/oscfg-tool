@@ -1,0 +1,152 @@
+{
+  "In": "nova/nova/conf/osapi_v21.py",
+  "Out": {
+    "groups": {
+      "osapi_v21": {
+        "__class__": "<class 'oslo_config.cfg.OptGroup'>",
+        "help": null,
+        "name": "osapi_v21",
+        "title": "API v2.1 Options"
+      }
+    },
+    "options": {
+      "osapi_v21": {
+        "extensions_blacklist": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nAPI extensions are now part of the standard API. API extensions should be\ndisabled using policy, rather than via these configuration options.",
+          "deprecated_since": "12.0.0",
+          "dest": "extensions_blacklist",
+          "help": "\nThis option is a list of all of the v2.1 API extensions to never load.\n\nPossible values:\n\n* A list of strings, each being the alias of an extension that you do not\n  wish to load.\n\nRelated options:\n\n* enabled\n* extensions_whitelist\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "extensions_blacklist",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "extensions_whitelist": {
+          "__class__": "<class 'oslo_config.cfg.ListOpt'>",
+          "advanced": false,
+          "default": [],
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nAPI extensions are now part of the standard API. API extensions should be\ndisabled using policy, rather than via these configuration options.",
+          "deprecated_since": "12.0.0",
+          "dest": "extensions_whitelist",
+          "help": "\nThis is a list of extensions. If it is empty, then *all* extensions except\nthose specified in the extensions_blacklist option will be loaded. If it is not\nempty, then only those extensions in this list will be loaded, provided that\nthey are also not in the extensions_blacklist option.\n\nPossible values:\n\n* A list of strings, each being the alias of an extension that you wish to\n  load, or an empty list, which indicates that all extensions are to be run.\n\nRelated options:\n\n* enabled\n* extensions_blacklist\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "extensions_whitelist",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.List'>",
+            "bounds": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "item_type": {
+              "NONE_DEFAULT": "<None>",
+              "__class__": "<class 'oslo_config.types.String'>",
+              "choices": null,
+              "format_defaults": {
+                "__class__": "<class 'method'>"
+              },
+              "ignore_case": false,
+              "lower_case_choices": null,
+              "max_length": 0,
+              "quote_trailing_and_leading_space": {
+                "__class__": "<class 'method'>"
+              },
+              "quotes": false,
+              "regex": null,
+              "type_name": "string value"
+            },
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "type_name": "list value"
+          }
+        },
+        "project_id_regex": {
+          "__class__": "<class 'oslo_config.cfg.StrOpt'>",
+          "advanced": false,
+          "default": null,
+          "deprecated_for_removal": true,
+          "deprecated_opts": [],
+          "deprecated_reason": "\nRecent versions of nova constrain project IDs to hexadecimal characters and\ndashes. If your installation uses IDs outside of this range, you should use\nthis option to provide your own regex and give you time to migrate offending\nprojects to valid IDs before the next release.",
+          "deprecated_since": "13.0.0",
+          "dest": "project_id_regex",
+          "help": "\nThis option is a string representing a regular expression (regex) that matches\nthe project_id as contained in URLs. If not set, it will match normal UUIDs\ncreated by keystone.\n\nPossible values:\n\n* A string representing any legal regular expression\n",
+          "metavar": null,
+          "multi": false,
+          "mutable": false,
+          "name": "project_id_regex",
+          "positional": false,
+          "required": false,
+          "sample_default": null,
+          "secret": false,
+          "short": null,
+          "type": {
+            "NONE_DEFAULT": "<None>",
+            "__class__": "<class 'oslo_config.types.String'>",
+            "choices": null,
+            "format_defaults": {
+              "__class__": "<class 'method'>"
+            },
+            "ignore_case": null,
+            "lower_case_choices": null,
+            "max_length": 0,
+            "quote_trailing_and_leading_space": {
+              "__class__": "<class 'method'>"
+            },
+            "quotes": null,
+            "regex": null,
+            "type_name": "string value"
+          }
+        }
+      }
+    }
+  }
+}
