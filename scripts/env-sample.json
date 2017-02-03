@@ -1,0 +1,30 @@
+{
+  "openstack": [
+    "cinder",
+    "designate",
+    "glance",
+    "keystone",
+    "keystoneauth",
+    "magnum",
+    "neutron",
+    "nova",
+    "os-brick",
+    "oslo.cache",
+    "oslo.concurrency",
+    "oslo.config",
+    "oslo.context",
+    "oslo.db",
+    "oslo.i18n",
+    "oslo.log",
+    "oslo.policy",
+    "oslo.privsep",
+    "oslo.middleware",
+    "oslo.serialization",
+    "oslo.service",
+    "oslo.utils",
+    "oslo.versionedobjects"
+  ],
+  "package": [
+  ]
+
+}
