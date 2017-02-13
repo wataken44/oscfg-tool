@@ -1,0 +1,74 @@
+[hyperv]
+# hyperv options
+# None
+
+force_volumeutils_v1 = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: True
+# multi:      False
+# required:   False
+# help:
+# DEPRECATED: Force V1 volume utility class
+
+
+
+[oslo_concurrency]
+# oslo_concurrency options
+# None
+
+disable_process_locking = False
+# class:      <class 'oslo_config.cfg.BoolOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Enables or disables inter-process locks.
+
+lock_path = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+
+
+
+[privsep_osbrick]
+# privsep_osbrick options
+# None
+
+capabilities = []
+# class:      <class 'oslo_config.cfg.Opt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# List of Linux capabilities retained by the privsep daemon.
+
+group = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Group that the privsep daemon should run as.
+
+helper_command = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Command to invoke to start the privsep daemon if not using the "fork" method. If not specified, a default is generated using "sudo privsep-helper" and arguments designed to recreate the current configuration. This command must accept suitable --privsep_context and --privsep_sock_path arguments.
+
+user = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# User that the privsep daemon should run as.
+
+
+

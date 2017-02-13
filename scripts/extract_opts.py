@@ -73,10 +73,13 @@ def extract_opts(input_filename, input_base_dir, output_dir):
     
     sfl = None
 
+    
     try:
+        rp = os.path.relpath(input_filename, input_base_dir)
+        mn = os.path.splitext(rp)[0].replace("/",".")
+
         log_write('SourceFileLoader("dummy_module", input_filename).load_module() : ')
-        sfl = SourceFileLoader("dummy_module", input_filename).load_module()
-        import dummy_module
+        dummy_module = SourceFileLoader(mn, input_filename).load_module()
         log_write("succeeded\n")
     except Exception as e:
         log_write("failed\n" + str(e) + "\n")

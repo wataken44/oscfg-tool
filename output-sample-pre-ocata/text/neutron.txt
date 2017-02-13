@@ -279,7 +279,7 @@ api_workers = None
 # Number of separate API worker processes for service. If not specified, the default is equal to the number of CPUs available for best performance.
 
 arp_header_match = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -287,20 +287,12 @@ arp_header_match = False
 # Check for ARP header match support
 
 arp_responder = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
 # help:
 # Check for ARP responder support
-
-auth_ca_cert = None
-# class:      <class 'oslo_config.cfg.StrOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Certificate Authority public key (CA cert) file for ssl
 
 auth_strategy = keystone
 # class:      <class 'oslo_config.cfg.StrOpt'>
@@ -343,7 +335,7 @@ bind_port = 9696
 # The port to bind to
 
 bridge_firewalling = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -471,7 +463,7 @@ dhcp_load_type = networks
 # Representing the resource type whose load is being reported by the agent. This can be "networks", "subnets" or "ports". When specified (Default is networks), the server will extract particular load sent as part of its agent configuration object from the agent report state, which is the number of resources being consumed, at every report_interval.dhcp_load_type can be used in combination with network_scheduler_driver = neutron.scheduler.dhcp_agent_scheduler.WeightScheduler When the network_scheduler_driver is WeightScheduler, dhcp_load_type can be configured to represent the choice for the resource being balanced. Example: dhcp_load_type=networks
 
 dhcp_release6 = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -479,7 +471,7 @@ dhcp_release6 = False
 # Check dhcp_release6 installation
 
 dibbler_version = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -535,7 +527,7 @@ dnsmasq_local_resolv = False
 # Enables the dnsmasq service to provide name resolution for instances via DNS resolvers on the host running the DHCP agent. Effectively removes the '--no-resolv' option from the dnsmasq process arguments. Adding custom DNS resolvers to the 'dnsmasq_dns_servers' option disables this feature.
 
 dnsmasq_version = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -559,7 +551,7 @@ dvr_base_mac = fa:16:3f:00:00:00
 # The base mac address used for unique DVR instances by Neutron. The first 3 octets will remain unchanged. If the 4th octet is not 00, it will also be used. The others will be randomly generated. The 'dvr_base_mac' *must* be different from 'base_mac' to avoid mixing them up with MAC's allocated for tenant ports. A 4 octet example would be dvr_base_mac = fa:16:3f:4f:00:00. The default is 3 octet
 
 ebtables_installed = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -735,7 +727,7 @@ host = deploy
 # Hostname to be used by the Neutron server, agents and services running on this machine. All the agents and services running on this machine must use the same host value.
 
 icmpv6_header_match = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -767,7 +759,7 @@ interface_driver = None
 # The driver used to manage the virtual interface.
 
 ip6tables_installed = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -783,7 +775,7 @@ ip_lib_force_root = False
 # Force ip_lib calls to use the root helper
 
 ip_nonlocal_bind = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -799,7 +791,7 @@ ipam_driver = internal
 # Neutron IPAM (IP address management) driver to use. By default, the reference implementation of the Neutron IPAM driver is used.
 
 iproute2_vxlan = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -807,7 +799,7 @@ iproute2_vxlan = False
 # Check for iproute2 vxlan support
 
 ipset_installed = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -831,7 +823,7 @@ ipv6_pd_enabled = False
 # Enables IPv6 Prefix Delegation for automatic subnet CIDR allocation. Set to True to enable IPv6 Prefix Delegation for subnet allocation in a PD-capable environment. Users making subnet creation requests for IPv6 subnets without providing a CIDR or subnetpool ID will be given a CIDR via the Prefix Delegation mechanism. Note that enabling PD will override the behavior of the default IPv6 subnetpool.
 
 keepalived_ipv6_support = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1022,14 +1014,6 @@ metadata_access_mark = 0x1
 # help:
 # Iptables mangle mark used to mark metadata valid requests. This mark will be masked with 0xffff so that only the lower 16 bits will be used.
 
-metadata_backlog = 4096
-# class:      <class 'oslo_config.cfg.IntOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Number of backlog requests to configure the metadata server socket with
-
 metadata_port = 9697
 # class:      <class 'oslo_config.cfg.PortOpt'>
 # deprecated: False
@@ -1062,14 +1046,6 @@ metadata_proxy_group =
 # help:
 # Group (gid or name) running metadata proxy after its initialization (if empty: agent effective group).
 
-metadata_proxy_shared_secret = 
-# class:      <class 'oslo_config.cfg.StrOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# When proxying metadata requests, Neutron signs the Instance-ID header with a shared secret to prevent spoofing. You may select any string for a secret, but it must match here and in the configuration used by the Nova Metadata Server. NOTE: Nova uses the same config key, but in [neutron] section.
-
 metadata_proxy_socket = $state_path/metadata_proxy
 # class:      <class 'oslo_config.cfg.StrOpt'>
 # deprecated: False
@@ -1085,14 +1061,6 @@ metadata_proxy_socket = $state_path/metadata_proxy
 # required:   False
 # help:
 # Location for Metadata Proxy UNIX domain socket.
-
-metadata_proxy_socket_mode = deduce
-# class:      <class 'oslo_config.cfg.StrOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Metadata Proxy UNIX domain socket mode, 4 values allowed: 'deduce': deduce mode from metadata_proxy_user/group values, 'user': set metadata proxy socket mode to 0o644, to use when metadata_proxy_user is agent effective user or root, 'group': set metadata proxy socket mode to 0o664, to use when metadata_proxy_group is agent effective group or root, 'all': set metadata proxy socket mode to 0o666, to use otherwise.
 
 metadata_proxy_user = None
 # class:      <class 'oslo_config.cfg.StrOpt'>
@@ -1125,14 +1093,6 @@ metadata_proxy_watch_log = None
 # required:   False
 # help:
 # Enable/Disable log watch by metadata proxy. It should be disabled when metadata_proxy_user/group is not allowed to read/write its log file and copytruncate logrotate option must be used if logrotate is enabled on metadata proxy log files. Option default value is deduced from metadata_proxy_user: watch log is enabled if metadata_proxy_user is agent effective user id/name.
-
-metadata_workers = 1
-# class:      <class 'oslo_config.cfg.IntOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Number of separate worker processes for metadata server (defaults to half of the number of CPUs)
 
 min_rtr_adv_interval = 30
 # class:      <class 'oslo_config.cfg.IntOpt'>
@@ -1206,56 +1166,8 @@ notify_nova_on_port_status_changes = True
 # help:
 # Send notification to nova when port status changes
 
-nova_client_cert = 
-# class:      <class 'oslo_config.cfg.StrOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Client certificate for nova metadata api server.
-
-nova_client_priv_key = 
-# class:      <class 'oslo_config.cfg.StrOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Private key of client certificate.
-
-nova_metadata_insecure = False
-# class:      <class 'oslo_config.cfg.BoolOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Allow to perform insecure SSL (https) requests to nova metadata
-
-nova_metadata_ip = 127.0.0.1
-# class:      <class 'oslo_config.cfg.StrOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# IP address used by Nova metadata server.
-
-nova_metadata_port = 8775
-# class:      <class 'oslo_config.cfg.PortOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# TCP Port used by Nova metadata server.
-
-nova_metadata_protocol = http
-# class:      <class 'oslo_config.cfg.StrOpt'>
-# deprecated: False
-# multi:      False
-# required:   False
-# help:
-# Protocol to access nova metadata, http or https
-
 nova_notify = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1271,7 +1183,7 @@ num_sync_threads = 4
 # Number of threads to use during sync process. Should not exceed connection pool size configured on server.
 
 ovs_conntrack = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1279,7 +1191,7 @@ ovs_conntrack = False
 # Check ovs conntrack support
 
 ovs_geneve = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1295,7 +1207,7 @@ ovs_integration_bridge = br-int
 # Name of Open vSwitch bridge to use
 
 ovs_patch = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1319,7 +1231,7 @@ ovs_vsctl_timeout = 10
 # Timeout in seconds for ovs-vsctl commands. If the timeout expires, ovs commands will fail with ALARMCLOCK error.
 
 ovs_vxlan = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1343,7 +1255,7 @@ ovsdb_interface = native
 # The interface for interacting with the OVSDB
 
 ovsdb_native = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1455,7 +1367,7 @@ rate_limit_interval = 0
 # Interval, number of seconds, of log rate limiting.
 
 read_netns = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1639,7 +1551,7 @@ verbose = True
 # If set to false, the logging level will be set to WARNING instead of the default INFO level.
 
 vf_extended_management = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False
@@ -1647,7 +1559,7 @@ vf_extended_management = False
 # Check for VF extended management support
 
 vf_management = False
-# class:      <class 'dummy_module.BoolOptCallback'>
+# class:      <class 'neutron.neutron.cmd.sanity_check.BoolOptCallback'>
 # deprecated: False
 # multi:      False
 # required:   False

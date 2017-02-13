@@ -58,5 +58,5 @@ So list may not be perfect.
 
 ## author
 
-[wataken44](https://github.com/wataken44) [twitter](https://twitter.com/wataken44)
+[wataken44](https://github.com/wataken44)([twitter](https://twitter.com/wataken44))
 
