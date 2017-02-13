@@ -99,8 +99,10 @@ def extract_opts(input_filename, input_base_dir, output_dir):
             dummy_module.__getattribute__(fn)(conf)
             log_write("succeeded\n")
 
-            opts_arr.append( list_opts_from_conf(conf) )
-            function_appended = True
+            opts = list_opts_from_conf(conf)
+            if len(opts) > 0:
+                opts_arr.append( opts )
+                function_appended = True
     except Exception as e:
         log_write("failed\n" + str(e) + "\n")
 
