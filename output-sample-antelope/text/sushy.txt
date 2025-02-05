@@ -1,0 +1,20 @@
+[DEFAULT]
+
+config_source = []
+# class:      <class 'oslo_config.cfg.ListOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Lists configuration groups that provide more details for accessing configuration settings from locations other than local files.
+
+shell_completion = None
+# class:      <class 'oslo_config.cfg.StrOpt'>
+# deprecated: False
+# multi:      False
+# required:   False
+# help:
+# Display a shell completion script
+
+
+
